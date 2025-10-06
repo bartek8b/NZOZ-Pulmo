@@ -55,9 +55,6 @@ nav > * {
 	cursor: pointer;
 	padding: var(--gapBase);
 }
-nav > button:hover {
-	color: var(--primary);
-}
 nav > a {
 	text-align: center;
 	position: relative;
@@ -166,6 +163,9 @@ footer {
 	}
 	nav > a::after {
 		height: 0;
+	}
+	nav > a:hover{
+		color: var(--primary);
 	}
 }
 /* Key frames */
