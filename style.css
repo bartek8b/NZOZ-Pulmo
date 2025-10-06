@@ -9,7 +9,7 @@ body {
 	text-wrap: balance;
 	background-color: hsl(var(--bg));
 	color: var(--font);
-	font-size: calc(1rem + .1dvw);
+	font-size: calc(1rem + 0.1dvw);
 	font-family: "Lato", system-ui, sans-serif;
 }
 *::selection {
@@ -55,8 +55,7 @@ nav > * {
 	cursor: pointer;
 	padding: var(--gapBase);
 }
-nav > *:hover,
-nav > *:visited:hover {
+nav > button:hover {
 	color: var(--primary);
 }
 nav > a {
@@ -164,6 +163,9 @@ footer {
 		background-color: var(--bg-dark);
 		animation: translate-in 0.3s;
 		transition: transform 0.3s, opacity 0.3s;
+	}
+	nav > a::after {
+		height: 0;
 	}
 }
 /* Key frames */
