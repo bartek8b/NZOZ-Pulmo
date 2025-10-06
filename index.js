@@ -68,3 +68,19 @@ closeNav.addEventListener("click", () => {
 
 window.addEventListener("resize", updateWidth);
 window.addEventListener("scroll", updateWidth);
+
+// Header visible on scroll
+
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", () => {
+	let header = document.querySelector("header");
+	let scrollToTop = window.pageYOffset || document.documentElement.scrollTop;
+
+	if (scrollToTop > lastScrollTop) {
+		header.style.top = "-100%";
+	} else {
+		header.style.top = "0";
+	}
+	lastScrollTop = scrollToTop;
+});

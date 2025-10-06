@@ -9,7 +9,7 @@ body {
 	text-wrap: balance;
 	background-color: hsl(var(--bg));
 	color: var(--font);
-	font-size: calc(1rem + 0.1dvw);
+	font-size: calc(1rem + .1dvw);
 	font-family: "Lato", system-ui, sans-serif;
 }
 *::selection {
@@ -33,10 +33,13 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	transition: top 0.3s;
 }
 /* Logo header */
 header > a > img {
-	height: 3rem;
+	height: 2rem;
 	filter: invert(75%);
 }
 /* Nav */
@@ -66,7 +69,7 @@ nav > a::after {
 	background: var(--primary);
 	width: 0%;
 	height: 1px;
-	bottom: -2px;
+	bottom: 6px;
 	left: 0;
 	transition: width 0.3s;
 	border-radius: var(--gapBase);
@@ -119,9 +122,11 @@ main {
 }
 .translate-in {
 	transform: translateX(0);
+	opacity: 1;
 }
 .translate-out {
 	transform: translateX(-100%);
+	opacity: 0;
 }
 /* Footer */
 footer {
@@ -152,21 +157,23 @@ footer {
 		justify-content: flex-start;
 		position: fixed;
 		gap: 3dvh;
-		top: 4rem;
+		top: 3.5rem;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		background-color: var(--bg-dark);
 		animation: translate-in 0.3s;
-		transition: transform 0.3s;
+		transition: transform 0.3s, opacity 0.3s;
 	}
 }
 /* Key frames */
 @keyframes translate-in {
 	from {
 		transform: translateX(-100%);
+		opacity: 0;
 	}
 	to {
 		transform: translateX(0);
+		opacity: 1;
 	}
 }
