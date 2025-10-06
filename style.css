@@ -7,7 +7,7 @@ body {
 	-webkit-tap-highlight-color: transparent;
 	scroll-behavior: smooth;
 	text-wrap: balance;
-	background-color: hsl(var(--bg));
+	background-color: var(--bg-dark);
 	color: var(--font);
 	font-size: calc(1rem + 0.1dvw);
 	font-family: "Lato", system-ui, sans-serif;
@@ -65,7 +65,7 @@ nav > a::after {
 	background: var(--primary);
 	width: 0%;
 	height: 1px;
-	bottom: 6px;
+	bottom: 4px;
 	left: 0;
 	transition: width 0.3s;
 	border-radius: var(--gapBase);
@@ -98,6 +98,7 @@ nav > button:hover {
 }
 main {
 	background-color: var(--bg);
+	min-height: 100dvh;
 }
 /* Hamburger & mobile menu */
 .hamburger-btn {
@@ -126,7 +127,7 @@ main {
 }
 /* Footer */
 footer {
-	background-color: var(--bg-light);
+	background-color: var(--bg-dark);
 }
 /* Dark scheme */
 [data-theme="dark"] {
@@ -164,7 +165,7 @@ footer {
 	nav > a::after {
 		height: 0;
 	}
-	nav > a:hover{
+	nav > a:hover {
 		color: var(--primary);
 	}
 }
