@@ -162,10 +162,9 @@ footer {
 	color: var(--primary);
 }
 .link-signature {
-	margin-bottom: 0;
 	align-self: center;
 	text-decoration: none;
-	padding-top: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	margin-top: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
 	opacity: 30%;
 }
 .link-signature:visited {
