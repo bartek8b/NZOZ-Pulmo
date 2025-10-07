@@ -87,6 +87,7 @@ nav > a:visited.active {
 }
 /* Color scheme toggle */
 nav > button {
+	width: calc(var(--gapBase) * 6);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -109,6 +110,7 @@ main {
 }
 /* Hamburger & mobile menu */
 .hamburger-btn {
+	width: calc(var(--gapBase) * 6);
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -140,6 +142,36 @@ footer {
 }
 /* Sub-container */
 .sub-container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+	gap: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+}
+.sub-container > .left-child,
+.sub-container > .right-child {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: clamp(var(--gapBase), 2.5dvw, calc(var(--gapBase) * 4));
+}
+.social-media-link {
+	background-color: var(--bg);
+	border: none;
+	color: var(--font);
+	border-radius: 999rem;
+	aspect-ratio: 1 / 1;
+	width: calc(var(--gapBase) * 6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	padding: var(--gapBase);
+}
+.social-media-link:hover {
+	background-color: var(--bg-light);
+	color: var(--primary);
 }
 /* Dark scheme */
 [data-theme="dark"] {
@@ -178,6 +210,10 @@ footer {
 	}
 	nav > a:hover {
 		color: var(--primary);
+	}
+	.sub-container {
+		display: grid;
+		grid-template-columns: 1fr;
 	}
 }
 /* Key frames */
