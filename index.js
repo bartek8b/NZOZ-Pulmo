@@ -53,6 +53,8 @@ function updateWidth() {
 }
 
 openNav.addEventListener("click", () => {
+	const headerRect = document.querySelector("header").getBoundingClientRect();
+	nav.style.top = headerRect.bottom + "px";
 	nav.style.display = "flex";
 	openNav.style.display = "none";
 	closeNav.style.display = "flex";
@@ -62,6 +64,7 @@ openNav.addEventListener("click", () => {
 closeNav.addEventListener("click", () => {
 	openNav.style.display = "flex";
 	closeNav.style.display = "none";
+	nav.style.top = "";
 	nav.classList.remove("translate-in");
 	nav.classList.add("translate-out");
 });
