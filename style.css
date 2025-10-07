@@ -165,6 +165,7 @@ footer {
 	align-self: center;
 	text-decoration: none;
 	margin-top: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	color: var(--font);
 	opacity: 30%;
 }
 .link-signature:visited {
