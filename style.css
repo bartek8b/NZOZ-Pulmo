@@ -28,8 +28,12 @@ body {
 }
 header {
 	background-color: var(--bg-dark);
-	padding: var(--gapBase)
-		clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	padding-block: var(--gapBase);
+	padding-inline: clamp(
+		calc(var(--gapBase) * 2),
+		5dvw,
+		calc(var(--gapBase) * 8)
+	);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -99,6 +103,13 @@ nav > button:hover {
 main {
 	background-color: var(--bg);
 	min-height: 100dvh;
+	/* padding same as in footer */
+	
+	padding: clamp(
+		calc(var(--gapBase) * 2),
+		5dvw,
+		calc(var(--gapBase) * 8)
+	);
 }
 /* Hamburger & mobile menu */
 .hamburger-btn {
@@ -128,6 +139,12 @@ main {
 /* Footer */
 footer {
 	background-color: var(--bg-dark);
+	/* padding same as in main */
+	padding: clamp(
+		calc(var(--gapBase) * 2),
+		5dvw,
+		calc(var(--gapBase) * 8)
+	);
 }
 /* Dark scheme */
 [data-theme="dark"] {

@@ -64,7 +64,6 @@ openNav.addEventListener("click", () => {
 closeNav.addEventListener("click", () => {
 	openNav.style.display = "flex";
 	closeNav.style.display = "none";
-	nav.style.top = "";
 	nav.classList.remove("translate-in");
 	nav.classList.add("translate-out");
 });
