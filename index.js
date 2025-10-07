@@ -42,7 +42,7 @@ const nav = document.querySelector("header > nav");
 function updateWidth() {
 	const windowWidth = window.innerWidth;
 	closeNav.style.display = "none";
-	nav.classList.remove("translate-out");
+	nav.classList.remove("translate-out-menu");
 	if (windowWidth > 768) {
 		openNav.style.display = "none";
 		nav.style.display = "flex";
@@ -58,14 +58,14 @@ openNav.addEventListener("click", () => {
 	nav.style.display = "flex";
 	openNav.style.display = "none";
 	closeNav.style.display = "flex";
-	nav.classList.remove("translate-out");
-	nav.classList.add("translate-in");
+	nav.classList.remove("translate-out-menu");
+	nav.classList.add("translate-in-menu");
 });
 closeNav.addEventListener("click", () => {
 	openNav.style.display = "flex";
 	closeNav.style.display = "none";
-	nav.classList.remove("translate-in");
-	nav.classList.add("translate-out");
+	nav.classList.remove("translate-in-menu");
+	nav.classList.add("translate-out-menu");
 });
 
 window.addEventListener("resize", updateWidth);

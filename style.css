@@ -104,12 +104,8 @@ main {
 	background-color: var(--bg);
 	min-height: 100dvh;
 	/* padding same as in footer */
-	
-	padding: clamp(
-		calc(var(--gapBase) * 2),
-		5dvw,
-		calc(var(--gapBase) * 8)
-	);
+
+	padding: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
 }
 /* Hamburger & mobile menu */
 .hamburger-btn {
@@ -128,11 +124,11 @@ main {
 	color: var(--primary);
 	background-color: var(--bg-light);
 }
-.translate-in {
+.translate-in-menu {
 	transform: translateX(0);
 	opacity: 1;
 }
-.translate-out {
+.translate-out-menu {
 	transform: translateX(-100%);
 	opacity: 0;
 }
@@ -140,11 +136,10 @@ main {
 footer {
 	background-color: var(--bg-dark);
 	/* padding same as in main */
-	padding: clamp(
-		calc(var(--gapBase) * 2),
-		5dvw,
-		calc(var(--gapBase) * 8)
-	);
+	padding: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+}
+/* Sub-container */
+.sub-container {
 }
 /* Dark scheme */
 [data-theme="dark"] {
@@ -175,7 +170,7 @@ footer {
 		width: 100%;
 		height: 100%;
 		background-color: var(--bg-dark);
-		animation: translate-in 0.3s;
+		animation: translate-in-menu 0.3s;
 		transition: transform 0.3s, opacity 0.3s;
 	}
 	nav > a::after {
@@ -186,7 +181,7 @@ footer {
 	}
 }
 /* Key frames */
-@keyframes translate-in {
+@keyframes translate-in-menu {
 	from {
 		transform: translateX(-100%);
 		opacity: 0;
