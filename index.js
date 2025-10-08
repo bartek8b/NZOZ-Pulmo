@@ -17,10 +17,10 @@ function applyTheme(isThemeDark) {
 	);
 	if (isDark) {
 		colorSchemeBtn.innerHTML = darkIcon;
-		logoWelcome.src = "assets/logo/logo_big_darkmode.png";
+		if (logoWelcome) logoWelcome.src = "assets/logo/logo_big_darkmode.png";
 	} else {
 		colorSchemeBtn.innerHTML = lightIcon;
-		logoWelcome.src = "assets/logo/logo_big_lightmode.png";
+		if (logoWelcome) logoWelcome.src = "assets/logo/logo_big_lightmode.png";
 	}
 }
 
