@@ -25,6 +25,12 @@ body {
 	--font-light: hsl(0, 0%, 30%);
 
 	--gapBase: 0.5rem;
+	--responsiveGap: clamp(
+		calc(var(--gapBase) * 2),
+		5dvw,
+		calc(var(--gapBase) * 8)
+	);
+	--responsiveGapHalf: clamp(var(--gapBase), 2.5dvw, calc(var(--gapBase) * 4));
 }
 header {
 	background-color: var(--bg-dark);
@@ -103,10 +109,6 @@ nav > button:hover {
 }
 main {
 	background-color: var(--bg);
-	min-height: 100dvh;
-	/* padding same as in footer */
-
-	padding: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
 }
 /* Hamburger & mobile menu */
 .hamburger-btn {
@@ -137,12 +139,10 @@ main {
 /* Footer */
 footer {
 	background-color: var(--bg-dark);
-	/* padding same as in main */
-	padding: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
 	padding-bottom: var(--gapBase);
 	display: flex;
 	flex-direction: column;
-	gap: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	gap: var(--responsiveGap);
 }
 .social-media-link {
 	background-color: var(--bg);
@@ -164,7 +164,7 @@ footer {
 .link-signature {
 	align-self: center;
 	text-decoration: none;
-	margin-top: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	margin-top: var(--responsiveGap);
 	color: var(--font);
 	opacity: 30%;
 }
@@ -177,7 +177,8 @@ footer {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: auto;
-	gap: clamp(calc(var(--gapBase) * 2), 5dvw, calc(var(--gapBase) * 8));
+	gap: var(--responsiveGap);
+	padding: var(--responsiveGap);
 }
 .sub-container > .left-child,
 .sub-container > .right-child {
@@ -185,7 +186,10 @@ footer {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: clamp(var(--gapBase), 2.5dvw, calc(var(--gapBase) * 4));
+	gap: var(--responsiveGapHalf);
+}
+.sub-container:nth-child(even):not(.sub-container.footer-descendant) {
+	background-color: var(--bg-light);
 }
 /* Dark scheme */
 [data-theme="dark"] {
