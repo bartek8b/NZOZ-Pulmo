@@ -11,6 +11,7 @@ body {
 	color: var(--font);
 	font-size: calc(1rem + 0.1dvw);
 	font-family: "Lato", system-ui, sans-serif;
+	/* line-height:1.15; */
 }
 *::selection {
 	background-color: var(--secondary);
@@ -191,6 +192,14 @@ footer {
 .sub-container:nth-child(even):not(.sub-container.footer-descendant) {
 	background-color: var(--bg-light);
 }
+.logo-big{
+	width: 100%;
+	height: auto;
+	filter: invert(80%);
+}
+
+
+
 /* Dark scheme */
 [data-theme="dark"] {
 	--primary: hsl(42, 96%, 50%);
