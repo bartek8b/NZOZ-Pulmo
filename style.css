@@ -9,7 +9,7 @@ body {
 	text-wrap: balance;
 	background-color: var(--bg-dark);
 	color: var(--font);
-	font-size: calc(1rem + 0.1dvw);
+	font-size: calc(1rem + 0.1vw);
 	font-family: "Lato", system-ui, sans-serif;
 	line-height: 1.5;
 }
@@ -27,7 +27,7 @@ body {
 	--font-light: hsl(0, 0%, 30%);
 
 	--gapBase: 0.5rem;
-	--responsiveGap: 5dvw;
+	--responsiveGap: 5vw;
 }
 p {
 	margin: 0;
@@ -38,7 +38,7 @@ header {
 	padding-block: var(--gapBase);
 	padding-inline: clamp(
 		calc(var(--gapBase) * 2),
-		5dvw,
+		5vw,
 		calc(var(--gapBase) * 8)
 	);
 	display: flex;
@@ -58,7 +58,7 @@ header > nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3dvw;
+	gap: 3vw;
 	z-index: 999;
 }
 nav > * {
@@ -231,7 +231,7 @@ background-color: var(--primary-light);
 /* Media queries */
 @media (max-width: 768px) {
 	:root {
-    --responsiveGap: 10dvh;
+    --responsiveGap: 8vh;
   }
 	.hamburger-btn.open-nav {
 		display: flex;
@@ -241,7 +241,7 @@ background-color: var(--primary-light);
 		flex-direction: column;
 		justify-content: flex-start;
 		position: fixed;
-		gap: 3dvh;
+		gap: 3vh;
 		left: 0;
 		width: 100%;
 		height: 100%;
