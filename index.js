@@ -6,6 +6,7 @@ const darkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 
 const themeDark = window.matchMedia("(prefers-color-scheme: dark)");
 const colorSchemeBtn = document.querySelector(".color-scheme-btn");
+const logoWelcome = document.querySelector(".logo-big");
 let isDark = themeDark.matches;
 
 function applyTheme(isThemeDark) {
@@ -14,7 +15,13 @@ function applyTheme(isThemeDark) {
 		"data-theme",
 		isThemeDark ? "dark" : "light"
 	);
-	colorSchemeBtn.innerHTML = isThemeDark ? darkIcon : lightIcon;
+	if (isDark) {
+		colorSchemeBtn.innerHTML = darkIcon;
+		logoWelcome.src = "assets/logo/logo_big_darkmode.png";
+	} else {
+		colorSchemeBtn.innerHTML = lightIcon;
+		logoWelcome.src = "assets/logo/logo_big_lightmode.png";
+	}
 }
 
 function toggleTheme() {
