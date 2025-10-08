@@ -27,12 +27,7 @@ body {
 	--font-light: hsl(0, 0%, 30%);
 
 	--gapBase: 0.5rem;
-	--responsiveGap: clamp(
-		calc(var(--gapBase) * 2),
-		5dvw,
-		calc(var(--gapBase) * 8)
-	);
-	--responsiveGapHalf: clamp(var(--gapBase), 2.5dvw, calc(var(--gapBase) * 4));
+	--responsiveGap: 5dvw;
 }
 p {
 	margin: 0;
@@ -171,7 +166,6 @@ footer {
 .link-signature {
 	align-self: center;
 	text-decoration: none;
-	margin-top: var(--responsiveGap);
 	color: var(--font);
 	opacity: 30%;
 }
@@ -203,7 +197,7 @@ footer {
 	height: auto;
 }
 .sub-container > .right-child.footer-descendant {
-	gap: var(--responsiveGapHalf);
+	gap: calc(var(--responsiveGap) / 2);
 }
 /* Home */
 .call-to-action-btn {
@@ -236,6 +230,9 @@ background-color: var(--primary-light);
 }
 /* Media queries */
 @media (max-width: 768px) {
+	:root {
+    --responsiveGap: 10dvh;
+  }
 	.hamburger-btn.open-nav {
 		display: flex;
 	}
@@ -261,6 +258,7 @@ background-color: var(--primary-light);
 	.sub-container {
 		display: grid;
 		grid-template-columns: 1fr;
+		padding: calc(var(--responsiveGap) / 2);
 	}
 	.call-to-action-btn {
 	align-self: center;
