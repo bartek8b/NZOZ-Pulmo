@@ -335,7 +335,7 @@ footer {
 }
 .dot:hover{
 	box-shadow: var(--shadow-big);
-	background-color: var(--bg-light);
+	background-color: var(--primary);
 }
 .dot-filled {
 	background-color: var(--primary-light);
