@@ -278,7 +278,6 @@ footer {
 	gap: calc(var(--responsiveGap) / 2);
 }
 .frame {
-	cursor: pointer;
 	height: min(var(--frame-height), 60dvw);
 	width: min(var(--frame-width), 45dvw);
 	border-radius: var(--gapBase);
