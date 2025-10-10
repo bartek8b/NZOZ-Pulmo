@@ -22,17 +22,17 @@ function updateDotFill() {
 			: d.classList.remove("dot-filled");
 	});
 }
+
 function play() {
 	if (currentIndex === imagesLength - 1) {
 		currentIndex = 0;
-		updateTapePosition();
-		updateDotFill();
 	} else {
 		currentIndex = currentIndex + 1;
-		updateTapePosition();
-		updateDotFill();
 	}
+	updateTapePosition();
+	updateDotFill();
 }
+
 function slideShow() {
 	if (autoPlay) {
 		if (intervalId !== null) return; // Don't run new interval if one exists
@@ -44,12 +44,23 @@ function slideShow() {
 		}
 	}
 }
+
+function restartSlideShow() {
+	if (intervalId !== null) {
+		clearInterval(intervalId);
+		intervalId = null;
+	}
+	if (autoPlay) {
+		intervalId = setInterval(play, 5000);
+	}
+}
+
 function markPlayBtn() {
 	const playBtn = document.querySelector(".play-btn");
 	if (autoPlay) {
 		playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
 	} else {
-		playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+		playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
 	}
 }
 
@@ -66,26 +77,24 @@ window.addEventListener("click", e => {
 	if (prevBtn) {
 		if (currentIndex !== 0 && currentIndex > 0) {
 			currentIndex = currentIndex - 1;
-			updateTapePosition();
-			updateDotFill();
 		} else {
 			currentIndex = imagesLength - 1;
-			updateTapePosition();
-			updateDotFill();
 		}
+		updateTapePosition();
+		updateDotFill();
+		restartSlideShow(); // reset licznik po akcji
 		return;
 	}
 
 	if (nextBtn) {
 		if (currentIndex === imagesLength - 1) {
 			currentIndex = 0;
-			updateTapePosition();
-			updateDotFill();
 		} else {
 			currentIndex = currentIndex + 1;
-			updateTapePosition();
-			updateDotFill();
 		}
+		updateTapePosition();
+		updateDotFill();
+		restartSlideShow();
 		return;
 	}
 
@@ -93,18 +102,20 @@ window.addEventListener("click", e => {
 		currentIndex = Number(dotBtn.dataset.index);
 		updateTapePosition();
 		updateDotFill();
+		restartSlideShow();
 		return;
 	}
 
 	if (playPauseBtn) {
-		autoPlay ? (autoPlay = false) : (autoPlay = true);
+		autoPlay = !autoPlay;
 		slideShow();
 		markPlayBtn();
+		restartSlideShow();
 	}
 });
 window.addEventListener("resize", updateTapePosition);
 
-//swipe gestures handling
+// swipe gestures handling
 
 let touchStartX = null;
 let touchEndX = null;
@@ -136,18 +147,16 @@ frame.addEventListener("touchend", function (e) {
 	if (touchStartX !== null && touchEndX !== null) {
 		const deltaX = touchEndX - touchStartX;
 		if (Math.abs(deltaX) > 50) {
-			if (deltaX < 0) {
-				if (currentIndex < imagesLength - 1) {
-					currentIndex++;
-					updateTapePosition();
-					updateDotFill();
-				}
-			} else {
-				if (currentIndex > 0) {
-					currentIndex--;
-					updateTapePosition();
-					updateDotFill();
-				}
+			if (deltaX < 0 && currentIndex < imagesLength - 1) {
+				currentIndex++;
+				updateTapePosition();
+				updateDotFill();
+				restartSlideShow();
+			} else if (deltaX > 0 && currentIndex > 0) {
+				currentIndex--;
+				updateTapePosition();
+				updateDotFill();
+				restartSlideShow();
 			}
 		}
 	}
