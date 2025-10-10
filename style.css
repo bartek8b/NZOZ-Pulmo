@@ -314,7 +314,7 @@ footer {
 	transition: right 0.3s ease-in-out;
 }
 .tape > img {
-	width: min(var(--frame-width), 45dvw);;
+	width: min(var(--frame-width), 45dvw);
 	aspect-ratio: var(--frame-aspect-ratio);
 	align-self: flex-start;
 }

@@ -1,5 +1,4 @@
 // To be set manually
-const frameWidth = 375;
 const imagesLength = 8;
 // End of To be set manually
 
@@ -11,6 +10,8 @@ let autoPlay = true;
 let intervalId = null;
 
 function updateTapePosition() {
+	const frame = document.querySelector(".frame");
+	const frameWidth = frame.offsetWidth;
 	tape.style.right = `${frameWidth * currentIndex}px`;
 }
 
@@ -101,6 +102,7 @@ window.addEventListener("click", e => {
 		markPlayBtn();
 	}
 });
+window.addEventListener("resize", updateTapePosition);
 
 //swipe gestures handling
 
