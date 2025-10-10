@@ -34,6 +34,11 @@ body {
 		0 1px 2px var(--secondary);
 	--shadow-big: inset 0 1px 2px var(--bg-light),
 		0 2px 4px var(--secondary-light), 0 2px 4px var(--secondary);
+
+	/* Images carousel */
+	--frame-width: 375px;	
+	--frame-height: 500px;
+	--frame-aspect-ratio: 3 / 4;
 }
 p {
 	margin: 0;
@@ -242,7 +247,7 @@ footer {
 	background-color: var(--primary-light);
 	box-shadow: var(--shadow-big);
 }
-/* Partners carousel */
+/* Partners infinite carousel */
 .partners-carousel {
 	display: flex;
 	overflow-x: hidden;
@@ -265,7 +270,77 @@ footer {
 	height: calc(var(--gapBase) * 15);
 	padding: 1em;
 }
-
+/* Pictures carousel */
+.frame-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: calc(var(--responsiveGap) / 2);
+}
+.frame {
+	cursor: pointer;
+	height: min(var(--frame-height), 60dvw);
+	width: min(var(--frame-width), 45dvw);
+	border-radius: var(--gapBase);
+	box-shadow: var(--shadow);
+	overflow: hidden;
+}
+.frame:hover {
+	box-shadow: var(--shadow-big);
+}
+.frame-container button, .play-btn {
+	cursor: pointer;
+	border: none;
+	background-color: var(--bg);
+	box-shadow: var(--shadow);
+	border-radius: 999rem;
+	aspect-ratio: 1 / 1;
+	width: calc(var(--gapBase) * 6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--font);
+}
+.frame-container button:hover, .play-btn:hover {
+	background-color: var(--bg-light);
+	box-shadow: var(--shadow-big);
+	color: var(--primary);
+}
+.tape {
+	height: inherit;
+	position: relative;
+	/* right: 0px; <- Set dynamically by .js*/
+	display: flex;
+	transition: right 0.3s ease-in-out;
+}
+.tape > img {
+	width: min(var(--frame-width), 45dvw);;
+	aspect-ratio: var(--frame-aspect-ratio);
+	align-self: flex-start;
+}
+.dots-box {
+	display: flex;
+	gap: calc(var(--responsiveGap) / 2);
+}
+.dot {
+	cursor: pointer;
+	border: none;
+	background-color: var(--bg);
+	box-shadow: var(--shadow);
+	border-radius: 999rem;
+	aspect-ratio: 1 / 1;
+	width: calc(var(--gapBase) * 2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dot:hover{
+	box-shadow: var(--shadow-big);
+	background-color: var(--bg-light);
+}
+.dot-filled {
+	background-color: var(--primary-light);
+}
 /* Dark scheme */
 [data-theme="dark"] {
 	--primary: hsl(37, 72%, 50%);
