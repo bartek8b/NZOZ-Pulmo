@@ -17,7 +17,7 @@ body {
 	background-color: var(--secondary);
 }
 :root {
-	--primary: hsl(215, 55%, 40%);
+	--primary: rgb(46, 93, 158);
 	--primary-light: hsl(215, 55%, 50%);
 	--secondary: hsl(42, 96%, 50%);
 	--secondary-light: hsl(42, 96%, 60%);
@@ -38,6 +38,10 @@ body {
 p {
 	margin: 0;
 	max-width: 65ch;
+}
+h3{
+	font-weight: bold;
+	font-size: calc(1rem + 0.3vw);
 }
 header {
 	background-color: var(--bg-dark);
