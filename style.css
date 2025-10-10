@@ -300,7 +300,7 @@ footer {
 }
 .play-btn{
 	position: relative;
-	top: calc(var(--responsiveGap) / 2);
+	bottom: calc(var(--responsiveGap) / 2);
 }
 .frame-container button:hover, .play-btn:hover {
 	background-color: var(--bg-light);
