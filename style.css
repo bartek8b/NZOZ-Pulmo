@@ -283,6 +283,8 @@ footer {
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
 	overflow: hidden;
+	/* Blokuje przewijanie okna gdy zoom aktywny */
+	touch-action: pan-y;
 }
 .frame:hover {
 	box-shadow: var(--shadow-big);
