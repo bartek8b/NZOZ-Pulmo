@@ -161,6 +161,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	gap: var(--responsiveGap);
+	box-shadow: 0 -1px 2px var(--secondary-light);
 }
 .social-media-link {
 	background-color: var(--bg);
@@ -226,9 +227,6 @@ footer {
 	gap: var(--responsiveGap);
 	padding: var(--responsiveGap);
 }
-main > .sub-container:last-child {
-  box-shadow: inset 0 -1px 2px var(--secondary-light);
-}
 /* Home */
 .call-to-action-btn {
 	color: var(--bg);
@@ -247,7 +245,7 @@ main > .sub-container:last-child {
 /* Partners carousel */
 .partners-carousel {
 	display: flex;
-	overflow-x: auto;
+	overflow-x: hidden;
 	max-width: 100%;
 }
 .partners-carousel::-webkit-scrollbar {
