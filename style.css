@@ -19,8 +19,8 @@ body {
 :root {
 	--primary: rgb(46, 93, 158);
 	--primary-light: hsl(215, 55%, 50%);
-	--secondary: hsl(42, 96%, 50%);
-	--secondary-light: hsl(42, 96%, 60%);
+	--secondary: hsl(37, 72%, 50%);
+	--secondary-light: hsl(37, 72%, 60%);
 	--bg-dark: hsl(0, 0%, 90%);
 	--bg: hsl(0, 0%, 95%);
 	--bg-light: hsl(0, 0%, 100%);
@@ -227,7 +227,7 @@ footer {
 }
 /* Home */
 .call-to-action-btn {
-	color: var(--secondary);
+	color: var(--bg);
 	background-color: var(--primary);
 	text-decoration: none;
 	cursor: pointer;
@@ -266,8 +266,8 @@ footer {
 
 /* Dark scheme */
 [data-theme="dark"] {
-	--primary: hsl(42, 96%, 50%);
-	--primary-light: hsl(42, 96%, 60%);
+	--primary: hsl(37, 72%, 50%);
+	--primary-light: hsl(37, 72%, 60%);
 	--secondary: hsl(215, 55%, 40%);
 	--secondary-light: hsl(215, 55%, 50%);
 	--bg-dark: hsl(0, 0%, 20%);
