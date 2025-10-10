@@ -300,6 +300,10 @@ footer {
 	align-items: center;
 	color: var(--font);
 }
+.play-btn{
+	position: relative;
+	top: calc(var(--responsiveGap) / 2);
+}
 .frame-container button:hover, .play-btn:hover {
 	background-color: var(--bg-light);
 	box-shadow: var(--shadow-big);
@@ -319,7 +323,7 @@ footer {
 }
 .dots-box {
 	display: flex;
-	gap: calc(var(--responsiveGap) / 2);
+	gap: calc(var(--responsiveGap) / 3);
 }
 .dot {
 	cursor: pointer;
