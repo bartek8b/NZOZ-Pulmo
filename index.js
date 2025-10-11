@@ -45,14 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
 const openNav = document.querySelector(".open-nav");
 const closeNav = document.querySelector(".close-nav");
 const nav = document.querySelector("header > nav");
-const partnersGroup = document.querySelectorAll(".partners-group");
 
 function updateWidth() {
 	const windowWidth = window.innerWidth;
 	closeNav.style.display = "none";
 	nav.classList.remove("translate-out-menu");
-	if (partnersGroup)
-		partnersGroup.forEach(g => (g.style.transform = "scale(1)"));
 	if (windowWidth > 768) {
 		openNav.style.display = "none";
 		nav.style.display = "flex";
@@ -70,16 +67,12 @@ openNav.addEventListener("click", () => {
 	closeNav.style.display = "flex";
 	nav.classList.remove("translate-out-menu");
 	nav.classList.add("translate-in-menu");
-	if (partnersGroup)
-		partnersGroup.forEach(g => (g.style.transform = "scale(0)"));
 });
 closeNav.addEventListener("click", () => {
 	openNav.style.display = "flex";
 	closeNav.style.display = "none";
 	nav.classList.remove("translate-in-menu");
 	nav.classList.add("translate-out-menu");
-	if (partnersGroup)
-		partnersGroup.forEach(g => (g.style.transform = "scale(1)"));
 });
 
 window.addEventListener("resize", updateWidth);

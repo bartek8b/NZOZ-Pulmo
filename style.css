@@ -36,7 +36,7 @@ body {
 		0 2px 4px var(--secondary-light), 0 2px 4px var(--secondary);
 
 	/* Images carousel */
-	--frame-width: 375px;	
+	--frame-width: 375px;
 	--frame-height: 500px;
 	--frame-aspect-ratio: 3 / 4;
 }
@@ -210,8 +210,17 @@ footer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 	gap: var(--responsiveGap);
+}
+.sub-container > .left-child {
+	align-items: flex-end;
+}
+.sub-container > .right-child {
+	align-items: flex-start;
+}
+.sub-container > .left-child.footer-descendant,
+.sub-container > .right-child.footer-descendant {
+	align-items: center;
 }
 .sub-container:nth-child(even):not(.sub-container.footer-descendant) {
 	background-color: var(--bg-light);
@@ -240,7 +249,6 @@ footer {
 	cursor: pointer;
 	padding: var(--gapBase);
 	border-radius: var(--gapBase);
-	align-self: flex-start;
 	box-shadow: var(--shadow);
 }
 .call-to-action-btn:hover {
@@ -285,24 +293,29 @@ footer {
 	/* Blokuje przewijanie okna gdy zoom aktywny */
 	touch-action: pan-y;
 }
-.frame-container button, .play-btn {
+.frame-container button,
+.play-btn {
 	cursor: pointer;
 	border: none;
 	background-color: var(--bg);
 	box-shadow: var(--shadow);
-	border-radius: 999rem;
-	aspect-ratio: 1 / 1;
-	width: calc(var(--gapBase) * 6);
+	border-radius: var(--gapBase);
+	aspect-ratio: 1 / 2;
+	width: calc(var(--gapBase) * 4);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: var(--font);
 }
-.play-btn{
+.play-btn {
 	position: relative;
 	bottom: calc(var(--responsiveGap) / 2);
+	height: calc(var(--gapBase) * 4);
+	width: auto;
+	aspect-ratio: 2 / 1;
 }
-.frame-container button:hover, .play-btn:hover {
+.frame-container button:hover,
+.play-btn:hover {
 	background-color: var(--bg-light);
 	box-shadow: var(--shadow-big);
 	color: var(--primary);
@@ -335,12 +348,11 @@ footer {
 	justify-content: center;
 	align-items: center;
 }
-.dot:hover{
+.dot:hover {
 	box-shadow: var(--shadow-big);
-	background-color: var(--primary);
 }
 .dot-filled {
-	background-color: var(--primary-light);
+	background-color: var(--primary);
 }
 /* Dark scheme */
 [data-theme="dark"] {
@@ -392,8 +404,15 @@ footer {
 		grid-template-columns: 1fr;
 		padding: calc(var(--responsiveGap) / 2);
 	}
-	.call-to-action-btn {
-		align-self: center;
+	.sub-container.footer-descendant{
+		padding-top: var(--responsiveGap);
+	}
+	.sub-container > .left-child,
+	.sub-container > .right-child {
+		align-items: center;
+	}
+	.introduction{
+		text-align: center;
 	}
 }
 /* Key frames */
