@@ -90,26 +90,3 @@ window.addEventListener("scroll", () => {
 	}
 	lastScrollTop = scrollToTop;
 });
-
-// Intersection Observer
-
-const intersectingElems = document.querySelectorAll(
-	".sub-container:not(.sub-container.footer-descendant) > *"
-);
-
-const observer = new IntersectionObserver(
-	entries => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				entry.target.classList.add("show");
-				observer.unobserve(entry.target);
-				console.log(entry.target);
-			}
-		});
-	},
-	{ threshold: 0.1 }
-);
-
-intersectingElems.forEach(elem => {
-	observer.observe(elem);
-});
