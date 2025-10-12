@@ -226,26 +226,15 @@ footer {
 .sub-container:nth-child(odd):not(.sub-container.footer-descendant) {
 	background-color: var(--bg-light);
 }
-/* .sub-container.sub-container-mono > * {
-	opacity: 1;
-	transform: translateY(100%);
-	transition: 0.3 ease;
-} */
-/* .left-child:not(.left-child.footer-descendant){
-	opacity: 1;
-	transform: translateX(-100%);
-	transition: 0.3 ease;
+.sub-container:not(.sub-container.footer-descendant) > * {
+	opacity: 0;
+	transform: translateY(30%);
+	transition: opacity 1s ease, transform 1s ease;
 }
-.right-child:not(.right-child.footer-descendant){
-	opacity: 1;
-	transform: translateX(100%);
-	transition: 0.3 ease;
-}
-.show {
+.sub-container:not(.sub-container.footer-descendant) > *.show {
 	opacity: 1;
 	transform: translateY(0);
-	transform: translateX(0);
-} */
+}
 .logo-big {
 	width: 80%;
 	height: auto;
