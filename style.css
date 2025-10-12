@@ -267,7 +267,7 @@ footer {
 	box-shadow: var(--shadow-big);
 }
 .sub-container.introduction-container {
-	background: url(assets/background/DSC_0052.jpg) no-repeat center center local;
+	background: url(assets/background/background.jpg) no-repeat center center local;
 	background-size: cover;
 	color: hsl(0, 0%, 90%);
 	padding-block: calc(var(--responsiveGap) * 2);
