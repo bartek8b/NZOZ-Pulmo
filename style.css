@@ -228,10 +228,12 @@ footer {
 }
 .sub-container:not(.sub-container.footer-descendant) > * {
 	opacity: 0;
-	transition: opacity 1s ease;
+	transition: opacity 1s ease, scale 1s ease;
+	scale: .9;
 }
 .sub-container:not(.sub-container.footer-descendant) > *.show {
 	opacity: 1;
+	scale: 1;
 }
 .logo-big {
 	width: 80%;
