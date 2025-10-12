@@ -104,6 +104,8 @@ const observer = new IntersectionObserver(entries => {
 			console.log(entry.target);
 		}
 	});
-}, {});
+}, {
+	rootMargin: "0px 0px 50px 0px"
+});
 
 animatedElems.forEach(elem => observer.observe(elem));
