@@ -371,11 +371,23 @@ footer {
 .dot-filled {
 	background-color: var(--primary);
 }
+/* Placówki */
 .google-map{
 	width: 80%;
 	aspect-ratio: 3 / 2;
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
+}
+.address-container{
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--responsiveGap) / 2);
+	font-style: normal;
+}
+.address-container > div {
+	display: flex;
+	align-items: center;
+	gap: calc(var(--responsiveGap) / 4);
 }
 /* Dark scheme */
 [data-theme="dark"] {
