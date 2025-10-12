@@ -436,6 +436,7 @@ footer {
 	.sub-container {
 		display: grid;
 		grid-template-columns: 1fr;
+		padding-block: calc(var(--responsiveGap) * 2);
 	}
 	.sub-container.reverse-queries > *:nth-child(1) {
 		grid-row: 2;
