@@ -105,7 +105,7 @@ const observer = new IntersectionObserver(entries => {
 		}
 	});
 }, {
-	rootMargin: "0px 0px 50px 0px"
+	rootMargin: "0px 0px 0px 0px"
 });
 
 animatedElems.forEach(elem => observer.observe(elem));
