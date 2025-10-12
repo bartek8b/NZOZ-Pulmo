@@ -436,6 +436,9 @@ footer {
 	.introduction-description {
 		text-align: center;
 	}
+	.frame-container button{
+		display: none;
+	}
 }
 /* Key frames */
 @keyframes translate-in-menu {
