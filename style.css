@@ -371,6 +371,12 @@ footer {
 .dot-filled {
 	background-color: var(--primary);
 }
+.google-map{
+	width: 80%;
+	aspect-ratio: 3 / 2;
+	border-radius: var(--gapBase);
+	box-shadow: var(--shadow);
+}
 /* Dark scheme */
 [data-theme="dark"] {
 	--primary: hsl(37, 72%, 50%);
