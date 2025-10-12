@@ -228,7 +228,7 @@ footer {
 }
 .sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant), .right-child:not(.right-child.footer-descendant){
 	opacity: 0;
-	transform: translateY(calc(var(--gapBase) * 2));
+	transform: translateY(calc(var(--gapBase) * 4));
 	transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .sub-container.sub-container-mono > *.show, .left-child:not(.left-child.footer-descendant).show, .right-child:not(.right-child.footer-descendant).show {
