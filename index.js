@@ -90,3 +90,20 @@ window.addEventListener("scroll", () => {
 	}
 	lastScrollTop = scrollToTop;
 });
+
+// Intersection Observer
+
+const animatedElems = document.querySelectorAll(
+	".sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant), .right-child:not(.right-child.footer-descendant)"
+);
+
+const observer = new IntersectionObserver(entries => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			entry.target.classList.add("show");
+			console.log(entry.target);
+		}
+	});
+}, {});
+
+animatedElems.forEach(elem => observer.observe(elem));
