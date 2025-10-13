@@ -305,6 +305,9 @@ footer {
 .sub-container.sub-container-mono.ue-carousel-container{
 	gap: calc(var(--responsiveGap) / 3);
 }
+.ue-projects-title{
+	padding-bottom: calc(var(--responsiveGap) / 2);
+}
 .frame-container {
 	display: flex;
 	align-items: center;
