@@ -270,10 +270,10 @@ footer {
 	background-color: var(--primary-light);
 	box-shadow: var(--shadow-big);
 }
-.sub-container.introduction-container {
+.sub-container#introduction-container {
 	background: url(assets/background/background.jpg) no-repeat center center;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: local;
 	color: hsl(0, 0%, 90%);
 	padding-block: calc(var(--responsiveGap) * 2);
 	min-height: 95vh;
@@ -303,7 +303,7 @@ footer {
 }
 
 /* Pictures carousel */
-.sub-container.sub-container-mono.ue-carousel-container {
+.sub-container.sub-container-mono#ue-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
 }
 .ue-projects-title {
