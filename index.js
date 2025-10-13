@@ -97,15 +97,19 @@ const animatedElems = document.querySelectorAll(
 	".sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant), .right-child:not(.right-child.footer-descendant)"
 );
 
-const observer = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			entry.target.classList.add("show");
-			console.log(entry.target);
-		}
-	});
-}, {
-	rootMargin: "0px 0px 20px 0px"
-});
+const observer = new IntersectionObserver(
+	entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add("show");
+				console.log(entry.target);
+				observer.unobserve(entry.target);
+			}
+		});
+	},
+	{
+		rootMargin: "0px 0px 20px 0px",
+	}
+);
 
 animatedElems.forEach(elem => observer.observe(elem));
