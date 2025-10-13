@@ -260,11 +260,13 @@ footer {
 .call-to-action-btn {
 	color: var(--bg);
 	background-color: var(--primary);
+	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
-	padding: var(--gapBase);
+	padding: calc(var(--gapBase) * 1.2);
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
+	width: calc(var(--gapBase) * 25);
 }
 .call-to-action-btn:hover {
 	background-color: var(--primary-light);
