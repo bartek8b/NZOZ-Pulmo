@@ -222,10 +222,17 @@ footer {
 	align-items: center;
 }
 .sub-container:nth-child(even):not(.sub-container.footer-descendant) {
-	background-color: var(--bg);
+	background: linear-gradient(
+		to bottom,
+		var(--bg) 0%,
+		var(--bg-light) 5%,
+		var(--bg-light) 95%,
+		var(--bg) 100%
+	);
+	/* background-color: var(--bg-light); */
 }
 .sub-container:nth-child(odd):not(.sub-container.footer-descendant) {
-	background-color: var(--bg-light);
+	background-color: var(--bg);
 }
 .sub-container.sub-container-mono > *,
 .left-child:not(.left-child.footer-descendant),
