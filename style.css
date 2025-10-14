@@ -17,8 +17,10 @@ body {
 	background-color: var(--secondary);
 }
 :root {
-	--primary: #3B7097;
-	--primary-light: #4A8DB7;
+	--primary: #3b7097;
+	--primary-light: #4a8db7;
+	/* --secondary: #ffc872;
+	--secondary-light: #ffe3b3; */
 	--secondary: #75BDE0;
 	--secondary-light: #A2E2F8;
 	--bg-dark: hsl(0, 0%, 90%);
@@ -413,10 +415,12 @@ footer {
 }
 /* Dark scheme */
 [data-theme="dark"] {
+	/* --primary: #ffc872;
+	--primary-light: #ffe3b3; */
 	--primary: #75BDE0;
 	--primary-light: #A2E2F8;
-	--secondary: #3B7097;
-	--secondary-light: #4A8DB7;
+	--secondary: #3b7097;
+	--secondary-light: #4a8db7;
 	--bg-dark: hsl(0, 0%, 20%);
 	--bg: hsl(0, 0%, 25%);
 	--bg-light: hsl(0, 0%, 30%);
