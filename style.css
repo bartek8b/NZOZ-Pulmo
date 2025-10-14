@@ -225,8 +225,8 @@ footer {
 	background: linear-gradient(
 		to bottom,
 		var(--bg) 0%,
-		var(--bg-light) 5%,
-		var(--bg-light) 95%,
+		var(--bg-light) 2%,
+		var(--bg-light) 98%,
 		var(--bg) 100%
 	);
 	/* background-color: var(--bg-light); */
