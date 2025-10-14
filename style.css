@@ -19,10 +19,10 @@ body {
 :root {
 	--primary: #3b7097;
 	--primary-light: #4a8db7;
-	/* --secondary: #ffc872;
-	--secondary-light: #ffe3b3; */
-	--secondary: #75BDE0;
-	--secondary-light: #A2E2F8;
+	--secondary: #db9524;
+	--secondary-light: #e2aa50;
+	/* --secondary: #75BDE0;
+	--secondary-light: #A2E2F8; */
 	--bg-dark: hsl(0, 0%, 90%);
 	--bg: hsl(0, 0%, 95%);
 	--bg-light: hsl(0, 0%, 100%);
@@ -415,10 +415,10 @@ footer {
 }
 /* Dark scheme */
 [data-theme="dark"] {
-	/* --primary: #ffc872;
-	--primary-light: #ffe3b3; */
-	--primary: #75BDE0;
-	--primary-light: #A2E2F8;
+	--primary: #db9524;
+	--primary-light: #e2aa50;
+	/* --primary: #75BDE0;
+	--primary-light: #A2E2F8; */
 	--secondary: #3b7097;
 	--secondary-light: #4a8db7;
 	--bg-dark: hsl(0, 0%, 20%);
