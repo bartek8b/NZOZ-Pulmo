@@ -284,7 +284,6 @@ footer {
 	background-size: cover;
 	background-attachment: local;
 	color: hsl(0, 0%, 90%);
-	padding-block: calc(var(--responsiveGap) * 2);
 	min-height: 95vh;
 }
 /* Partners infinite carousel */
