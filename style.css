@@ -17,10 +17,10 @@ body {
 	background-color: var(--secondary);
 }
 :root {
-	--primary: rgb(46, 93, 158);
-	--primary-light: hsl(215, 55%, 50%);
-	--secondary: hsl(37, 72%, 50%);
-	--secondary-light: hsl(37, 72%, 60%);
+	--primary: #3B7097;
+	--primary-light: #4A8DB7;
+	--secondary: #75BDE0;
+	--secondary-light: #A2E2F8;
 	--bg-dark: hsl(0, 0%, 90%);
 	--bg: hsl(0, 0%, 95%);
 	--bg-light: hsl(0, 0%, 100%);
@@ -413,10 +413,10 @@ footer {
 }
 /* Dark scheme */
 [data-theme="dark"] {
-	--primary: hsl(37, 72%, 50%);
-	--primary-light: hsl(37, 72%, 60%);
-	--secondary: hsl(215, 55%, 40%);
-	--secondary-light: hsl(215, 55%, 50%);
+	--primary: #75BDE0;
+	--primary-light: #A2E2F8;
+	--secondary: #3B7097;
+	--secondary-light: #4A8DB7;
 	--bg-dark: hsl(0, 0%, 20%);
 	--bg: hsl(0, 0%, 25%);
 	--bg-light: hsl(0, 0%, 30%);
