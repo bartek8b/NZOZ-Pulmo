@@ -283,7 +283,7 @@ footer {
 	box-shadow: var(--shadow-big);
 }
 .sub-container#introduction-container {
-	background: url(assets/background/background.jpg) no-repeat center center;
+	background: url(assets/background/background.webp) no-repeat center center;
 	background-size: cover;
 	background-attachment: local;
 	color: hsl(0, 0%, 90%);
