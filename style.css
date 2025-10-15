@@ -78,6 +78,7 @@ header > nav {
 	align-items: center;
 	justify-content: space-between;
 	gap: calc(var(--responsiveGap) / 2);
+	height: calc(var(--gapBase) * 6);
 }
 nav > * {
 	text-decoration: none;
@@ -286,7 +287,8 @@ footer {
 	background-size: cover;
 	background-attachment: local;
 	color: hsl(0, 0%, 90%);
-	min-height: 95vh;
+	/* 100vh minus header height */
+	min-height: calc(100vh - calc(var(--gapBase) * 6));
 }
 /* Partners infinite carousel */
 .partners-carousel {
