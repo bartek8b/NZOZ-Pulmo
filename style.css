@@ -492,6 +492,9 @@ footer {
 		width: var(--frame-width);
 		height: auto;
 	}
+	.google-map {
+		width: 90%;
+	}
 }
 /* Key frames */
 @keyframes translate-in-menu {
