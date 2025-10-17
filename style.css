@@ -481,6 +481,9 @@ footer {
 	.introduction-description {
 		text-align: center;
 	}
+	.sub-container#introduction-container{
+		gap: calc(var(--responsiveGap) / 2);
+	}
 	.frame-container button {
 		display: none;
 	}
