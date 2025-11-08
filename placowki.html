@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Ustaw meta description dla każdej podstrony -->
     <meta name="description" content="Niepubliczny Zakład Opieki Zdrowotnej Pulmo - nasze placówki">
+    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
+    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
     <!-- Ustaw Open Graph Protocol (OGP) -->
     <meta property="og:title" content="Pulmo" />
     <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
     <meta property="og:url" content="https://pulmo.com.pl" />
     <link rel="stylesheet" href="modern-normalize.min.css">
     <link rel="stylesheet" href="style.css">
@@ -130,7 +133,8 @@
         </section>
         <section class="sub-container reverse-queries">
             <div class="left-child">
-                <iframe class="google-map" title="Mapa z lokalizacją placówki Ośrodek Stacjonarnej Opieki Medycznej Wołomin"
+                <iframe class="google-map"
+                    title="Mapa z lokalizacją placówki Ośrodek Stacjonarnej Opieki Medycznej Wołomin"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2205.3862894718004!2d21.23564047618185!3d52.3517197486755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471edac095b86e6b%3A0x9cee9d899936c995!2sRehabilitacja%20Pulmo%20Wo%C5%82omin-O%C5%9Brodek%20Stacjonarnej%20Opieki%20Medycznej%20Pulmo!5e1!3m2!1spl!2snl!4v1760461852845!5m2!1spl!2snl"
                     style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -268,16 +272,16 @@
                 </p>
             </div>
             <div class="right-child footer-descendant">
-                <a href="https://www.facebook.com/pulmoprzychodniaPOZ" class="social-media-link" aria-label="Facebook" target="_blank"
-                    rel="noopener noreferrer" role="button">
+                <a href="https://www.facebook.com/pulmoprzychodniaPOZ" class="social-media-link" aria-label="Facebook"
+                    target="_blank" rel="noopener noreferrer" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-facebook">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                     </svg>
                 </a>
-                <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link" aria-label="Instagram" target="_blank"
-                    rel="noopener noreferrer" role="button">
+                <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link"
+                    aria-label="Instagram" target="_blank" rel="noopener noreferrer" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-instagram">
@@ -288,7 +292,13 @@
                 </a>
             </div>
         </section>
-        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">Coded by:
+        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-terminal">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
             8b.com.pl</a>
     </footer>
 </body>

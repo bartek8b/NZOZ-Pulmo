@@ -7,6 +7,10 @@
     <!-- Ustaw meta description dla każdej podstrony -->
     <meta name="description"
         content="Niepubliczny Zakład Opieki Zdrowotnej Pulmo - Wołomin, Warszawa Białołęka Derby -rehabilitacja, stacjonarna opieka medyczna">
+    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
+    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
+    <link rel="preload" as="image" href="assets/logo/logo_big.webp">
+    <link rel="preload" as="image" href="assets/background/background.webp">
     <!-- Ustaw Open Graph Protocol (OGP) -->
     <meta property="og:title" content="Pulmo" />
     <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
@@ -85,8 +89,8 @@
                     <img src="assets/partners/rozliczenia_nfz.webp" alt="rozliczenia NFZ" class="partner-logo partner3"
                         loading="lazy">
                     <img src="assets/partners/pemedic.webp" alt="peMedic" class="partner-logo partner4" loading="lazy">
-                    <img src="assets/partners/PZU.webp" alt="Powszechny Zakład Ubezpieczeń" class="partner-logo partner5"
-                        loading="lazy">
+                    <img src="assets/partners/PZU.webp" alt="Powszechny Zakład Ubezpieczeń"
+                        class="partner-logo partner5" loading="lazy">
                     <img src="assets/partners/fundacja.webp" alt="Fundacja Trzeba Żyć" class="partner-logo partner6"
                         loading="lazy">
                     <img src="assets/partners/premko.webp" alt="Premko" class="partner-logo partner7" loading="lazy">
@@ -100,8 +104,8 @@
                     <img src="assets/partners/rozliczenia_nfz.webp" alt="rozliczenia NFZ" class="partner-logo partner3"
                         loading="lazy">
                     <img src="assets/partners/pemedic.webp" alt="peMedic" class="partner-logo partner4" loading="lazy">
-                    <img src="assets/partners/PZU.webp" alt="Powszechny Zakład Ubezpieczeń" class="partner-logo partner5"
-                        loading="lazy">
+                    <img src="assets/partners/PZU.webp" alt="Powszechny Zakład Ubezpieczeń"
+                        class="partner-logo partner5" loading="lazy">
                     <img src="assets/partners/fundacja.webp" alt="Fundacja Trzeba Żyć" class="partner-logo partner6"
                         loading="lazy">
                     <img src="assets/partners/premko.webp" alt="Premko" class="partner-logo partner7" loading="lazy">
@@ -114,9 +118,9 @@
             <h3 class="ue-projects-title">Projekty unijne</h3>
 
             <div class="frame-container">
-                <button class="previous-btn" aria-label="Previous picture"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-rewind">
+                <button class="previous-btn" aria-label="Previous picture"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-rewind">
                         <polygon points="11 19 2 12 11 5 11 19"></polygon>
                         <polygon points="22 19 13 12 22 5 22 19"></polygon>
                     </svg></button>
@@ -187,16 +191,16 @@
                 </p>
             </div>
             <div class="right-child footer-descendant">
-                <a href="https://www.facebook.com/pulmoprzychodniaPOZ" class="social-media-link" aria-label="Facebook" target="_blank"
-                    rel="noopener noreferrer" role="button">
+                <a href="https://www.facebook.com/pulmoprzychodniaPOZ" class="social-media-link" aria-label="Facebook"
+                    target="_blank" rel="noopener noreferrer" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-facebook">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                     </svg>
                 </a>
-                <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link" aria-label="Instagram" target="_blank"
-                    rel="noopener noreferrer" role="button">
+                <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link"
+                    aria-label="Instagram" target="_blank" rel="noopener noreferrer" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-instagram">
@@ -207,7 +211,13 @@
                 </a>
             </div>
         </section>
-        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">Coded by:
+        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-terminal">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
             8b.com.pl</a>
     </footer>
 </body>
