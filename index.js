@@ -4,15 +4,14 @@ const lightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
 
 const darkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
 
-const themeDark = window.matchMedia("(prefers-color-scheme: dark)");
-const colorSchemeBtn = document.querySelector(".color-scheme-btn");
-let isDark = themeDark.matches;
+const colorSchemeBtn = document.querySelector('.color-scheme-btn');
+let isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
 function applyTheme(isThemeDark) {
 	isDark = isThemeDark;
 	document.documentElement.setAttribute(
-		"data-theme",
-		isThemeDark ? "dark" : "light"
+		'data-theme',
+		isThemeDark ? 'dark' : 'light'
 	);
 	if (isDark) {
 		colorSchemeBtn.innerHTML = darkIcon;
@@ -24,69 +23,68 @@ function applyTheme(isThemeDark) {
 function toggleTheme() {
 	isDark = !isDark;
 	applyTheme(isDark);
-	localStorage.setItem("theme", isDark ? "dark" : "light");
+	try {
+		localStorage.setItem('theme', isDark ? 'dark' : 'light');
+	} catch (e) {
+		// jeśli localStorage niedostępne
+	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	const savedTheme = localStorage.getItem("theme");
-	if (savedTheme) {
-		applyTheme(savedTheme === "dark");
-	} else {
-		applyTheme(isDark);
-	}
-	colorSchemeBtn.addEventListener("click", toggleTheme);
+document.addEventListener('DOMContentLoaded', () => {
+	applyTheme(isDark);
+	colorSchemeBtn.addEventListener('click', toggleTheme);
 });
 
 // Hamburger menu
 
-const openNav = document.querySelector(".open-nav");
-const closeNav = document.querySelector(".close-nav");
-const nav = document.querySelector("header > nav");
+const openNav = document.querySelector('.open-nav');
+const closeNav = document.querySelector('.close-nav');
+const nav = document.querySelector('header > nav');
 
 function updateWidth() {
 	const windowWidth = window.innerWidth;
-	closeNav.style.display = "none";
-	nav.classList.remove("translate-out-menu");
+	closeNav.style.display = 'none';
+	nav.classList.remove('translate-out-menu');
 	if (windowWidth > 768) {
-		openNav.style.display = "none";
-		nav.style.display = "flex";
+		openNav.style.display = 'none';
+		nav.style.display = 'flex';
 	} else {
-		openNav.style.display = "flex";
-		nav.style.display = "none";
+		openNav.style.display = 'flex';
+		nav.style.display = 'none';
 	}
 }
 
-openNav.addEventListener("click", () => {
-	const headerRect = document.querySelector("header").getBoundingClientRect();
-	nav.style.top = headerRect.bottom + "px";
-	nav.style.display = "flex";
-	openNav.style.display = "none";
-	closeNav.style.display = "flex";
-	nav.classList.remove("translate-out-menu");
-	nav.classList.add("translate-in-menu");
+openNav.addEventListener('click', () => {
+	const headerRect = document.querySelector('header').getBoundingClientRect();
+	nav.style.top = headerRect.bottom + 'px';
+	nav.style.display = 'flex';
+	openNav.style.display = 'none';
+	closeNav.style.display = 'flex';
+	nav.classList.remove('translate-out-menu');
+	nav.classList.add('translate-in-menu');
 });
-closeNav.addEventListener("click", () => {
-	openNav.style.display = "flex";
-	closeNav.style.display = "none";
-	nav.classList.remove("translate-in-menu");
-	nav.classList.add("translate-out-menu");
+closeNav.addEventListener('click', () => {
+	openNav.style.display = 'flex';
+	closeNav.style.display = 'none';
+	nav.classList.remove('translate-in-menu');
+	nav.classList.add('translate-out-menu');
 });
 
-window.addEventListener("resize", updateWidth);
-window.addEventListener("scroll", updateWidth);
+window.addEventListener('resize', updateWidth);
+window.addEventListener('scroll', updateWidth);
 
 // Header visible on scroll
 
 let lastScrollTop = 0;
 
-window.addEventListener("scroll", () => {
-	let header = document.querySelector("header");
+window.addEventListener('scroll', () => {
+	let header = document.querySelector('header');
 	let scrollToTop = window.pageYOffset || document.documentElement.scrollTop;
 
 	if (scrollToTop > lastScrollTop) {
-		header.style.top = "-100%";
+		header.style.top = '-100%';
 	} else {
-		header.style.top = "0";
+		header.style.top = '0';
 	}
 	lastScrollTop = scrollToTop;
 });
@@ -94,21 +92,21 @@ window.addEventListener("scroll", () => {
 // Intersection Observer
 
 const animatedElems = document.querySelectorAll(
-	".sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant), .right-child:not(.right-child.footer-descendant)"
+	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant), .right-child:not(.right-child.footer-descendant)'
 );
 
 const observer = new IntersectionObserver(
 	entries => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-				entry.target.classList.add("show");
+				entry.target.classList.add('show');
 				console.log(entry.target);
 				observer.unobserve(entry.target);
 			}
 		});
 	},
 	{
-		rootMargin: "0px 0px 20px 0px",
+		rootMargin: '0px 0px 20px 0px',
 	}
 );
 
