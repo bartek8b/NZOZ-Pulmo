@@ -1,5 +1,5 @@
 @font-face {
-	font-family: "Lato";
+	font-family: 'Lato';
 	src: url(assets/fonts/Lato-Regular.ttf);
 }
 body {
@@ -10,7 +10,7 @@ body {
 	background-color: var(--bg-dark);
 	color: var(--font);
 	font-size: calc(1rem + 0.1vw);
-	font-family: "Lato", system-ui, sans-serif;
+	font-family: 'Lato', system-ui, sans-serif;
 	line-height: 1.5;
 }
 *::selection {
@@ -91,7 +91,7 @@ nav > a {
 	color: var(--font);
 }
 nav > a::after {
-	content: "";
+	content: '';
 	position: absolute;
 	background: var(--primary);
 	width: 0%;
@@ -188,7 +188,10 @@ footer {
 	box-shadow: var(--shadow-big);
 }
 .link-signature {
-	align-self: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gapBase);
 	text-decoration: none;
 	color: var(--font);
 	opacity: 30%;
@@ -416,7 +419,7 @@ footer {
 	gap: calc(var(--responsiveGap) / 4);
 }
 /* Dark scheme */
-[data-theme="dark"] {
+[data-theme='dark'] {
 	--primary: hsl(37, 72%, 50%);
 	--primary-light: hsl(37, 72%, 60%);
 	/* --primary: hsl(200, 63%, 67%);
@@ -481,7 +484,7 @@ footer {
 	.introduction-description {
 		text-align: center;
 	}
-	.sub-container#introduction-container{
+	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
 	}
 	.frame-container button {
