@@ -188,6 +188,7 @@ footer {
 	box-shadow: var(--shadow-big);
 }
 .link-signature {
+	font-size: calc(0.8rem + 0.1vw);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -195,6 +196,9 @@ footer {
 	text-decoration: none;
 	color: var(--font);
 	opacity: 30%;
+}
+.link-signature > svg {
+	height: calc(1rem + 0.1vw);
 }
 .link-signature:visited {
 	color: inherit;
