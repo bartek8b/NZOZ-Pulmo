@@ -422,6 +422,11 @@ footer {
 	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
 }
+.facilities-btns-contaainer{
+	display: flex;
+	flex-direction: row;
+	gap: calc(var(--responsiveGap) / 4);
+}
 /* Dark scheme */
 [data-theme='dark'] {
 	--primary: hsl(37, 72%, 50%);
@@ -505,6 +510,9 @@ footer {
 	.google-map {
 		width: 90%;
 	}
+	.facilities-btns-contaainer{
+	flex-direction: column;
+}
 }
 /* Key frames */
 @keyframes translate-in-menu {
