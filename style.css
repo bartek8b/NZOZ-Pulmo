@@ -297,39 +297,38 @@ footer {
 	/* 100vh minus header height */
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
 }
-/* Partners infinite carousel */
-.partners-carousel {
+/* Partners — wrapped (nie karuzela) */
+.partners-grid {
 	display: flex;
-	overflow-x: hidden; /* keep overflow hidden */
-	max-width: 100%;
-	/* ensure no accidental scrollbars */
-	overflow: hidden;
+	flex-wrap: wrap;
+	gap: var(--responsiveGap);
+	justify-content: center;
+	align-items: center;
+	overflow: visible; /* pozwól na zawijanie zamiast obcinania */
+	padding: clamp(0.5rem, 3vw, 2rem);
 }
-.partners-carousel::-webkit-scrollbar {
-	display: none;
-}
-.partners-group {
+
+.partners-row {
 	display: flex;
+	gap: var(--responsiveGap);
 	align-items: center;
 	justify-content: center;
-	gap: var(--responsiveGap);
-	/* Use transform in animation (better support) */
-	animation: carousel-spin 30s infinite linear;
-	padding-right: var(--responsiveGap);
-	position: relative;
-	/* Rendering hints for smoother animation on mobile */
-	will-change: transform;
+	flex-wrap: wrap; /* w razie potrzeby grupy też się zawijają */
+	animation: none; /* wyłącz poprzednią animację przesuwania */
+	will-change: auto;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
 }
-/* allow logos to keep their intrinsic widths (avoid forced 5em flex-basis which can cause clipping) */
-.partners-group > img.partner-logo {
-	flex: 0 0 auto;
-	height: calc(var(--gapBase) * 15);
-	padding: 1em;
+
+.partners-row > img.partner-logo {
+	display: block; /* usuwa spacje pod inline-img */
+	box-sizing: border-box;
+	height: calc(var(--gapBase) * 12); /* dopasuj wysokość logotypów */
 	width: auto;
+	max-width: calc(25% - 2rem); /* ogranicz maksymalną szerokość */
+	flex: 1 1 calc(12.5rem); /* skalowalne pole, pozwala zawijać */
+	object-fit: contain; /* zachowaj proporcje bez przycinania */
+	padding: 0.5rem;
 }
 
 /* Pictures carousel */
@@ -507,6 +506,11 @@ footer {
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
 	}
+	.partners-row > img.partner-logo {
+		height: calc(var(--gapBase) * 10);
+		flex: 1 1 calc(70% - 1rem);
+		max-width: calc(70% - 1rem);
+	}
 	.frame-container button {
 		display: none;
 	}
@@ -534,17 +538,5 @@ footer {
 	to {
 		transform: translateX(0);
 		opacity: 1;
-	}
-}
-@keyframes carousel-spin {
-	from {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-	to {
-		/* Move whole group left by its full width.
-		   If you wish a different looping distance, try -50% instead of -100% depending on duplication strategy. */
-		-webkit-transform: translate3d(-100%, 0, 0);
-		transform: translate3d(-100%, 0, 0);
 	}
 }
