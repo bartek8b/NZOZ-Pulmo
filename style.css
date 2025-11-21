@@ -298,36 +298,23 @@ footer {
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
 }
 /* Partners — wrapped (nie karuzela) */
-.partners-grid {
+.partners {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--responsiveGap);
 	justify-content: center;
 	align-items: center;
-	overflow: visible; /* pozwól na zawijanie zamiast obcinania */
 	padding: clamp(0.5rem, 3vw, 2rem);
 }
 
-.partners-row {
-	display: flex;
-	gap: var(--responsiveGap);
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap; /* w razie potrzeby grupy też się zawijają */
-	animation: none; /* wyłącz poprzednią animację przesuwania */
-	will-change: auto;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.partners-row > img.partner-logo {
-	display: block; /* usuwa spacje pod inline-img */
+.partner-logo {
+	display: block;
 	box-sizing: border-box;
-	height: calc(var(--gapBase) * 12); /* dopasuj wysokość logotypów */
+	height: calc(var(--gapBase) * 12);
 	width: auto;
-	max-width: calc(25% - 2rem); /* ogranicz maksymalną szerokość */
-	flex: 1 1 calc(12.5rem); /* skalowalne pole, pozwala zawijać */
-	object-fit: contain; /* zachowaj proporcje bez przycinania */
+	max-width: calc(25% - 2rem);
+	flex: 1 1 calc(12.5rem);
+	object-fit: contain;
 	padding: 0.5rem;
 }
 
@@ -506,10 +493,10 @@ footer {
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
 	}
-	.partners-row > img.partner-logo {
+	.partner-logo {
 		height: calc(var(--gapBase) * 10);
-		flex: 1 1 calc(70% - 1rem);
-		max-width: calc(70% - 1rem);
+		flex: 1 1 50%;
+		max-width: 100%;
 	}
 	.frame-container button {
 		display: none;
