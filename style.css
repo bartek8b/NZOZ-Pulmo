@@ -300,8 +300,10 @@ footer {
 /* Partners infinite carousel */
 .partners-carousel {
 	display: flex;
-	overflow-x: hidden;
+	overflow-x: hidden; /* keep overflow hidden */
 	max-width: 100%;
+	/* ensure no accidental scrollbars */
+	overflow: hidden;
 }
 .partners-carousel::-webkit-scrollbar {
 	display: none;
@@ -311,14 +313,23 @@ footer {
 	align-items: center;
 	justify-content: center;
 	gap: var(--responsiveGap);
+	/* Use transform in animation (better support) */
 	animation: carousel-spin 30s infinite linear;
 	padding-right: var(--responsiveGap);
 	position: relative;
+	/* Rendering hints for smoother animation on mobile */
+	will-change: transform;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
+/* allow logos to keep their intrinsic widths (avoid forced 5em flex-basis which can cause clipping) */
 .partners-group > img.partner-logo {
-	flex: 0 0 5em;
+	flex: 0 0 auto;
 	height: calc(var(--gapBase) * 15);
 	padding: 1em;
+	width: auto;
 }
 
 /* Pictures carousel */
@@ -422,7 +433,7 @@ footer {
 	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
 }
-.facilities-btns-contaainer{
+.facilities-btns-contaainer {
 	display: flex;
 	flex-direction: row;
 	gap: calc(var(--responsiveGap) / 4);
@@ -510,9 +521,9 @@ footer {
 	.google-map {
 		width: 90%;
 	}
-	.facilities-btns-contaainer{
-	flex-direction: column;
-}
+	.facilities-btns-contaainer {
+		flex-direction: column;
+	}
 }
 /* Key frames */
 @keyframes translate-in-menu {
@@ -527,9 +538,13 @@ footer {
 }
 @keyframes carousel-spin {
 	from {
-		translate: 0;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 	}
 	to {
-		translate: -100%;
+		/* Move whole group left by its full width.
+		   If you wish a different looping distance, try -50% instead of -100% depending on duplication strategy. */
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
 	}
 }
