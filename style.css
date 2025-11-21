@@ -219,13 +219,8 @@ footer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	gap: var(--responsiveGap);
-}
-.sub-container > .left-child {
-	align-items: flex-end;
-}
-.sub-container > .right-child {
-	align-items: flex-start;
 }
 .sub-container > .left-child.footer-descendant,
 .sub-container > .right-child.footer-descendant {
@@ -284,6 +279,9 @@ footer {
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
 	width: calc(var(--gapBase) * 25);
+}
+.call-to-action-btn.call-to-action-intro{
+	align-self: flex-start;
 }
 .call-to-action-btn:hover {
 	background-color: var(--primary-light);
@@ -403,7 +401,7 @@ footer {
 }
 /* Placówki */
 .google-map {
-	width: 80%;
+	width: 90%;
 	aspect-ratio: 3 / 2;
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
@@ -422,7 +420,10 @@ footer {
 .facilities-btns-contaainer {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
+	width: 90%;
 }
 /* Dark scheme */
 [data-theme='dark'] {
@@ -490,6 +491,9 @@ footer {
 	.introduction-description {
 		text-align: center;
 	}
+	.call-to-action-btn.call-to-action-intro{
+	align-self: center;
+}
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
 	}
