@@ -227,17 +227,10 @@ footer {
 	align-items: center;
 }
 .sub-container:nth-child(even):not(.sub-container.footer-descendant) {
-	background: linear-gradient(
-		to bottom,
-		var(--bg) 0%,
-		var(--bg-light) 2%,
-		var(--bg-light) 98%,
-		var(--bg) 100%
-	);
-	/* background-color: var(--bg-light); */
+	background-color: var(--bg);
 }
 .sub-container:nth-child(odd):not(.sub-container.footer-descendant) {
-	background-color: var(--bg);
+	background-color: var(--bg-light);
 }
 .sub-container.sub-container-mono > *,
 .left-child:not(.left-child.footer-descendant),
@@ -280,7 +273,7 @@ footer {
 	box-shadow: var(--shadow);
 	width: calc(var(--gapBase) * 25);
 }
-.call-to-action-btn.call-to-action-intro{
+.call-to-action-btn.call-to-action-intro {
 	align-self: flex-start;
 }
 .call-to-action-btn:hover {
@@ -295,8 +288,9 @@ footer {
 	/* 100vh minus header height */
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
 }
-/* Partners — wrapped (nie karuzela) */
-.partners {
+/* Partners, Special offers */
+.partners,
+.special-offers {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--responsiveGap);
@@ -304,18 +298,26 @@ footer {
 	align-items: center;
 	padding: clamp(0.5rem, 3vw, 2rem);
 }
-
 .partner-logo {
 	display: block;
-	box-sizing: border-box;
 	height: calc(var(--gapBase) * 12);
 	width: auto;
 	max-width: calc(25% - 2rem);
-	flex: 1 1 calc(12.5rem);
+	flex: 1 1 12rem;
 	object-fit: contain;
 	padding: 0.5rem;
 }
-
+.special-offers > div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gapBase);
+	color: var(--font);
+	fill: var(--font);
+	& svg {
+		height: calc(var(--gapBase) * 10);
+		width: auto;
+	}
+}
 /* Pictures carousel */
 .sub-container.sub-container-mono#ue-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
@@ -491,11 +493,15 @@ footer {
 	.introduction-description {
 		text-align: center;
 	}
-	.call-to-action-btn.call-to-action-intro{
-	align-self: center;
-}
+	.call-to-action-btn.call-to-action-intro {
+		align-self: center;
+	}
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
+	}
+
+	.special-offers {
+		flex-direction: column;
 	}
 	.partner-logo {
 		height: calc(var(--gapBase) * 10);
