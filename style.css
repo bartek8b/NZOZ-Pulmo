@@ -332,10 +332,10 @@ footer {
 	justify-content: center;
 	gap: calc(var(--responsiveGap) / 3);
 }
-.frame {
+.frame.ue-projects-imgs {
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	width: auto;
 	height: var(--frame-height);
-	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	border-radius: var(--gapBase);
 	overflow: hidden;
 	box-shadow: var(--shadow);
@@ -374,10 +374,10 @@ footer {
 	display: flex;
 	transition: right 0.3s ease-in-out;
 }
-.tape > img {
+.tape > img.ue-projects-img {
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	width: auto;
 	height: var(--frame-height);
-	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	align-self: flex-start;
 }
 .dots-box {
@@ -500,7 +500,6 @@ footer {
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
 	}
-
 	.special-offers {
 		flex-direction: column;
 	}
