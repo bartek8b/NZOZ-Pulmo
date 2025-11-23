@@ -320,6 +320,7 @@ footer {
 	}
 }
 /* Pictures carousel */
+
 .sub-container.sub-container-mono.images-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
 }
@@ -332,8 +333,7 @@ footer {
 	justify-content: center;
 	gap: calc(var(--responsiveGap) / 3);
 }
-.frame.ue-projects-imgs {
-	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
+.frame {
 	width: auto;
 	height: var(--frame-height);
 	border-radius: var(--gapBase);
@@ -374,11 +374,11 @@ footer {
 	display: flex;
 	transition: right 0.3s ease-in-out;
 }
-.tape > img.ue-projects-img {
-	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
+.tape > img {
 	width: auto;
 	height: var(--frame-height);
 	align-self: flex-start;
+	object-fit: cover;
 }
 .dots-box {
 	display: flex;
@@ -401,6 +401,11 @@ footer {
 }
 .dot-filled {
 	background-color: var(--primary);
+}
+/* Specific aspect ratio for certain type of gallery, rest is universal, without subclass */
+.frame.ue-projects-frame,
+.tape > img.ue-projects-img {
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 }
 /* Placówki */
 .google-map {
