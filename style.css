@@ -40,7 +40,8 @@ body {
 	/* Images carousel */
 	--frame-width: 70vw;
 	--frame-height: 70vh;
-	--frame-aspect-ratio: 3 / 4;
+	--frame-aspect-ratio-ue-projects: 3 / 4;
+	--frame-aspect-ratio-facilities: 4 / 3;
 }
 p {
 	margin: 0;
@@ -319,7 +320,7 @@ footer {
 	}
 }
 /* Pictures carousel */
-.sub-container.sub-container-mono#ue-carousel-container {
+.sub-container.sub-container-mono.images-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
 }
 .ue-projects-title {
@@ -334,7 +335,7 @@ footer {
 .frame {
 	width: auto;
 	height: var(--frame-height);
-	aspect-ratio: var(--frame-aspect-ratio);
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	border-radius: var(--gapBase);
 	overflow: hidden;
 	box-shadow: var(--shadow);
@@ -376,7 +377,7 @@ footer {
 .tape > img {
 	width: auto;
 	height: var(--frame-height);
-	aspect-ratio: var(--frame-aspect-ratio);
+	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 	align-self: flex-start;
 }
 .dots-box {
