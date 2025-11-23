@@ -1,26 +1,25 @@
-const tape = document.querySelector(".tape");
-const images = tape.querySelectorAll("img");
-const imagesLength = images.length;
+const tape = document.querySelector('.tape');
+const images = tape.querySelectorAll('img');
 
 // Generating dots
-const dotsBox = document.querySelector(".dots-box");
+const dotsBox = document.querySelector('.dots-box');
 
-for(let i=0; i<imagesLength; i++) {
-    const btn = document.createElement("button");
-    btn.className = "dot";
-    btn.dataset.index = i;
-    btn.setAttribute("aria-label", `Picture ${i+1}`);
-    dotsBox.appendChild(btn);
+for (let i = 0; i < images.length; i++) {
+	const btn = document.createElement('button');
+	btn.className = 'dot';
+	btn.dataset.index = i;
+	btn.setAttribute('aria-label', `Picture ${i + 1}`);
+	dotsBox.appendChild(btn);
 }
 
-const dots = dotsBox.querySelectorAll(".dot");
+const dots = dotsBox.querySelectorAll('.dot');
 
 let currentIndex = 0;
 let autoPlay = true;
 let intervalId = null;
 
 function updateTapePosition() {
-	const frame = document.querySelector(".frame");
+	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
 	tape.style.right = `${frameWidth * currentIndex}px`;
 }
@@ -28,8 +27,8 @@ function updateTapePosition() {
 function updateDotFill() {
 	dots.forEach(d => {
 		Number(d.dataset.index) === currentIndex
-			? d.classList.add("dot-filled")
-			: d.classList.remove("dot-filled");
+			? d.classList.add('dot-filled')
+			: d.classList.remove('dot-filled');
 	});
 }
 
@@ -66,7 +65,7 @@ function restartSlideShow() {
 }
 
 function markPlayBtn() {
-	const playBtn = document.querySelector(".play-btn");
+	const playBtn = document.querySelector('.play-btn');
 	if (autoPlay) {
 		playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
 	} else {
@@ -74,11 +73,11 @@ function markPlayBtn() {
 	}
 }
 
-window.addEventListener("click", e => {
-	const prevBtn = e.target.closest(".previous-btn");
-	const nextBtn = e.target.closest(".next-btn");
-	const dotBtn = e.target.closest(".dot");
-	const playPauseBtn = e.target.closest(".play-btn");
+window.addEventListener('click', e => {
+	const prevBtn = e.target.closest('.previous-btn');
+	const nextBtn = e.target.closest('.next-btn');
+	const dotBtn = e.target.closest('.dot');
+	const playPauseBtn = e.target.closest('.play-btn');
 
 	if (!prevBtn && !nextBtn && !playPauseBtn && !dotBtn) {
 		return;
@@ -123,17 +122,17 @@ window.addEventListener("click", e => {
 		restartSlideShow();
 	}
 });
-window.addEventListener("resize", updateTapePosition);
+window.addEventListener('resize', updateTapePosition);
 
 // swipe gestures handling
 
 let touchStartX = null;
 let touchEndX = null;
 
-const frame = document.querySelector(".frame");
+const frame = document.querySelector('.frame');
 
 frame.addEventListener(
-	"touchstart",
+	'touchstart',
 	function (e) {
 		if (e.touches.length === 1) {
 			touchStartX = e.touches[0].clientX;
@@ -144,7 +143,7 @@ frame.addEventListener(
 );
 
 frame.addEventListener(
-	"touchmove",
+	'touchmove',
 	function (e) {
 		if (e.touches.length === 1) {
 			touchEndX = e.touches[0].clientX;
@@ -153,7 +152,7 @@ frame.addEventListener(
 	{ passive: true }
 );
 
-frame.addEventListener("touchend", function (e) {
+frame.addEventListener('touchend', function (e) {
 	if (touchStartX !== null && touchEndX !== null) {
 		const deltaX = touchEndX - touchStartX;
 		if (Math.abs(deltaX) > 50) {
