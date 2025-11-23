@@ -312,7 +312,7 @@ footer {
 	flex-direction: column;
 	gap: var(--gapBase);
 	color: var(--font);
-	fill: var(--font);
+	fill: var(--primary);
 	& svg {
 		height: calc(var(--gapBase) * 10);
 		width: auto;
