@@ -1,9 +1,19 @@
-// To be set manually
-const imagesLength = 8;
-// End of To be set manually
-
 const tape = document.querySelector(".tape");
-const dots = document.querySelectorAll(".dot");
+const images = tape.querySelectorAll("img");
+const imagesLength = images.length;
+
+// GGenerating dots
+const dotsBox = document.querySelector(".dots-box");
+
+for(let i=0; i<imagesLength; i++) {
+    const btn = document.createElement("button");
+    btn.className = "dot";
+    btn.dataset.index = i;
+    btn.setAttribute("aria-label", `Picture ${i+1}`);
+    dotsBox.appendChild(btn);
+}
+
+const dots = dotsBox.querySelectorAll(".dot");
 
 let currentIndex = 0;
 let autoPlay = true;
