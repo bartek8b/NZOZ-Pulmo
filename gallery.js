@@ -2,7 +2,7 @@ const tape = document.querySelector(".tape");
 const images = tape.querySelectorAll("img");
 const imagesLength = images.length;
 
-// GGenerating dots
+// Generating dots
 const dotsBox = document.querySelector(".dots-box");
 
 for(let i=0; i<imagesLength; i++) {
