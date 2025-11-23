@@ -33,7 +33,7 @@ function updateDotFill() {
 }
 
 function play() {
-	if (currentIndex === imagesLength - 1) {
+	if (currentIndex === images.length - 1) {
 		currentIndex = 0;
 	} else {
 		currentIndex = currentIndex + 1;
@@ -87,7 +87,7 @@ window.addEventListener('click', e => {
 		if (currentIndex !== 0 && currentIndex > 0) {
 			currentIndex = currentIndex - 1;
 		} else {
-			currentIndex = imagesLength - 1;
+			currentIndex = images.length - 1;
 		}
 		updateTapePosition();
 		updateDotFill();
@@ -96,7 +96,7 @@ window.addEventListener('click', e => {
 	}
 
 	if (nextBtn) {
-		if (currentIndex === imagesLength - 1) {
+		if (currentIndex === images.length - 1) {
 			currentIndex = 0;
 		} else {
 			currentIndex = currentIndex + 1;
@@ -156,7 +156,7 @@ frame.addEventListener('touchend', function (e) {
 	if (touchStartX !== null && touchEndX !== null) {
 		const deltaX = touchEndX - touchStartX;
 		if (Math.abs(deltaX) > 50) {
-			if (deltaX < 0 && currentIndex < imagesLength - 1) {
+			if (deltaX < 0 && currentIndex < images.length - 1) {
 				currentIndex++;
 				updateTapePosition();
 				updateDotFill();
