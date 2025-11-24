@@ -1,21 +1,24 @@
-// Karuzela z idealną pętlą: bez "skoku" przy przechodzeniu 1↔️n, obsługa dla kliknięć i swipe
+// Infinite loop image carousel with seamless transitions, supporting buttons, dots and swipe gestures
+
+// --- DOM elements and initial setup ---
 
 const tape = document.querySelector('.tape');
-const originalImages = Array.from(tape.querySelectorAll('img')); // tylko oryginały, bez klonów
+const originalImages = Array.from(tape.querySelectorAll('img')); // the original images (before adding clones)
 const dotsBox = document.querySelector('.dots-box');
 
-// 1. Klonuj pierwszy i ostatni obrazek dla seamless infinite
+// Create clones: one of the first image (appended at the end), one of the last (prepended at the beginning)
+// This enables a seamless/infinite carousel experience when looping around
 const firstClone = originalImages[0].cloneNode(true);
 const lastClone = originalImages[originalImages.length - 1].cloneNode(true);
 firstClone.classList.add('clone');
 lastClone.classList.add('clone');
-tape.appendChild(firstClone); // pierwszy klon na sam koniec
-tape.insertBefore(lastClone, originalImages[0]); // ostatni klon na początek
+tape.appendChild(firstClone); // First image clone added at the end
+tape.insertBefore(lastClone, originalImages[0]); // Last image clone added at the start
 
-// 2. Nowe "images" - cała taśma (klony + oryginały)
-const images = Array.from(tape.querySelectorAll('img')); // teraz klony również w kolekcji
+// Now 'images' contains: [lastClone, ...originalImages, firstClone]
+const images = Array.from(tape.querySelectorAll('img'));
 
-// 3. Genereuj dots (kropki) tylko dla oryginalnych slajdów (bez klonów)
+// Generate dot navigation only for the real/original slides
 dotsBox.innerHTML = '';
 for (let i = 0; i < originalImages.length; i++) {
 	const btn = document.createElement('button');
@@ -26,12 +29,17 @@ for (let i = 0; i < originalImages.length; i++) {
 }
 const dots = dotsBox.querySelectorAll('.dot');
 
-// 4. Stan
-let currentIndex = 1; // zaczynamy na pierwszym oryginale ⇒ index=1 (0 to klon ostatni)
+// --- Carousel state variables ---
+
+// 'currentIndex' starts at 1, pointing to the first real/original image (0 is lastClone, images.length-1 is firstClone)
+let currentIndex = 1;
 let autoPlay = true;
 let intervalId = null;
+let lock = false; // Prevents new transitions during animation
 
-// 5. Pozycjonowanie taśmy, ustawiamy translateX zależnie od currentIndex
+// --- Helper Functions ---
+
+// Move the tape to the current slide (with animation by default)
 function updateTapePosition(animate = true) {
 	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
@@ -40,7 +48,7 @@ function updateTapePosition(animate = true) {
 	tape.style.transform = `translateX(-${frameWidth * currentIndex}px)`;
 }
 
-// 6. Ustaw rozmiary: szerokość taśmy i obrazków wg fizycznej ramki
+// Set each image and the tape's container width to match the visible frame, ensuring correct sizing and responsiveness
 function updateTapeWidth() {
 	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
@@ -51,7 +59,7 @@ function updateTapeWidth() {
 	});
 }
 
-// 7. Ustaw aktywne kropki (tylko oryginały: currentIndex-1)
+// Highlight the active dot corresponding to the currently visible real/original slide
 function updateDotFill() {
 	dots.forEach((d, i) => {
 		i === realIndex()
@@ -60,27 +68,35 @@ function updateDotFill() {
 	});
 }
 
-// "realny slajd" (odnosi się do oryginałów): currentIndex 1..N
+// Convert 'currentIndex' (which includes clones) to the correct index of the original slides for UI and dots
 function realIndex() {
 	if (currentIndex === 0) return originalImages.length - 1;
 	if (currentIndex === images.length - 1) return 0;
 	return currentIndex - 1;
 }
 
-// Autoplay, slajd do przodu
+// --- Slideshow & autoplay control ---
+
+// Advance to the next slide (if not currently animating)
 function play() {
 	if (lock) return;
-	// Zwiększ indeks, potem śledź transitionend!
+	lock = true;
 	currentIndex++;
 	updateTapePosition(true);
 	updateDotFill();
 }
 
-// Autoplay obsługa
+// Separate function with lock-check for use in setInterval (autoplay)
+function playInterval() {
+	if (lock) return;
+	play();
+}
+
+// Start or stop the autoplay interval for automatic sliding
 function slideShow() {
 	if (autoPlay) {
 		if (intervalId !== null) return;
-		intervalId = setInterval(play, 5000);
+		intervalId = setInterval(playInterval, 5000);
 	} else {
 		if (intervalId !== null) {
 			clearInterval(intervalId);
@@ -89,16 +105,18 @@ function slideShow() {
 	}
 }
 
+// Restart the slideshow interval (used after user interaction or when autoplay is toggled)
 function restartSlideShow() {
 	if (intervalId !== null) {
 		clearInterval(intervalId);
 		intervalId = null;
 	}
 	if (autoPlay) {
-		intervalId = setInterval(play, 5000);
+		intervalId = setInterval(playInterval, 5000);
 	}
 }
 
+// Switch the play/pause button visual state
 function markPlayBtn() {
 	const playBtn = document.querySelector('.play-btn');
 	if (autoPlay) {
@@ -108,9 +126,7 @@ function markPlayBtn() {
 	}
 }
 
-// 8. Strzałki, doty, play/pause
-// Prosty lock na czas animacji
-let lock = false;
+// --- Event handling (buttons, dots, play/pause) ---
 
 window.addEventListener('click', e => {
 	const prevBtn = e.target.closest('.previous-btn');
@@ -119,10 +135,10 @@ window.addEventListener('click', e => {
 	const playPauseBtn = e.target.closest('.play-btn');
 
 	if (!prevBtn && !nextBtn && !playPauseBtn && !dotBtn) {
-		return;
+		return; // Ignore unrelated clicks
 	}
 
-	if (lock) return;
+	if (lock) return; // Ignore events during animation
 
 	if (prevBtn) {
 		lock = true;
@@ -144,9 +160,9 @@ window.addEventListener('click', e => {
 
 	if (dotBtn) {
 		const target = Number(dotBtn.dataset.index);
-		if (target === realIndex()) return; // kliknięta aktualna kropka
+		if (target === realIndex()) return; // Clicked the already active dot
 		lock = true;
-		currentIndex = target + 1; // bo 0 to klon ostatni
+		currentIndex = target + 1; // Skip the prepended lastClone
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
@@ -161,16 +177,19 @@ window.addEventListener('click', e => {
 	}
 });
 
+// On window resize: recalculate widths so carousel remains correctly aligned
 window.addEventListener('resize', () => {
 	updateTapeWidth();
-	updateTapePosition(false);
+	updateTapePosition(false); // Instantly snap to the same slide, no animation
 });
 
-// 9. Obsługa gesture: swipe, także infinite
+// --- Touch/swipe gesture support (mobile devices) ---
+
 let touchStartX = null;
 let touchEndX = null;
 const frame = document.querySelector('.frame');
 
+// Record the initial touch X position
 frame.addEventListener(
 	'touchstart',
 	function (e) {
@@ -182,6 +201,7 @@ frame.addEventListener(
 	{ passive: true }
 );
 
+// Track the movement as finger/swipe progresses
 frame.addEventListener(
 	'touchmove',
 	function (e) {
@@ -192,19 +212,20 @@ frame.addEventListener(
 	{ passive: true }
 );
 
+// On touchend, determine if swipe distance is enough to trigger a slide, and direction
 frame.addEventListener('touchend', function (e) {
 	if (touchStartX !== null && touchEndX !== null && !lock) {
 		const deltaX = touchEndX - touchStartX;
 		if (Math.abs(deltaX) > 50) {
 			lock = true;
 			if (deltaX < 0) {
-				// swipe w lewo
+				// Swipe left → next slide
 				currentIndex++;
 				updateTapePosition(true);
 				updateDotFill();
 				restartSlideShow();
 			} else if (deltaX > 0) {
-				// swipe w prawo
+				// Swipe right → previous slide
 				currentIndex--;
 				updateTapePosition(true);
 				updateDotFill();
@@ -216,11 +237,13 @@ frame.addEventListener('touchend', function (e) {
 	touchEndX = null;
 });
 
-// 10. Najważniejsze – obsługa transitionend, bez tej magii nie będzie seamless!
+// --- Seamless looping logic ---
+
+// When a slide animation ends, handle seamless looping if we're at a clone (fake/transition slide)
 tape.addEventListener('transitionend', () => {
 	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
-	// Jeżeli jesteśmy na klonie pierwszego na końcu – przeskocz bez animacji!
+	// If we've moved to the clone appended at the end, instant jump to first original
 	if (currentIndex === images.length - 1) {
 		tape.style.transition = 'none';
 		currentIndex = 1;
@@ -229,7 +252,7 @@ tape.addEventListener('transitionend', () => {
 			tape.style.transition = 'transform 0.3s ease-in-out';
 		}, 10);
 	}
-	// Jeżeli na klonie ostatniego na początku – przeskocz bez animacji!
+	// If we've moved to the clone prepended at the start, instant jump to last original
 	if (currentIndex === 0) {
 		tape.style.transition = 'none';
 		currentIndex = originalImages.length;
@@ -238,12 +261,13 @@ tape.addEventListener('transitionend', () => {
 			tape.style.transition = 'transform 0.3s ease-in-out';
 		}, 10);
 	}
-	lock = false;
+	lock = false; // Allow new transitions
 });
 
-// 11. Inicjalizacja – od razu wszystko ustawia!
+// --- Initial setup on page load ---
+
 updateTapeWidth();
-updateTapePosition(false);
+updateTapePosition(false); // Instantly position to first slide
 updateDotFill();
-slideShow();
-markPlayBtn();
+slideShow(); // Start autoplay if enabled
+markPlayBtn(); // Set the play/pause button icon
