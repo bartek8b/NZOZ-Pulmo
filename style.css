@@ -286,6 +286,9 @@ footer {
 	/* 100vh minus header height */
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
 }
+.introduction-description {
+	align-self: flex-start;
+}
 /* Partners, Special offers */
 .partners,
 .special-offers {
@@ -492,6 +495,7 @@ footer {
 	}
 	.introduction-description {
 		text-align: center;
+		align-self: center;
 	}
 	.call-to-action-btn.call-to-action-intro {
 		align-self: center;
