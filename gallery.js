@@ -183,6 +183,30 @@ window.addEventListener('resize', () => {
 	updateTapePosition(false); // Instantly snap to the same slide, no animation
 });
 
+// --- Keyboard navigation ---
+
+window.addEventListener('keydown', e => {
+	if (lock) return; // do not trigger if animating
+	// Optional: restrict only when the carousel or its focusable child has focus,
+	// or remove condition for global keyboard navigation on the page
+	if (e.key === 'ArrowLeft') {
+		lock = true;
+		currentIndex--;
+		updateTapePosition(true);
+		updateDotFill();
+		restartSlideShow();
+		e.preventDefault();
+	}
+	if (e.key === 'ArrowRight') {
+		lock = true;
+		currentIndex++;
+		updateTapePosition(true);
+		updateDotFill();
+		restartSlideShow();
+		e.preventDefault();
+	}
+});
+
 // --- Touch/swipe gesture support (mobile devices) ---
 
 let touchStartX = null;
