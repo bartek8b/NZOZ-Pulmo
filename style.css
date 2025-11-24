@@ -336,8 +336,8 @@ footer {
 .frame {
 	width: auto;
 	height: var(--frame-height);
-	border-radius: var(--gapBase);
 	overflow: hidden;
+	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
 	/* Blokuje przewijanie okna gdy zoom aktywny */
 	touch-action: pan-y;
@@ -368,16 +368,13 @@ footer {
 	color: var(--primary);
 }
 .tape {
-	height: inherit;
-	position: relative;
-	/* right: 0px; <- Set dynamically by .js*/
 	display: flex;
-	transition: right 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	height: 100%;
 }
 .tape > img {
-	width: auto;
-	height: var(--frame-height);
-	align-self: flex-start;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 }
 .dots-box {

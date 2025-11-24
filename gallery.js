@@ -21,7 +21,17 @@ let intervalId = null;
 function updateTapePosition() {
 	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
-	tape.style.right = `${frameWidth * currentIndex}px`;
+	tape.style.transform = `translateX(-${frameWidth * currentIndex}px)`;
+}
+
+function updateTapeWidth() {
+	const frame = document.querySelector('.frame');
+	const frameWidth = frame.offsetWidth;
+	tape.style.width = `${images.length * frameWidth}px`;
+	images.forEach(img => {
+		img.style.width = `${frameWidth}px`;
+		img.style.height = '100%';
+	});
 }
 
 function updateDotFill() {
@@ -122,7 +132,10 @@ window.addEventListener('click', e => {
 		restartSlideShow();
 	}
 });
-window.addEventListener('resize', updateTapePosition);
+window.addEventListener('resize', () => {
+	updateTapeWidth();
+	updateTapePosition();
+});
 
 // swipe gestures handling
 
@@ -174,6 +187,7 @@ frame.addEventListener('touchend', function (e) {
 });
 
 // init
+updateTapeWidth();
 updateTapePosition();
 updateDotFill();
 slideShow();
