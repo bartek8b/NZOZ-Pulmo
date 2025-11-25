@@ -486,10 +486,6 @@ footer {
 	.sub-container.footer-descendant {
 		padding-top: var(--responsiveGap);
 	}
-	.sub-container > .left-child,
-	.sub-container > .right-child {
-		align-items: center;
-	}
 	.introduction-description {
 		text-align: center;
 		align-self: center;
@@ -518,9 +514,6 @@ footer {
 	.tape > img {
 		width: var(--frame-width);
 		height: auto;
-	}
-	.google-map {
-		width: 90%;
 	}
 	.facilities-btns-contaainer {
 		flex-direction: column;
