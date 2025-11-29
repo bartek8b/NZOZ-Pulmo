@@ -320,7 +320,6 @@ footer {
 	}
 }
 /* Pictures carousel */
-
 .sub-container.sub-container-mono.images-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
 }
@@ -404,7 +403,7 @@ footer {
 .tape > img.ue-projects-img {
 	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 }
-/* Placówki */
+/* Facilities */
 .google-map {
 	width: 90%;
 	aspect-ratio: 3 / 2;
@@ -422,13 +421,20 @@ footer {
 	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
 }
-.facilities-btns-contaainer {
+.facilities-btns-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
 	width: 90%;
+}
+a.anchor-contact {
+	color: var(--font);
+	text-decoration: none;
+}
+a.anchor-contact:hover {
+	color: var(--primary-light);
 }
 /* Dark scheme */
 [data-theme='dark'] {
@@ -515,7 +521,7 @@ footer {
 		width: var(--frame-width);
 		height: auto;
 	}
-	.facilities-btns-contaainer {
+	.facilities-btns-container {
 		flex-direction: column;
 	}
 }
