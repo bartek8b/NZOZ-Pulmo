@@ -44,7 +44,7 @@ function updateTapePosition(animate = true) {
 	const frame = document.querySelector('.frame');
 	const frameWidth = frame.offsetWidth;
 	if (!animate) tape.style.transition = 'none';
-	else tape.style.transition = 'transform 0.3s ease-in-out';
+	else tape.style.transition = 'transform 0.6s ease';
 	tape.style.transform = `translateX(-${frameWidth * currentIndex}px)`;
 }
 
@@ -273,7 +273,7 @@ tape.addEventListener('transitionend', () => {
 		currentIndex = 1;
 		tape.style.transform = `translateX(-${frameWidth * currentIndex}px)`;
 		setTimeout(() => {
-			tape.style.transition = 'transform 0.3s ease-in-out';
+			tape.style.transition = 'transform 0.6s ease';
 		}, 10);
 	}
 	// If we've moved to the clone prepended at the start, instant jump to last original
@@ -282,7 +282,7 @@ tape.addEventListener('transitionend', () => {
 		currentIndex = originalImages.length;
 		tape.style.transform = `translateX(-${frameWidth * currentIndex}px)`;
 		setTimeout(() => {
-			tape.style.transition = 'transform 0.3s ease-in-out';
+			tape.style.transition = 'transform 0.6s ease';
 		}, 10);
 	}
 	lock = false; // Allow new transitions
