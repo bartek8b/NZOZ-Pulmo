@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
+    <script>
+        (function () {
+            try {
+                // Jeśli data-theme już istnieje (np. z SSR), nie nadpisuj go
+                if (document.documentElement.hasAttribute('data-theme')) return;
+
+                const saved = localStorage.getItem('theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                    return;
+                }
+
+                // preferencja systemowa jako fallback (bezpieczny optional chaining)
+                const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
+                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            } catch (e) {
+                // localStorage może rzucać (np. w trybie prywatnym) — bezpieczny fallback
+            }
+        })();
+    </script>
+    <!-- Ustaw meta description dla każdej podstrony -->
+    <meta name="description" content="Pulmo Ośrodek Stacjonarnej Opieki Medycznej Wołomin - galeria">
+    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
+    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
+    <!-- Ustaw Open Graph Protocol (OGP) -->
+    <meta property="og:title" content="Pulmo" />
+    <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
+    <meta property="og:url" content="https://pulmo.com.pl" />
+    <link rel="stylesheet" href="modern-normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
+    <!-- Ustaw odpowiednie skrypty dla podstron -->
+    <script src="index.js" defer></script>
+    <script src="gallery.js" defer></script>
+    <!-- Ustaw tytuł dla każdej podstrony -->
+    <title>NZOZ Pulmo</title>
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="assets/logo/logo_prostokat.webp" alt="logo firmy"></a>
+        <!-- Ustaw class active dla właściwej podstrony -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="placowki.html" class="active">Placówki</a>
+            <a href="#">Oferta</a>
+            <a href="#">Zespół</a>
+            <a href="#">Aktualności</a>
+
+            <button class="color-scheme-btn" aria-label="Change color scheme">
+                <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
+            </button>
+        </nav>
+
+        <button class="hamburger-btn open-nav" aria-label="Otwórz nawigację">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-menu">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <button class="hamburger-btn close-nav" aria-label="Zamknij nawigację">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <main>
+
+    </main>
+
+    <footer>
+        <section class="sub-container footer-descendant">
+            <div class="left-child footer-descendant">
+                <p style="text-align: center;">
+                    &copy; 2025
+                    <br>
+                    <br>
+                    Pulmo sp. z o.o.
+                    <br>
+                    <br>
+                    ul. Skarbka z Gór 120/10
+                    <br>
+                    03-278 Warszawa
+                    <br>
+                    NIP 5242770885
+                </p>
+            </div>
+            <div class="right-child footer-descendant">
+                <a href="https://www.facebook.com/p/O%C5%9Brodek-Stacjonarnej-Opieki-Medycznej-Pulmo-100063655119522"
+                    class="social-media-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"
+                    role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-facebook">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/pulmo_rehabilitacja_wolomin/" class="social-media-link"
+                    aria-label="Instagram" target="_blank" rel="noopener noreferrer" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-instagram">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-code">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            8b.com.pl</a>
+    </footer>
+</body>
