@@ -88,7 +88,9 @@ function play() {
 	updateDotFill();
 	// Fallback unlock in case transitionend is missed (browser tab inactive etc.)
 	clearTimeout(unlockTimeout);
-	unlockTimeout = setTimeout(() => { lock = false; }, 1000); // fallback for 0.6s+ transitions
+	unlockTimeout = setTimeout(() => {
+		lock = false;
+	}, 1000); // fallback for 0.6s+ transitions
 }
 
 // Separate function with lock-check for use in setInterval (autoplay)
@@ -153,7 +155,9 @@ window.addEventListener('click', e => {
 		restartSlideShow();
 		// Fallback unlock
 		clearTimeout(unlockTimeout);
-		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+		unlockTimeout = setTimeout(() => {
+			lock = false;
+		}, 1000);
 		return;
 	}
 
@@ -165,7 +169,9 @@ window.addEventListener('click', e => {
 		restartSlideShow();
 		// Fallback unlock
 		clearTimeout(unlockTimeout);
-		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+		unlockTimeout = setTimeout(() => {
+			lock = false;
+		}, 1000);
 		return;
 	}
 
@@ -179,7 +185,9 @@ window.addEventListener('click', e => {
 		restartSlideShow();
 		// Fallback unlock
 		clearTimeout(unlockTimeout);
-		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+		unlockTimeout = setTimeout(() => {
+			lock = false;
+		}, 1000);
 		return;
 	}
 
@@ -196,7 +204,7 @@ window.addEventListener('click', e => {
 window.addEventListener('resize', () => {
 	updateTapeWidth();
 	updateTapePosition(false); // Instantly snap to the same slide, no animation
-	lock = false;               // Unlock carousel in case animation stuck during resize
+	lock = false; // Unlock carousel in case animation stuck during resize
 	restartSlideShow();
 });
 
@@ -212,7 +220,9 @@ window.addEventListener('keydown', e => {
 		restartSlideShow();
 		// Fallback unlock
 		clearTimeout(unlockTimeout);
-		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+		unlockTimeout = setTimeout(() => {
+			lock = false;
+		}, 1000);
 		e.preventDefault();
 	}
 	if (e.key === 'ArrowRight') {
@@ -223,7 +233,9 @@ window.addEventListener('keydown', e => {
 		restartSlideShow();
 		// Fallback unlock
 		clearTimeout(unlockTimeout);
-		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+		unlockTimeout = setTimeout(() => {
+			lock = false;
+		}, 1000);
 		e.preventDefault();
 	}
 });
@@ -278,7 +290,9 @@ frame.addEventListener('touchend', function (e) {
 			}
 			// Fallback unlock
 			clearTimeout(unlockTimeout);
-			unlockTimeout = setTimeout(() => { lock = false; }, 1000);
+			unlockTimeout = setTimeout(() => {
+				lock = false;
+			}, 1000);
 		}
 	}
 	touchStartX = null;
@@ -320,7 +334,21 @@ tape.addEventListener('transitionend', () => {
 // These event listeners will restart and unlock the carousel after the page becomes visible or the window regains focus.
 function handleVisibilityOrFocus() {
 	lock = false;
-	updateTapePosition(false); // Snap to correct position immediately (no animation)
+	if (currentIndex < 0) currentIndex = 1;
+	if (currentIndex > images.length - 1) currentIndex = images.length - 2;
+	forceRestoreCarouselState(10); // to odpala watchdog, 10 prób
+}
+
+function forceRestoreCarouselState(retries) {
+	const frame = document.querySelector('.frame');
+	if (!frame || frame.offsetWidth === 0) {
+		if (retries > 0) {
+			setTimeout(() => forceRestoreCarouselState(retries - 1), 100); // odpal za 100ms jeszcze raz
+		}
+		return;
+	}
+	updateTapeWidth();
+	updateTapePosition(false);
 	updateDotFill();
 	restartSlideShow();
 }
