@@ -327,7 +327,7 @@ footer {
 	text-align: center;
 }
 .gallery-title.ue-projects-title{
-	margin-bottom: calc(var(--responsiveGap) * 2);
+	margin-bottom: var(--responsiveGap);
 }
 .frame-container {
 	display: flex;
