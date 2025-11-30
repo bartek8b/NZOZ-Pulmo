@@ -323,8 +323,11 @@ footer {
 .sub-container.sub-container-mono.images-carousel-container {
 	gap: calc(var(--responsiveGap) / 3);
 }
-.ue-projects-title {
-	padding-bottom: calc(var(--responsiveGap) / 2);
+.gallery-title {
+	text-align: center;
+}
+.gallery-title.ue-projects-title{
+	margin-bottom: calc(var(--responsiveGap) * 2);
 }
 .frame-container {
 	display: flex;
@@ -378,7 +381,7 @@ footer {
 }
 .dots-box {
 	display: flex;
-	gap: calc(var(--responsiveGap) / 5);
+	gap: calc(var(--gapBase) * 2);
 }
 .dot {
 	cursor: pointer;
