@@ -403,6 +403,33 @@ footer {
 .tape > img.ue-projects-img {
 	aspect-ratio: var(--frame-aspect-ratio-ue-projects);
 }
+.frame.facilities-frame,
+.tape > img.facilities-img {
+	aspect-ratio: var(--frame-aspect-ratio-facilities);
+}
+.sub-container.sub-container-mono.images-carousel-container.facilities-gallery {
+	background-color: var(--bg);
+}
+a.back-to-facilities-list {
+	cursor: pointer;
+	text-decoration: none;
+	border: none;
+	background-color: var(--bg);
+	box-shadow: var(--shadow);
+	border-radius: var(--gapBase);
+	display: flex;
+	gap: var(--gapBase);
+	justify-content: center;
+	align-items: center;
+	color: var(--font);
+	width: fit-content;
+	padding: var(--gapBase) calc(var(--gapBase) * 2);
+	&:hover {
+		background-color: var(--bg-light);
+		box-shadow: var(--shadow-big);
+		color: var(--primary);
+	}
+}
 /* Facilities */
 .google-map {
 	width: 90%;
