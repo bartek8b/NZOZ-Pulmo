@@ -36,6 +36,7 @@ let currentIndex = 1;
 let autoPlay = true;
 let intervalId = null;
 let lock = false; // Prevents new transitions during animation
+let unlockTimeout = null; // Fallback unlock for missed transitionend
 
 // --- Helper Functions ---
 
@@ -78,12 +79,16 @@ function realIndex() {
 // --- Slideshow & autoplay control ---
 
 // Advance to the next slide (if not currently animating)
+// Now includes fallback timeout unlock in case transitionend is missed (e.g. tab is unfocused)
 function play() {
 	if (lock) return;
 	lock = true;
 	currentIndex++;
 	updateTapePosition(true);
 	updateDotFill();
+	// Fallback unlock in case transitionend is missed (browser tab inactive etc.)
+	clearTimeout(unlockTimeout);
+	unlockTimeout = setTimeout(() => { lock = false; }, 1000); // fallback for 0.6s+ transitions
 }
 
 // Separate function with lock-check for use in setInterval (autoplay)
@@ -146,6 +151,9 @@ window.addEventListener('click', e => {
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
+		// Fallback unlock
+		clearTimeout(unlockTimeout);
+		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		return;
 	}
 
@@ -155,6 +163,9 @@ window.addEventListener('click', e => {
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
+		// Fallback unlock
+		clearTimeout(unlockTimeout);
+		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		return;
 	}
 
@@ -166,6 +177,9 @@ window.addEventListener('click', e => {
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
+		// Fallback unlock
+		clearTimeout(unlockTimeout);
+		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		return;
 	}
 
@@ -178,23 +192,27 @@ window.addEventListener('click', e => {
 });
 
 // On window resize: recalculate widths so carousel remains correctly aligned
+// Now also resets lock and restarts slideshow to avoid stuck gallery after resize
 window.addEventListener('resize', () => {
 	updateTapeWidth();
 	updateTapePosition(false); // Instantly snap to the same slide, no animation
+	lock = false;               // Unlock carousel in case animation stuck during resize
+	restartSlideShow();
 });
 
 // --- Keyboard navigation ---
 
 window.addEventListener('keydown', e => {
 	if (lock) return; // do not trigger if animating
-	// Optional: restrict only when the carousel or its focusable child has focus,
-	// or remove condition for global keyboard navigation on the page
 	if (e.key === 'ArrowLeft') {
 		lock = true;
 		currentIndex--;
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
+		// Fallback unlock
+		clearTimeout(unlockTimeout);
+		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		e.preventDefault();
 	}
 	if (e.key === 'ArrowRight') {
@@ -203,6 +221,9 @@ window.addEventListener('keydown', e => {
 		updateTapePosition(true);
 		updateDotFill();
 		restartSlideShow();
+		// Fallback unlock
+		clearTimeout(unlockTimeout);
+		unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		e.preventDefault();
 	}
 });
@@ -255,6 +276,9 @@ frame.addEventListener('touchend', function (e) {
 				updateDotFill();
 				restartSlideShow();
 			}
+			// Fallback unlock
+			clearTimeout(unlockTimeout);
+			unlockTimeout = setTimeout(() => { lock = false; }, 1000);
 		}
 	}
 	touchStartX = null;
@@ -285,8 +309,26 @@ tape.addEventListener('transitionend', () => {
 			tape.style.transition = 'transform 0.6s ease';
 		}, 10);
 	}
+	// Always clear fallback-unlock timeout and unlock here as the default unlock
+	clearTimeout(unlockTimeout);
 	lock = false; // Allow new transitions
 });
+
+// --- New: Safety for browser tab/page visibility change/focus ---
+
+// Sometimes, leaving or returning to a browser tab causes animation or autoplay to hang.
+// These event listeners will restart and unlock the carousel after the page becomes visible or the window regains focus.
+function handleVisibilityOrFocus() {
+	lock = false;
+	updateTapePosition(false); // Snap to correct position immediately (no animation)
+	updateDotFill();
+	restartSlideShow();
+}
+
+document.addEventListener('visibilitychange', () => {
+	if (document.visibilityState === 'visible') handleVisibilityOrFocus();
+});
+window.addEventListener('focus', handleVisibilityOrFocus);
 
 // --- Initial setup on page load ---
 
