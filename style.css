@@ -47,6 +47,7 @@ p {
 h3 {
 	font-weight: bold;
 	font-size: calc(1rem + 0.3vw);
+	text-align: center;
 }
 header {
 	background-color: var(--bg-dark);
@@ -218,7 +219,7 @@ footer {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: var(--responsiveGap);
+	gap: calc(var(--gapBase) * 4);
 }
 .sub-container > .left-child.footer-descendant,
 .sub-container > .right-child.footer-descendant {
@@ -326,7 +327,7 @@ footer {
 .gallery-title {
 	text-align: center;
 }
-.gallery-title.ue-projects-title{
+.gallery-title.ue-projects-title {
 	margin-bottom: var(--responsiveGap);
 }
 .frame-container {
@@ -466,6 +467,29 @@ a.anchor-contact {
 a.anchor-contact:hover {
 	color: var(--primary-light);
 }
+/* Team members */
+h3.team-member-introduction-mobile {
+	display: none;
+}
+img.team-member-photo {
+	height: 60vh;
+	width: auto;
+	justify-self: center;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	border-radius: var(--gapBase);
+	box-shadow: var(--shadow);
+}
+p.team-member-bio {
+	margin-left: calc(var(--gapBase) * 4);
+}
+ul.courses-list {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	margin-left: calc(var(--gapBase) * 12);
+}
+
 /* Dark scheme */
 [data-theme='dark'] {
 	--primary: hsl(37, 72%, 50%);
@@ -554,7 +578,25 @@ a.anchor-contact:hover {
 	.facilities-btns-container {
 		flex-direction: column;
 	}
+	h3.team-member-introduction-mobile {
+		display: inline;
+		text-align: center;
+	}
+	h3.team-member-introduction-desktop {
+		display: none;
+	}
+	img.team-member-photo {
+		width: 60vw;
+		height: auto;
+	}
+	p.team-member-bio {
+		margin-left: 0;
+	}
+	ul.courses-list {
+	margin-left: calc(var(--gapBase) * 4);
 }
+}
+
 /* Key frames */
 @keyframes translate-in-menu {
 	from {
