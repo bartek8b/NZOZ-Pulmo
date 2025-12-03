@@ -472,8 +472,8 @@ h3.team-member-introduction-mobile {
 	display: none;
 }
 img.team-member-photo {
-	height: 60vh;
-	width: auto;
+	width: 60%;
+	margin-bottom: auto;
 	justify-self: center;
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
@@ -586,15 +586,14 @@ ul.courses-list {
 		display: none;
 	}
 	img.team-member-photo {
-		width: 60vw;
-		height: auto;
+		width: 80%;
 	}
 	p.team-member-bio {
 		margin-left: 0;
 	}
 	ul.courses-list {
-	margin-left: calc(var(--gapBase) * 4);
-}
+		margin-left: calc(var(--gapBase) * 4);
+	}
 }
 
 /* Key frames */
