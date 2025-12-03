@@ -468,6 +468,9 @@ a.anchor-contact:hover {
 	color: var(--primary-light);
 }
 /* Team members */
+h3.team-member-introduction-desktop {
+	margin-top: 0;
+}
 h3.team-member-introduction-mobile {
 	display: none;
 }
@@ -581,6 +584,7 @@ ul.courses-list {
 	h3.team-member-introduction-mobile {
 		display: inline;
 		text-align: center;
+		margin-top: 0;
 	}
 	h3.team-member-introduction-desktop {
 		display: none;
