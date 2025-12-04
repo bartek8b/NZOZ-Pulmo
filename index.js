@@ -92,7 +92,7 @@ window.addEventListener('scroll', () => {
 // Intersection Observer
 
 const animatedElems = document.querySelectorAll(
-	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant) > *, .right-child:not(.right-child.footer-descendant) > *'
+	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant) > *, .right-child:not(.right-child.footer-descendant) > *, #arrow-down'
 );
 
 const observer = new IntersectionObserver(

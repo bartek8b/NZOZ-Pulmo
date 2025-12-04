@@ -5,13 +5,15 @@
 body {
 	padding: 0;
 	-webkit-tap-highlight-color: transparent;
-	scroll-behavior: smooth;
 	text-wrap: balance;
 	background-color: var(--bg-dark);
 	color: var(--font);
 	font-size: calc(1rem + 0.1vw);
 	font-family: 'Lato', system-ui, sans-serif;
 	line-height: 1.5;
+}
+* {
+	scroll-behavior: smooth;
 }
 *::selection {
 	background-color: var(--secondary);
@@ -233,14 +235,16 @@ footer {
 }
 .sub-container.sub-container-mono > *,
 .left-child:not(.left-child.footer-descendant) > *,
-.right-child:not(.right-child.footer-descendant) > * {
+.right-child:not(.right-child.footer-descendant) > *,
+#arrow-down {
 	opacity: 0;
 	transform: translateY(calc(var(--gapBase) * 4));
 	transition: opacity 0.9s ease, transform 0.9s ease;
 }
 .sub-container.sub-container-mono > *.show,
 .left-child:not(.left-child.footer-descendant) > *.show,
-.right-child:not(.right-child.footer-descendant) > *.show {
+.right-child:not(.right-child.footer-descendant) > *.show,
+#arrow-down.show {
 	opacity: 1;
 	transform: translateY(0);
 }
@@ -286,9 +290,37 @@ footer {
 	color: hsl(0, 0%, 90%);
 	/* 100vh minus header height */
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
+	grid-template-areas:
+		'left right'
+		'arrow arrow';
+}
+.sub-container#introduction-container > .left-child {
+	grid-area: left;
+}
+.sub-container#introduction-container > .right-child {
+	grid-area: right;
+}
+.sub-container#introduction-container > #arrow-down {
+	grid-area: arrow;
+	text-align: center;
 }
 .introduction-description {
 	align-self: flex-start;
+}
+#arrow-down {
+	color: inherit;
+	margin: calc(var(--gapBase) * 6) auto auto auto;
+	animation: arrow-bounce 2s;
+	animation-delay: 2s;
+	animation-iteration-count: 2;
+}
+#arrow-down:hover {
+	color: var(--primary-light);
+}
+#arrow-down > svg {
+	width: calc(var(--gapBase) * 6);
+	height: auto;
+	stroke-width: 1;
 }
 /* Partners, Special offers */
 .partners,
@@ -558,6 +590,10 @@ ul.courses-list {
 	}
 	.sub-container#introduction-container {
 		gap: calc(var(--responsiveGap) / 2);
+		grid-template-areas:
+			'left'
+			'right'
+			'arrow';
 	}
 	.special-offers {
 		flex-direction: column;
@@ -609,5 +645,26 @@ ul.courses-list {
 	to {
 		transform: translateX(0);
 		opacity: 1;
+	}
+}
+
+@keyframes arrow-bounce {
+	0% {
+		transform: translateY(0);
+	}
+	20% {
+		transform: translateY(8px);
+	}
+	40% {
+		transform: translateY(0);
+	}
+	60% {
+		transform: translateY(12px);
+	}
+	80% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(0);
 	}
 }
