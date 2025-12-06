@@ -278,6 +278,7 @@ footer {
 }
 .call-to-action-btn.call-to-action-intro {
 	align-self: flex-start;
+	margin-top: calc(var(--gapBase) * 2);
 }
 .call-to-action-btn:hover {
 	background-color: var(--primary-light);
