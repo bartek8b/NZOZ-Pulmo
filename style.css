@@ -2,6 +2,11 @@
 	font-family: 'Lato';
 	src: url(assets/fonts/Lato-Regular.ttf);
 }
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
 body {
 	padding: 0;
 	-webkit-tap-highlight-color: transparent;
@@ -11,9 +16,6 @@ body {
 	font-size: calc(1rem + 0.1vw);
 	font-family: 'Lato', system-ui, sans-serif;
 	line-height: 1.5;
-}
-* {
-	scroll-behavior: smooth;
 }
 *::selection {
 	background-color: var(--secondary);
