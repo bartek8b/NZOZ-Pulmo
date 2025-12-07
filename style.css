@@ -497,11 +497,12 @@ a.anchor-contact {
 a.anchor-contact:hover {
 	color: var(--primary-light);
 }
-.call-to-action-btn.meet-team {
+/* Transparent buttons */
+.call-to-action-btn.transparent-btn {
 	color: var(--font);
 	background-color: transparent;
 }
-.call-to-action-btn.meet-team:hover {
+.call-to-action-btn.transparent-btn:hover {
 	color: var(--bg-light);
 	background-color: var(--primary-light);
 }
