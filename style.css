@@ -2,10 +2,8 @@
 	font-family: 'Lato';
 	src: url(assets/fonts/Lato-Regular.ttf);
 }
-@media (prefers-reduced-motion: no-preference) {
-	html {
-		scroll-behavior: smooth;
-	}
+html {
+	scroll-behavior: smooth;
 }
 body {
 	padding: 0;
