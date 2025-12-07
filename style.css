@@ -601,6 +601,7 @@ ul.courses-list {
 	}
 	.sub-container.footer-descendant {
 		padding-top: var(--responsiveGap);
+		gap: calc(var(--gapBase) * 16);
 	}
 	.introduction-description {
 		text-align: center;
