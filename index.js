@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const openNav = document.querySelector('.open-nav');
 const closeNav = document.querySelector('.close-nav');
-const nav = document.querySelector('header > nav');
+const nav = document.getElementById('main-nav');
 
 function updateWidth() {
 	const windowWidth = window.innerWidth;
@@ -55,6 +55,8 @@ function updateWidth() {
 }
 
 openNav.addEventListener('click', () => {
+	openNav.setAttribute('aria-expanded', 'true');
+	nav.setAttribute('aria-hidden', 'false');
 	const headerRect = document.querySelector('header').getBoundingClientRect();
 	nav.style.top = headerRect.bottom + 'px';
 	nav.style.display = 'flex';
@@ -64,10 +66,26 @@ openNav.addEventListener('click', () => {
 	nav.classList.add('translate-in-menu');
 });
 closeNav.addEventListener('click', () => {
+	openNav.setAttribute('aria-expanded', 'false');
+	nav.setAttribute('aria-hidden', 'true');
 	openNav.style.display = 'flex';
 	closeNav.style.display = 'none';
 	nav.classList.remove('translate-in-menu');
 	nav.classList.add('translate-out-menu');
+});
+
+nav.addEventListener('transitionend', e => {
+	if (nav.classList.contains('translate-out-menu')) {
+		nav.style.display = 'none';
+	}
+});
+
+document.addEventListener('keydown', e => {
+	if (e.key === 'Escape' || e.key === 'Esc') {
+		if (openNav.getAttribute('aria-expanded') === 'true') {
+			closeNav.click();
+		}
+	}
 });
 
 window.addEventListener('resize', updateWidth);
