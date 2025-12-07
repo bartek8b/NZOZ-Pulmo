@@ -382,7 +382,7 @@ footer {
 .play-btn {
 	cursor: pointer;
 	border: none;
-	background-color: var(--bg);
+	background-color: transparent;
 	box-shadow: var(--shadow);
 	border-radius: var(--gapBase);
 	aspect-ratio: 1 / 2;
@@ -420,7 +420,7 @@ footer {
 .dot {
 	cursor: pointer;
 	border: none;
-	background-color: var(--bg);
+	background-color: transparent;
 	box-shadow: var(--shadow);
 	border-radius: 999rem;
 	aspect-ratio: 1 / 1;
@@ -444,21 +444,18 @@ footer {
 .tape > img.facilities-img {
 	aspect-ratio: var(--frame-aspect-ratio-facilities);
 }
-.sub-container.sub-container-mono.images-carousel-container.facilities-gallery {
-	background-color: var(--bg);
-}
 a.back-to-facilities-list {
 	cursor: pointer;
 	text-decoration: none;
 	border: none;
-	background-color: var(--bg);
+	color: var(--font);
+	background-color: transparent;
 	box-shadow: var(--shadow);
 	border-radius: var(--gapBase);
 	display: flex;
 	gap: var(--gapBase);
 	justify-content: center;
 	align-items: center;
-	color: var(--font);
 	width: fit-content;
 	padding: var(--gapBase) calc(var(--gapBase) * 2);
 	&:hover {
@@ -499,6 +496,14 @@ a.anchor-contact {
 }
 a.anchor-contact:hover {
 	color: var(--primary-light);
+}
+.call-to-action-btn.meet-team {
+	color: var(--font);
+	background-color: transparent;
+}
+.call-to-action-btn.meet-team:hover {
+	color: var(--bg-light);
+	background-color: var(--primary-light);
 }
 /* Team members */
 h3.team-member-introduction-desktop {
