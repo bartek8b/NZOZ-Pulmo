@@ -181,7 +181,7 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: calc(var(--gapBase) * 2);
+	gap: calc(var(--gapBase) * 3);
 }
 .social-media-link {
 	background-color: var(--bg);
