@@ -503,6 +503,7 @@ a.back-to-facilities-list {
 	align-items: center;
 	gap: calc(var(--responsiveGap) / 4);
 	width: 90%;
+	margin-top: calc(var(--gapBase) * 2);
 }
 a.anchor-contact {
 	color: var(--font);
