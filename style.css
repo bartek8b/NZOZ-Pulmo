@@ -537,13 +537,13 @@ img.team-member-photo {
 	box-shadow: var(--shadow);
 }
 p.team-member-bio {
-	margin-left: calc(var(--gapBase) * 4);
+	align-self: flex-start;
+	max-width: fit-content;
 }
 ul.courses-list {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	margin-left: calc(var(--gapBase) * 12);
 }
 
 /* Dark scheme */
