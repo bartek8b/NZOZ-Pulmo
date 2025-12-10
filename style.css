@@ -583,6 +583,7 @@ ul.courses-list {
 		animation: translate-in-menu 0.3s;
 		transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 		padding-top: calc(var(--responsiveGap) / 2);
+		will-change: transform, opacity;
 	}
 	nav > a::after {
 		height: 0;
