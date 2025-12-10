@@ -169,7 +169,7 @@ footer {
 	gap: var(--responsiveGap);
 	box-shadow: 0 -1px 2px var(--secondary-light);
 }
-.social-media-container{
+.social-media-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -177,7 +177,7 @@ footer {
 	gap: calc(var(--gapBase));
 	font-size: calc(0.7rem + 0.1vw);
 }
-.social-media-group{
+.social-media-group {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -657,6 +657,15 @@ ul.courses-list {
 	}
 	ul.courses-list {
 		margin-left: calc(var(--gapBase) * 4);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
 	}
 }
 
