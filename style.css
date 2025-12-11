@@ -660,15 +660,6 @@ ul.courses-list {
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		transition: none !important;
-		animation: none !important;
-	}
-}
-
 /* Key frames */
 @keyframes translate-in-menu {
 	from {
