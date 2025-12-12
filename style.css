@@ -276,7 +276,7 @@ footer {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: var(--responsiveGap);
+	gap: calc(var(--gapBase) * 2);
 }
 /* Home */
 .call-to-action-btn {
@@ -369,13 +369,10 @@ footer {
 }
 /* Pictures carousel */
 .sub-container.sub-container-mono.images-carousel-container {
-	gap: calc(var(--responsiveGap) / 3);
+	gap: calc(var(--gapBase) * 4);
 }
 .gallery-title {
 	text-align: center;
-}
-.gallery-title.ue-projects-title {
-	margin-bottom: var(--responsiveGap);
 }
 .frame-container {
 	display: flex;
