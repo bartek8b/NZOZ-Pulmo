@@ -51,6 +51,27 @@ h3 {
 	font-size: calc(1rem + 0.3vw);
 	text-align: center;
 }
+#scroll-to-top-btn {
+	position: fixed;
+	bottom: var(--gapBase);
+	right: var(--gapBase);
+	color: inherit;
+	opacity: 0;
+	transform: translateY(calc(var(--gapBase) * 8));
+	transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#scroll-to-top-btn.show {
+	opacity: 0.7;
+	transform: translateY(0);
+}
+#scroll-to-top-btn:hover {
+	color: var(--primary-light);
+}
+#scroll-to-top-btn > svg {
+	width: calc(var(--gapBase) * 6);
+	height: auto;
+	stroke-width: 1;
+}
 header {
 	background-color: var(--bg-dark);
 	padding-block: var(--gapBase);

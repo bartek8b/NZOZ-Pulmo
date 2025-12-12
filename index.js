@@ -91,12 +91,13 @@ document.addEventListener('keydown', e => {
 window.addEventListener('resize', updateWidth);
 window.addEventListener('scroll', updateWidth);
 
-// Header visible on scroll
+// Header & scroll-to-top-btn visibility on scroll
 
 let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
 	let header = document.querySelector('header');
+	let scrollBtn = document.getElementById('scroll-to-top-btn');
 	let scrollToTop = window.pageYOffset || document.documentElement.scrollTop;
 
 	if (scrollToTop > lastScrollTop) {
@@ -104,7 +105,14 @@ window.addEventListener('scroll', () => {
 	} else {
 		header.style.top = '0';
 	}
+
 	lastScrollTop = scrollToTop;
+
+	if (lastScrollTop === 0) {
+		scrollBtn.classList.remove('show');
+	} else {
+		scrollBtn.classList.add('show');
+	}
 });
 
 // Intersection Observer
