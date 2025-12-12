@@ -68,7 +68,7 @@ h3 {
 	color: var(--primary-light);
 }
 #scroll-to-top-btn > svg {
-	width: calc(var(--gapBase) * 6);
+	width: calc(var(--gapBase) * 4);
 	height: auto;
 	stroke-width: 1;
 }
