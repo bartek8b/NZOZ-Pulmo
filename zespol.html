@@ -40,6 +40,7 @@
     <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
+    <script src="teams-filter.js" defer></script>
     <!-- Ustaw tytuł dla każdej podstrony -->
     <title>NZOZ Pulmo</title>
 </head>
@@ -82,7 +83,16 @@
     </header>
 
     <main>
-        <section class="sub-container">
+        <section class="sub-container sub-container-mono">
+            <h3>Poznaj zespół naszych placówek</h3>
+            <div class="filter-btns-container">
+                <button class="call-to-action-btn transparent-btn" type="button">OSOM Wołomin</button>
+                <button class="call-to-action-btn transparent-btn" type="button">NZOZ Derby</button>
+                <button class="call-to-action-btn transparent-btn" type="button">Hipoterapia</button>
+            </div>
+        </section>
+
+        <section class="sub-container" data-facility="osom">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h3 (desktop + mobile) -->
 
             <div class="left-child">
@@ -119,7 +129,7 @@
             </div>
         </section>
 
-        <section class="sub-container reverse-queries">
+        <section class="sub-container reverse-queries" data-facility="osom">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h3 (desktop + mobile) -->
             <div class="left-child">
                 <h3 class="team-member-introduction-desktop">Fizjoterapeuta
@@ -153,7 +163,7 @@
             </div>
         </section>
 
-        <section class="sub-container">
+        <section class="sub-container" data-facility="osom">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h3 (desktop + mobile) -->
             <div class="left-child">
                 <h3 class="team-member-introduction-mobile">Fizjoterapeuta
@@ -185,7 +195,7 @@
             </div>
         </section>
 
-        <section class="sub-container reverse-queries">
+        <section class="sub-container reverse-queries" data-facility="osom">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h3 (desktop + mobile) -->
             <div class="left-child">
                 <h3 class="team-member-introduction-desktop">Fizjoterapeuta
@@ -221,7 +231,7 @@
             </div>
         </section>
 
-        <section class="sub-container">
+        <section class="sub-container" data-facility="osom">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h3 (desktop + mobile) -->
             <div class="left-child">
                 <h3 class="team-member-introduction-mobile">Fizjoterapeuta
@@ -253,7 +263,7 @@
 
         </section>
 
-        <section class="sub-container sub-container-mono">
+        <section class="sub-container sub-container-mono" data-facility="osom">
             <h3>Zespół opieki stacjonarnej</h3>
             <ul>
                 <li><b>lek. Alina Korotko</b> - medycyna rodzinna, dyrektor medyczny OSOM</li>
@@ -266,7 +276,7 @@
 
         </section>
 
-        <section class="sub-container sub-container-mono">
+        <section class="sub-container sub-container-mono" data-facility="osom">
             <h3>Zespół administracyjny</h3>
             <ul>
                 <li><b>Ewelina Godleś</b> - księgowa</li>
@@ -275,6 +285,16 @@
                 <li><b>Urszula Tarach</b> - rejestratorka medyczna</li>
                 <li><b>Katarzyna Jabłońska</b> - rejestratorka medyczna</li>
             </ul>
+
+        </section>
+
+        <section class="sub-container sub-container-mono" data-facility="derby">
+            TEMP NZOZ DERBY TEST CONTENT
+
+        </section>
+
+        <section class="sub-container sub-container-mono" data-facility="hipo">
+            TEMP HIPOTERAPIA TEST CONTENT
 
         </section>
 

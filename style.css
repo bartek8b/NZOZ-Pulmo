@@ -310,6 +310,7 @@ footer {
 	border-radius: var(--gapBase);
 	box-shadow: var(--shadow);
 	width: calc(var(--gapBase) * 25);
+	border: none;
 }
 .call-to-action-btn.call-to-action-intro {
 	align-self: flex-start;
@@ -539,6 +540,10 @@ a.anchor-contact:hover {
 	color: var(--bg-light);
 	background-color: var(--primary-light);
 }
+.transparent-btn.active {
+	background-color: var(--primary);
+	color: var(--bg-light);
+}
 /* Team members */
 h3.team-member-introduction-desktop {
 	margin-top: 0;
@@ -563,6 +568,13 @@ ul.courses-list {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+}
+.filter-btns-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: calc(var(--gapBase) * 2);
+	flex-wrap: wrap;
 }
 
 /* Dark scheme */
@@ -675,6 +687,9 @@ ul.courses-list {
 	}
 	ul.courses-list {
 		margin-left: calc(var(--gapBase) * 4);
+	}
+	.filter-btns-container {
+		flex-direction: column;
 	}
 }
 
