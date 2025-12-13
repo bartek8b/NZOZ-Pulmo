@@ -40,7 +40,7 @@
     <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
-    <script src="teams-filter.js" defer></script>
+    <script src="facilities-filter.js" defer></script>
     <!-- Ustaw tytuł dla każdej podstrony -->
     <title>NZOZ Pulmo</title>
 </head>
@@ -86,9 +86,12 @@
         <section class="sub-container sub-container-mono">
             <h3>Poznaj zespół naszych placówek</h3>
             <div class="filter-btns-container">
-                <button class="call-to-action-btn transparent-btn" type="button">OSOM Wołomin</button>
-                <button class="call-to-action-btn transparent-btn" type="button">NZOZ Derby</button>
-                <button class="call-to-action-btn transparent-btn" type="button">Hipoterapia</button>
+                <button class="call-to-action-btn transparent-btn" data-facility="osom" type="button">OSOM
+                    Wołomin</button>
+                <button class="call-to-action-btn transparent-btn" data-facility="derby" type="button">NZOZ
+                    Derby</button>
+                <button class="call-to-action-btn transparent-btn" data-facility="hipo"
+                    type="button">Hipoterapia</button>
             </div>
         </section>
 
@@ -289,12 +292,16 @@
         </section>
 
         <section class="sub-container sub-container-mono" data-facility="derby">
-            TEMP NZOZ DERBY TEST CONTENT
+            <p>
+                TEMP NZOZ DERBY TEST CONTENT
+            </p>
 
         </section>
 
         <section class="sub-container sub-container-mono" data-facility="hipo">
-            TEMP HIPOTERAPIA TEST CONTENT
+            <p>
+                TEMP HIPOTERAPIA TEST CONTENT
+            </p>
 
         </section>
 

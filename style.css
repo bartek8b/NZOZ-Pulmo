@@ -576,6 +576,12 @@ ul.courses-list {
 	gap: calc(var(--gapBase) * 2);
 	flex-wrap: wrap;
 }
+.even-bg {
+	background-color: var(--bg) !important;
+}
+.odd-bg {
+	background-color: var(--bg-light) !important;
+}
 
 /* Dark scheme */
 [data-theme='dark'] {
