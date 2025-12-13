@@ -26,7 +26,7 @@
         })();
     </script>
     <!-- Ustaw meta description dla każdej podstrony -->
-    <meta name="description" content="Pulmo - galeria OSOM">
+    <meta name="description" content="Pulmo - oferta">
     <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
     <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
     <!-- Ustaw Open Graph Protocol (OGP) -->
@@ -40,7 +40,7 @@
     <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
-    <script src="gallery.js" defer></script>
+    <script src="facilities-filter.js" defer></script>
     <!-- Ustaw tytuł dla każdej podstrony -->
     <title>NZOZ Pulmo</title>
 </head>
@@ -51,8 +51,8 @@
         <!-- Ustaw class active dla właściwej podstrony -->
         <nav id="main-nav" role="navigation" aria-label="Główna nawigacja">
             <a href="index.html">Home</a>
-            <a href="placowki.html" class="active">Placówki</a>
-            <a href="oferta.html">Oferta</a>
+            <a href="placowki.html">Placówki</a>
+            <a href="oferta.html" class="active">Oferta</a>
             <a href="zespol.html">Zespół</a>
             <a href="#">Aktualności</a>
 
@@ -83,67 +83,39 @@
     </header>
 
     <main>
-        <section class="sub-container sub-container-mono images-carousel-container">
-
-            <a href="placowki.html" class="back-to-facilities-list" aria-label="Powrót do listy placówek" role="button">
-
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-arrow-left-circle">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 8 8 12 12 16"></polyline>
-                    <line x1="16" y1="12" x2="8" y2="12"></line>
-                </svg>
-                Powrót
-
-            </a>
-
-            <h3 class="gallery-title">Ośrodek Stacjonarnej Opieki Medycznej</h3>
-
-
-            <div class="frame-container">
-                <button class="previous-btn" aria-label="Poprzedni obraz" type="button"><svg aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-rewind">
-                        <polygon points="11 19 2 12 11 5 11 19"></polygon>
-                        <polygon points="22 19 13 12 22 5 22 19"></polygon>
-                    </svg></button>
-
-                <!-- Check subclass for certain gallery when using this code snippet -> it matters for specific aspect ratio in CSS -->
-                <div class="frame facilities-frame">
-                    <div class="tape">
-                        <!-- To be hardcoded -->
-                        <!-- Check class for each img tag -> it matters for specific aspect ratio in CSS -->
-                        <img src="assets/facilities/wolomin/1.jpg" alt="1" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/2.jpg" alt="2" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/3.jpg" alt="3" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/4.jpg" alt="4" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/5.jpg" alt="5" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/6.jpg" alt="6" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/7.jpg" alt="7" loading="eager" class="facilities-img">
-                        <img src="assets/facilities/wolomin/8.jpg" alt="8" loading="eager" class="facilities-img">
-                        <!-- End of To be hardcoded -->
-                    </div>
-                </div>
-                <button class="next-btn" aria-label="Następny obraz" type="button"><svg aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-fast-forward">
-                        <polygon points="13 19 22 12 13 5 13 19"></polygon>
-                        <polygon points="2 19 11 12 2 5 2 19"></polygon>
-                    </svg></button>
+        <section class="sub-container sub-container-mono">
+            <h3>Poznaj nasze cenniki</h3>
+            <div class="filter-btns-container">
+                <button class="call-to-action-btn transparent-btn" data-facility="osom" type="button">OSOM
+                    Wołomin</button>
+                <button class="call-to-action-btn transparent-btn" data-facility="derby" type="button">NZOZ
+                    Derby</button>
+                <button class="call-to-action-btn transparent-btn" data-facility="hipo"
+                    type="button">Hipoterapia</button>
             </div>
+        </section>
 
-            <div class="dots-box">
-                <!-- Generated dynamically in gallery.js -->
-            </div>
-
-            <button class="play-btn" aria-label="Play or pause slideshow" type="button">
-                <!-- Zawartość buttona generowana dynamicznie w gallery.js -->
-            </button>
+        <section class="sub-container sub-container-mono" data-facility="osom">
+            <p>
+                TEMP NZOZ OSOM TEST CONTENT
+            </p>
 
         </section>
+
+        <section class="sub-container sub-container-mono" data-facility="derby">
+            <p>
+                TEMP NZOZ DERBY TEST CONTENT
+            </p>
+
+        </section>
+
+        <section class="sub-container sub-container-mono" data-facility="hipo">
+            <p>
+                TEMP HIPOTERAPIA TEST CONTENT
+            </p>
+
+        </section>
+
     </main>
 
     <footer>
@@ -248,3 +220,5 @@
             <line x1="12" y1="16" x2="12" y2="8"></line>
         </svg></a>
 </body>
+
+</html>
