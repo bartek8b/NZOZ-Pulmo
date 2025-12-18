@@ -184,9 +184,9 @@ nav > button:hover {
 }
 /* Footer */
 footer {
-	background: url(assets/background/background.webp) no-repeat center center;
+	background: url(assets/background/background_footer.webp) no-repeat center center;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: local;
 	color: var(--light-always);
 	padding-bottom: var(--gapBase);
 	display: flex;
@@ -327,7 +327,7 @@ footer {
 .sub-container#introduction-container {
 	background: url(assets/background/background.webp) no-repeat center center;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: local;
 	color: var(--light-always);
 	/* 100vh minus header height */
 	min-height: calc(100vh - calc(var(--gapBase) * 6));
@@ -581,18 +581,10 @@ ul.courses-list {
 	flex-wrap: wrap;
 }
 .even-bg {
-	background: linear-gradient(
-		45deg,
-		var(--bg-light) 0%,
-		var(--bg) 100%
-	) !important;
+	background: linear-gradient(to left, var(--bg-light) 0%, var(--bg) 100%) !important;
 }
 .odd-bg {
-	background: linear-gradient(
-		45deg,
-		var(--bg-light) 0%,
-		var(--bg) 100%
-	) !important;
+	background: linear-gradient(to right, var(--bg-light) 0%, var(--bg) 100%) !important;
 }
 
 /* Dark scheme */
