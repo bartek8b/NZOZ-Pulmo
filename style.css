@@ -185,7 +185,6 @@ nav > button:hover {
 /* Footer */
 footer {
 	background-color: var(--bg-dark);
-	color: var(--light-always);
 	padding-bottom: var(--gapBase);
 	display: flex;
 	flex-direction: column;
