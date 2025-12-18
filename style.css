@@ -397,6 +397,13 @@ footer {
 .gallery-title {
 	text-align: center;
 }
+.carousel-wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: calc(var(--gapBase) * 3);
+}
 .frame-container {
 	display: flex;
 	align-items: center;
