@@ -184,9 +184,7 @@ nav > button:hover {
 }
 /* Footer */
 footer {
-	background: url(assets/background/background_footer.webp) no-repeat center center;
-	background-size: cover;
-	background-attachment: local;
+	background-color: var(--bg-dark);
 	color: var(--light-always);
 	padding-bottom: var(--gapBase);
 	display: flex;
@@ -581,10 +579,18 @@ ul.courses-list {
 	flex-wrap: wrap;
 }
 .even-bg {
-	background: linear-gradient(to left, var(--bg-light) 0%, var(--bg) 100%) !important;
+	background: linear-gradient(
+		to left,
+		var(--bg-light) 0%,
+		var(--bg) 100%
+	) !important;
 }
 .odd-bg {
-	background: linear-gradient(to right, var(--bg-light) 0%, var(--bg) 100%) !important;
+	background: linear-gradient(
+		to right,
+		var(--bg-light) 0%,
+		var(--bg) 100%
+	) !important;
 }
 
 /* Dark scheme */
