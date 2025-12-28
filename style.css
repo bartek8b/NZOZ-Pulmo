@@ -248,8 +248,8 @@ footer {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: auto;
-	gap: var(--responsiveGap);
-	padding: calc(var(--gapBase) * 4);
+	gap: calc(var(--gapBase) * 4);
+	padding-inline: calc(var(--gapBase) * 12);
 	padding-block: calc(var(--gapBase) * 12);
 	overflow: hidden;
 }
@@ -672,6 +672,8 @@ ul.courses-list {
 	.sub-container {
 		display: grid;
 		grid-template-columns: 1fr;
+		padding-inline: calc(var(--gapBase) * 4);
+		gap: calc(var(--gapBase) * 8);
 	}
 	.sub-container.reverse-queries > *:nth-child(1) {
 		grid-row: 2;
