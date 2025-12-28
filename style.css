@@ -516,28 +516,38 @@ a.back-to-facilities-list:active {
 .google-map {
 	width: 90%;
 	aspect-ratio: 3 / 2;
-	border-radius: var(--gapBase);
+	border-radius: calc(var(--gapBase) * 2);
 	box-shadow: var(--shadow);
 }
 .address-container {
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--responsiveGap) / 2);
+	gap: calc(var(--gapBase) * 4);
 	font-style: normal;
 }
 .address-container > div {
 	display: flex;
 	align-items: center;
-	gap: calc(var(--responsiveGap) / 4);
+	gap: calc(var(--gapBase) * 2);
 }
 .facilities-btns-container {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	gap: calc(var(--responsiveGap) / 4);
+	gap: calc(var(--gapBase) * 4);
 	width: 90%;
 	margin-top: calc(var(--gapBase) * 2);
+	padding: calc(var(--gapBase) * 4);
+	border-radius: calc(var(--gapBase) * 2);
+	background: linear-gradient(to bottom, var(--bg-light) 0%, var(--bg) 100%);
+	box-shadow: var(--shadow);
+}
+.facilities-btns-container > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: calc(var(--gapBase) * 2);
 }
 a.anchor-contact {
 	color: var(--font);
@@ -705,9 +715,6 @@ ul.courses-list {
 	.tape > img {
 		width: var(--frame-width);
 		height: auto;
-	}
-	.facilities-btns-container {
-		flex-direction: column;
 	}
 	h3.team-member-introduction-mobile {
 		display: inline;
