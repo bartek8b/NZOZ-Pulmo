@@ -561,6 +561,13 @@ a.anchor-contact:active {
 	background-color: var(--primary);
 	color: var(--bg-light);
 }
+/* Filters for team & offer */
+.filer-icon {
+	color: var(--font);
+	fill: var(--primary);
+	height: calc(var(--gapBase) * 12);
+	width: auto;
+}
 /* Team members */
 h3.team-member-introduction-desktop {
 	margin-top: 0;
