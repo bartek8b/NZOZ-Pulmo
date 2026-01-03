@@ -673,12 +673,15 @@ svg.info-icon {
 		filter: invert(10%);
 	}
 
-	img,
-	svg {
+	img:not(.logo-big, header img),
+	.special-offers svg,
+	.filter-icon,
+	.info-icon {
 		filter: brightness(0.8) contrast(0.9);
 		transition: filter 0.3s ease;
 	}
-	button, .call-to-action-btn {
+	.call-to-action-btn,
+	.dot-filled {
 		filter: brightness(0.9);
 	}
 }
