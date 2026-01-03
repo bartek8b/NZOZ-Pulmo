@@ -26,7 +26,7 @@
         })();
     </script>
     <!-- Ustaw meta description dla każdej podstrony -->
-    <meta name="description" content="Pulmo - zespół">
+    <meta name="description" content="Pulmo - aktualności">
     <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
     <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
     <!-- Ustaw Open Graph Protocol (OGP) -->
@@ -53,8 +53,8 @@
             <a href="index.html">Home</a>
             <a href="placowki.html">Placówki</a>
             <a href="oferta.html">Oferta</a>
-            <a href="zespol.html" class="active">Zespół</a>
-            <a href="aktualnosci.html">Aktualności</a>
+            <a href="zespol.html">Zespół</a>
+            <a href="aktualnosci.html" class="active">Aktualności</a>
 
             <button class="color-scheme-btn" aria-label="Change color scheme" type="button">
                 <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
@@ -83,38 +83,15 @@
     </header>
 
     <main>
-        <section class="sub-container sub-container-mono">
-            <svg class="filer-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                    d="M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z" />
-            </svg>
-            <h1>Poznaj zespół naszych placówek</h1>
-            <div class="filter-btns-container">
-                <button class="call-to-action-btn transparent-btn" data-facility="osom" type="button">OSOM
-                    Wołomin</button>
-                <button class="call-to-action-btn transparent-btn" data-facility="derby" type="button">NZOZ
-                    Derby</button>
-                <button class="call-to-action-btn transparent-btn" data-facility="hipo"
-                    type="button">Hipoterapia</button>
-            </div>
-        </section>
-
-        <section class="sub-container" data-facility="osom">
+        <section class="sub-container">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h1 (desktop + mobile) -->
 
             <div class="left-child">
-                <h1 class="team-member-introduction-mobile">Fizjoterapeuta
-                    <br>mgr Rafał Babecki
-                    <br>
-                    Kierownik Rehabilitacji
-                </h1>
+                <h1 class="team-member-introduction-mobile">Tytuł newska</h1>
                 <img src="assets/team/Rafal.webp" alt="Rafał Babecki" loading="lazy" class="team-member-photo">
             </div>
             <div class="right-child">
-                <h1 class="team-member-introduction-desktop">Fizjoterapeuta
-                    <br>mgr Rafał Babecki
-                    <br>
-                    Kierownik Rehabilitacji
+                <h1 class="team-member-introduction-desktop">Tytuł Newsa
                 </h1>
                 <p class="team-member-bio">
                     Absolwent kierunku fizjoterapii Warszawskiego Uniwersytetu Medycznego. Swoje doświadczenie zdobywał
@@ -123,24 +100,14 @@
                     skupianie się na funkcjonowaniu jego organizmu jako całości. Poza gabinetem spełnia się jako mąż i
                     ojeciec aktywnie spędzając czas z rodziną.
                 </p>
-                <strong>Ukończone kursy i szkolenia:</strong>
-                <ul class="courses-list">
-                    <li>Terapia manualna Rakowskiego</li>
-                    <li>PNF rozszerzony</li>
-                    <li>USG dla fizjoterapeutów „Sonografia, sonofeedback oraz terapia”</li>
-                    <li>Kinezjologia Taping</li>
-                    <li>Postępowanie fizjoterapeutyczne w terapii blizn</li>
-                    <li>Pinoterapia FRSc</li>
-                </ul>
 
             </div>
         </section>
 
-        <section class="sub-container reverse-queries" data-facility="osom">
+        <section class="sub-container reverse-queries">
             <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h1 (desktop + mobile) -->
             <div class="left-child">
-                <h1 class="team-member-introduction-desktop">Fizjoterapeuta
-                    <br>mgr Wiktor Korotko
+                <h1 class="team-member-introduction-desktop">Tytuł newska
                 </h1>
                 <p class="team-member-bio">
                     Ukończył studia na kierunku fizjoterapii w Warszawskim Uniwersytecie Medycznym. Posiada wieloletnie
@@ -149,38 +116,23 @@
                     terapii manualnej. Wolny czas spędza z rodziną na przejażdżkach motocrossowych.
 
                 </p>
-                <strong>Ukończone kursy i szkolenia:</strong>
-                <ul class="courses-list">
-                    <li>„Kręgosłup-osteopatyczna diagnostyka i leczenie”</li>
-                    <li>„Terapia trzewna”</li>
-                    <li>Maitland Concept – metoda terapii manualnej</li>
-                    <li>USG dla fizjoterapeutów - Sonofeedback</li>
-                    <li>MTT- medyczny trening terapeutyczny</li>
-                    <li>„Współczesne metody diagnozy i leczenia tkanek miękkich”</li>
-                    <li>„Stawy obwodowe”</li>
-                    <li>Masaż klasyczny</li>
-                </ul>
             </div>
 
             <div class="right-child">
-                <h1 class="team-member-introduction-mobile">Fizjoterapeuta
-                    <br>mgr Wiktor Korotko
+                <h1 class="team-member-introduction-mobile">Tytuł newsa
                 </h1>
                 <img src="assets/team/Wiktor.webp" alt="Wiktor Korotko" loading="lazy" class="team-member-photo">
             </div>
         </section>
 
-        <section class="sub-container" data-facility="osom">
-            <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki 1 (desktop + mobile) -->
+        <section class="sub-container">
+            <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h1 (desktop + mobile) -->
             <div class="left-child">
-                <h1 class="team-member-introduction-mobile">Fizjoterapeuta
-                    <br>mgr Marta Kalisiak
-                </h1>
+                <h1 class="team-member-introduction-mobile">tytul newsa</h1>
                 <img src="assets/team/MartaKalisiak.webp" alt="Marta Kalisiak" loading="lazy" class="team-member-photo">
             </div>
             <div class="right-child">
-                <h1 class="team-member-introduction-desktop">Fizjoterapeuta
-                    <br>mgr Marta Kalisiak
+                <h1 class="team-member-introduction-desktop">Tytuł newsa
                 </h1>
                 <p class="team-member-bio">
                     Ukończyła studia magisterskie w Wyższej Szkole Rehabilitacji w Warszawie. Aktywna zawodowo od 2012
@@ -189,126 +141,8 @@
                     energię czerpie z wędrówek po górach.
 
                 </p>
-                <strong>Ukończone kursy i szkolenia:</strong>
-                <ul class="courses-list">
-                    <li>Osteopatyczna Diagnostyka i Leczenie Kręgosłupa</li>
-                    <li>USG dla fizjoterapeutów „Sonografia, sonofeedback oraz terapia”</li>
-                    <li>Dry Needling w koncepcji FRSc (Igłoterapia sucha)</li>
-                    <li>Praca na bliznach – integracja blizn z siecią powięziową</li>
-                    <li>Fibroliza mięśniowo-powięziowa (Haczykowanie)</li>
-                    <li>BeBo – terapia dna miednicy</li>
-                    <li>Masaż klasyczny</li>
-                </ul>
             </div>
         </section>
-
-        <section class="sub-container reverse-queries" data-facility="osom">
-            <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h1 (desktop + mobile) -->
-            <div class="left-child">
-                <h1 class="team-member-introduction-desktop">Fizjoterapeuta
-                    <br>mgr Małgorzata Korotko
-                </h1>
-                <p class="team-member-bio">
-                    Ukończyła dzienne studia na kierunku fizjoterapii w Warszawskim Uniwersytecie Medycznym. Nieustannie
-                    pogłębia swoją wiedzę z zakresu fizjoterapii w pediatrii, neurologii dziecięcej i ortopedii, by
-                    skutecznie pomagać dzieciom. Najbardziej interesuje ją terapia niemowląt z dysharmonią rozwojową i
-                    zaburzeniami neurorozwojowymi, terapia dzieci i młodzieży z problemami neurologicznymi genetycznymi,
-                    ortopedycznymi, a także dysfunkcjami w zakresie procesów integracji sensorycznej, korekcja wad
-                    postawy i skolioz. Wolne chwile poświęca na dobry film lub książki.
-                </p>
-                <strong>Ukończone kursy i szkolenia:</strong>
-                <ul class="courses-list">
-                    <li>Terapia neurorozwojowa NDT Bobath</li>
-                    <li>I i II stopień z zakresu teorii i terapii integracji sensorycznej</li>
-                    <li>Szkolenie z zakresu terapii wad postawy układu kostno- stawowego u dzieci i młodzieży według
-                        koncepcji FITS</li>
-                    <li>Masaż głęboki</li>
-                    <li>Szkolenie z zakresu technik rozluźniania i pracy w obrębie tkanek miękkich
-                    </li>
-                    <li>Narzędzia M-CHAT-R/F – praktyczne zastosowanie w monitorowaniu rozwoju dziecka</li>
-                </ul>
-
-            </div>
-            <div class="right-child">
-                <h1 class="team-member-introduction-mobile">Fizjoterapeuta
-                    <br>mgr Małgorzata Korotko
-                </h1>
-                <img src="assets/team/MalgorzataKorotko.webp" alt="Małgorzata Korotko" loading="lazy"
-                    class="team-member-photo">
-            </div>
-        </section>
-
-        <section class="sub-container" data-facility="osom">
-            <!-- Wpisz właściwe imię i nazwisko w img alt i oba nagłówki h1 (desktop + mobile) -->
-            <div class="left-child">
-                <h1 class="team-member-introduction-mobile">Fizjoterapeuta
-                    <br>mgr Małgorzata Chądzińska
-                </h1>
-                <img src="assets/team/MalgorzataChadzinska.webp" alt="Małgorzata Chądzińska" loading="lazy"
-                    class="team-member-photo">
-            </div>
-
-            <div class="right-child">
-                <h1 class="team-member-introduction-desktop">Terapeuta
-                    <br>mgr Małgorzata Chądzińska
-                </h1>
-                <p class="team-member-bio">
-                    Pedagog specjalny oraz terapeuta integracji sensorycznej z wyksztalceniem kierunkowym zdobytym na
-                    WSP TWP na kierunku pedagogika resocjalizacyjna i socjalna. Absolwentka studiów podyplomowych z
-                    zakresu Rehabilitacji dzieci z dysfunkcjami rozwojowymi. Posiada szerokie doświadczenie w pracy
-                    terapeutycznej z dziećmi o zróżnicowanych potrzebach rozwojowych i zdrowotnych, w tym z zaburzeniami
-                    ze spektrum autyzmu, mózgowym porażeniem dziecięcym oraz zespołami genetycznymi.
-                    Pracowała w wyspecjalizowanych placówkach terapeutycznych , gdzie prowadziła zarówno zajęcia
-                    indywidalne, jak i terapię wieloprofilowaną. W Polskim Instytucie Trenerskim uzyskała kwalifiację
-                    instruktora gimnastyki korekcyjnej, a w Instytucie Masgutowej ukończyła I i II stopień terapii
-                    neurotaktylnej, poszerzając kompetencje w zakresie wspierania rozwoju psychoruchowego dzieci.
-                    Łączy wiedzę z obszaru pedagogiki specjalnej, terapii sensomotorycznej i rehabilitacji, oferując
-                    profesjonalne, holistyczne podejście do dziecka i jego rodziny.
-
-                </p>
-            </div>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="osom">
-            <h1>Zespół opieki stacjonarnej</h1>
-            <ul>
-                <li><b>lek. Alina Korotko</b> - medycyna rodzinna, dyrektor medyczny OSOM</li>
-                <li><b>Jolanta Makarewicz</b> - opiekun medyczny</li>
-                <li><b>Dorota Wichrowska</b> - opiekun medyczny</li>
-                <li><b>Iwona Dąbrowska</b> - opiekun medyczny</li>
-                <li><b>Marcin Sokołowski</b> - opiekun medyczny</li>
-                <li><b>Aneta Bartosewicz</b> - asystent osób starszych</li>
-            </ul>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="osom">
-            <h1>Zespół administracyjny</h1>
-            <ul>
-                <li><b>Ewelina Godleś</b> - księgowa</li>
-                <li><b>Ewa Saulewicz</b> - opiekun medyczny</li>
-                <li><b>Anna Makarewicz</b> - kierownik rejestracji</li>
-                <li><b>Urszula Tarach</b> - rejestratorka medyczna</li>
-                <li><b>Katarzyna Jabłońska</b> - rejestratorka medyczna</li>
-            </ul>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="derby">
-            <p>
-                TEMP NZOZ DERBY TEST CONTENT
-            </p>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="hipo">
-            <p>
-                TEMP HIPOTERAPIA TEST CONTENT
-            </p>
-
-        </section>
-
     </main>
 
     <footer>

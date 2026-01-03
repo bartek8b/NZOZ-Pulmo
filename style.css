@@ -47,7 +47,7 @@ p {
 	margin: 0;
 	max-width: 65ch;
 }
-h3 {
+h1 {
 	font-weight: bold;
 	font-size: calc(1rem + 0.3vw);
 	text-align: center;
@@ -451,7 +451,7 @@ footer {
 }
 .tape {
 	display: flex;
-	transition: transform 0.6s ease;
+	transition: transform 0.3s ease;
 	height: 100%;
 }
 .tape > img {
@@ -579,10 +579,10 @@ a.anchor-contact:active {
 	width: auto;
 }
 /* Team members */
-h3.team-member-introduction-desktop {
+h1.team-member-introduction-desktop {
 	margin-top: 0;
 }
-h3.team-member-introduction-mobile {
+h1.team-member-introduction-mobile {
 	display: none;
 }
 img.team-member-photo {
@@ -718,12 +718,12 @@ ul.courses-list {
 		width: var(--frame-width);
 		height: auto;
 	}
-	h3.team-member-introduction-mobile {
+	h1.team-member-introduction-mobile {
 		display: inline;
 		text-align: center;
 		margin-top: 0;
 	}
-	h3.team-member-introduction-desktop {
+	h1.team-member-introduction-desktop {
 		display: none;
 	}
 	img.team-member-photo {
