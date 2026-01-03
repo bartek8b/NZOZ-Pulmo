@@ -572,7 +572,7 @@ a.anchor-contact:active {
 	color: var(--bg-light);
 }
 /* Filters for team & offer */
-.filer-icon {
+.filter-icon {
 	color: var(--font);
 	fill: var(--primary);
 	height: calc(var(--gapBase) * 12);
@@ -586,7 +586,7 @@ h1.team-member-introduction-mobile {
 	display: none;
 }
 img.team-member-photo {
-	width: 60%;
+	width: 50%;
 	margin-bottom: auto;
 	justify-self: center;
 	aspect-ratio: 3 / 4;
@@ -623,6 +623,39 @@ ul.courses-list {
 		var(--bg-light) 0%,
 		var(--bg) 100%
 	) !important;
+}
+
+/* News */
+.sub-container.news-container > .left-child,
+.sub-container.news-container > .right-child {
+	align-self: start;
+}
+h1.news-title {
+	margin-top: 0;
+	align-self: flex-start;
+	text-align: left;
+}
+p.news-content {
+	max-width: fit-content;
+}
+i.news-date {
+	font-size: calc(0.8rem + 0.1vw);
+	opacity: 0.7;
+}
+img.news-photo {
+	width: 80%;
+	margin-bottom: auto;
+	justify-self: center;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-radius: var(--gapBase);
+	box-shadow: var(--shadow);
+}
+svg.info-icon {
+	color: var(--font);
+	fill: var(--primary);
+	height: auto;
+	width: 20%;
 }
 
 /* Dark scheme */
@@ -723,11 +756,12 @@ ul.courses-list {
 		text-align: center;
 		margin-top: 0;
 	}
+
 	h1.team-member-introduction-desktop {
 		display: none;
 	}
 	img.team-member-photo {
-		width: 80%;
+		width: 60%;
 	}
 	p.team-member-bio {
 		margin-left: 0;
@@ -737,6 +771,10 @@ ul.courses-list {
 	}
 	.filter-btns-container {
 		flex-direction: column;
+	}
+	h1.news-title {
+		align-self: center;
+		text-align: center;
 	}
 }
 
