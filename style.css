@@ -578,6 +578,23 @@ a.anchor-contact:active {
 	height: calc(var(--gapBase) * 12);
 	width: auto;
 }
+.filtered-contact-container > .filtered-contact {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: calc(var(--gapBase) * 4);
+	margin-top: calc(var(--gapBase) * 8);
+}
+
+.filtered-contact-container > .filtered-contact > div {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: calc(var(--gapBase) * 2);
+}
+
 /* Team members */
 h1.team-member-introduction-desktop {
 	margin-top: 0;
@@ -762,12 +779,17 @@ svg.info-icon {
 		width: var(--frame-width);
 		height: auto;
 	}
+	.filtered-contact-container > .filtered-contact {
+		align-items: flex-start;
+	}
+	.filtered-contact-container > .filtered-contact > div {
+		flex-direction: column;
+	}
 	h1.team-member-introduction-mobile {
 		display: inline;
 		text-align: center;
 		margin-top: 0;
 	}
-
 	h1.team-member-introduction-desktop {
 		display: none;
 	}

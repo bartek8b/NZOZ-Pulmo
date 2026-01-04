@@ -30,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
 					btn.classList.remove('active');
 				}
 			});
+
+		// Highlight proper contact data
+		document
+			.querySelectorAll('.filtered-contact-container > .filtered-contact')
+			.forEach(function (div) {
+				if (div.dataset.facility === facility) {
+					div.style.display = 'flex';
+				} else {
+					div.style.display = 'none';
+				}
+			});
 	}
 
 	// Handling clicks on filters on target subpage
