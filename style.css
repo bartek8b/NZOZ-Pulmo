@@ -678,7 +678,6 @@ svg.info-icon {
 	.filter-icon,
 	.info-icon {
 		filter: brightness(0.8) contrast(0.9);
-		transition: filter 0.3s ease;
 	}
 	.call-to-action-btn,
 	.dot-filled {
