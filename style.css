@@ -593,6 +593,13 @@ a.anchor-contact:active {
 	flex-direction: row;
 	gap: calc(var(--gapBase) * 2);
 }
+.sub-container.sub-container-mono > .filtered-meet-team {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: calc(var(--gapBase) * 2);
+	margin-top: calc(var(--gapBase) * 4);
+}
 
 /* Team members */
 h1.team-member-introduction-desktop {
@@ -778,6 +785,9 @@ svg.info-icon {
 		width: var(--frame-width);
 		height: auto;
 	}
+	.facilities-btns-container {
+	gap: calc(var(--gapBase) * 2);
+}
 	.filtered-contact-container > .filtered-contact {
 		align-items: flex-start;
 	}
