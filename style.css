@@ -540,7 +540,7 @@ a.back-to-facilities-list:active {
 	margin-top: calc(var(--gapBase) * 2);
 	padding: calc(var(--gapBase) * 4);
 	border-radius: calc(var(--gapBase) * 2);
-	background: linear-gradient(to bottom, var(--bg-light) 0%, var(--bg) 100%);
+	background: transparent;
 	box-shadow: var(--shadow);
 }
 .facilities-btns-container > div {
@@ -578,17 +578,16 @@ a.anchor-contact:active {
 	height: calc(var(--gapBase) * 12);
 	width: auto;
 }
-.filtered-contact-container > .filtered-contact {
+.sub-container.sub-container-mono > .filtered-contact {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: calc(var(--gapBase) * 4);
-	margin-top: calc(var(--gapBase) * 8);
 }
 
-.filtered-contact-container > .filtered-contact > div {
+.sub-container.sub-container-mono > .filtered-contact > div {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
