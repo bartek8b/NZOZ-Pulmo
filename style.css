@@ -535,7 +535,7 @@ a.back-to-facilities-list:active {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	gap: calc(var(--gapBase) * 4);
+	gap: calc(var(--gapBase) * 2);
 	width: 90%;
 	margin-top: calc(var(--gapBase) * 2);
 	padding: calc(var(--gapBase) * 4);
@@ -547,7 +547,7 @@ a.back-to-facilities-list:active {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: calc(var(--gapBase) * 2);
+	gap: calc(var(--gapBase) * 1);
 }
 a.anchor-contact {
 	color: var(--font);
@@ -785,9 +785,6 @@ svg.info-icon {
 		width: var(--frame-width);
 		height: auto;
 	}
-	.facilities-btns-container {
-		gap: calc(var(--gapBase) * 2);
-	}
 	.filtered-contact-container > .filtered-contact {
 		align-items: flex-start;
 	}
@@ -892,13 +889,13 @@ svg.info-icon {
 		transform: translateY(0);
 	}
 	20% {
-		transform: translateY(8px);
+		transform: translateY(12px);
 	}
 	40% {
 		transform: translateY(0);
 	}
 	60% {
-		transform: translateY(12px);
+		transform: translateY(18px);
 	}
 	80% {
 		transform: translateY(0);
