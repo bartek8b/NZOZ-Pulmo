@@ -580,7 +580,7 @@ a.anchor-contact:active {
 }
 .sub-container.sub-container-mono > .filtered-contact {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -589,14 +589,14 @@ a.anchor-contact:active {
 
 .sub-container.sub-container-mono > .filtered-contact > div {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	flex-direction: row;
 	gap: calc(var(--gapBase) * 2);
 }
 .sub-container.sub-container-mono > .filtered-meet-team {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	flex-direction: row;
 	gap: calc(var(--gapBase) * 2);
 	margin-top: calc(var(--gapBase) * 4);
 }
@@ -786,8 +786,8 @@ svg.info-icon {
 		height: auto;
 	}
 	.facilities-btns-container {
-	gap: calc(var(--gapBase) * 2);
-}
+		gap: calc(var(--gapBase) * 2);
+	}
 	.filtered-contact-container > .filtered-contact {
 		align-items: flex-start;
 	}
