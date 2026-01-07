@@ -1,4 +1,6 @@
-// Dark/light theme
+// =============================
+//    1. DARK/LIGHT THEME TOGGLE
+// =============================
 
 const lightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
 
@@ -35,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	colorSchemeBtn.addEventListener('click', toggleTheme);
 });
 
-// Hamburger menu
+// =====================
+//    2. HAMBURGER MENU
+// =====================
 
 const openNav = document.querySelector('.open-nav');
 const closeNav = document.querySelector('.close-nav');
@@ -64,6 +68,13 @@ openNav.addEventListener('click', () => {
 	closeNav.style.display = 'flex';
 	nav.classList.remove('translate-out-menu');
 	nav.classList.add('translate-in-menu');
+
+	// Focus on first interactive element: <a> or <button> inside nav
+	const focusable = Array.from(nav.querySelectorAll('a, button'));
+	const firstNavItem = focusable.find(
+		el => el.offsetParent !== null && !el.disabled
+	);
+	if (firstNavItem) firstNavItem.focus();
 });
 closeNav.addEventListener('click', () => {
 	openNav.setAttribute('aria-expanded', 'false');
@@ -80,6 +91,7 @@ nav.addEventListener('transitionend', e => {
 	}
 });
 
+// Escape btn closes menu
 document.addEventListener('keydown', e => {
 	if (e.key === 'Escape' || e.key === 'Esc') {
 		if (openNav.getAttribute('aria-expanded') === 'true') {
@@ -91,7 +103,49 @@ document.addEventListener('keydown', e => {
 window.addEventListener('resize', updateWidth);
 window.addEventListener('scroll', updateWidth);
 
-// Header & scroll-to-top-btn visibility on scroll
+// ========================================
+// 3. FOCUS TRAP (when hamburger menu open)
+// ========================================
+
+function trapFocus(e) {
+	if (
+		nav.style.display !== 'flex' ||
+		window.innerWidth > 768 // tylko mobilnie
+	)
+		return;
+
+	// Catch all visible <a> & <button> in nav
+	const focusable = Array.from(nav.querySelectorAll('a, button')).filter(
+		el => el.offsetParent !== null && !el.disabled
+	);
+
+	if (focusable.length === 0) return;
+	const first = focusable[0];
+	const last = focusable[focusable.length - 1];
+
+	// "Tab" trap
+	if (e.key === 'Tab') {
+		if (e.shiftKey) {
+			// shift+tab = back
+			if (document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			}
+		} else {
+			// tab = forward
+			if (document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
+	}
+}
+
+nav.addEventListener('keydown', trapFocus);
+
+// ==================================================
+// 4. HEADER & SCROLL-TO-TOP-BTN VISIBILITY ON SCROLL
+// ==================================================
 
 let lastScrollTop = 0;
 
@@ -115,7 +169,9 @@ window.addEventListener('scroll', () => {
 	}
 });
 
-// Intersection Observer
+// =====================================
+// 5. ANIMATIONS (INTERSECTION OBSERVER)
+// =====================================
 
 const animatedElems = document.querySelectorAll(
 	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant) > *, .right-child:not(.right-child.footer-descendant) > *, #arrow-down'

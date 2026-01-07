@@ -18,6 +18,17 @@ body {
 *::selection {
 	background-color: var(--secondary);
 }
+*:focus {
+	outline: none;
+}
+*:focus-visible {
+	outline: 2px solid var(--primary);
+	border-radius: calc(var(--gapBase) / 2);
+}
+.hamburger-btn:focus-visible,
+nav > button:focus-visible {
+	border-radius: 999rem;
+}
 :root {
 	--primary: hsl(205, 44%, 41%);
 	--primary-light: hsl(203, 43%, 50%);
