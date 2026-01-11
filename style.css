@@ -833,6 +833,12 @@ svg.info-icon {
 	}
 }
 
+@media (max-width: 360px) {
+	.sub-container {
+		padding-inline: var(--gapBase);
+	}
+}
+
 @media (hover: hover) {
 	#scroll-to-top-btn:hover {
 		color: var(--primary-light);
