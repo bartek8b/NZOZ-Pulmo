@@ -824,10 +824,6 @@ svg.info-icon {
 	.filter-btns-container {
 		flex-direction: column;
 	}
-	h1.news-title {
-		align-self: center;
-		text-align: center;
-	}
 	img.news-photo {
 		width: 100%;
 	}
