@@ -13,7 +13,7 @@ function applyTheme(isThemeDark) {
 	isDark = isThemeDark;
 	document.documentElement.setAttribute(
 		'data-theme',
-		isThemeDark ? 'dark' : 'light'
+		isThemeDark ? 'dark' : 'light',
 	);
 	if (isDark) {
 		colorSchemeBtn.innerHTML = darkIcon;
@@ -72,7 +72,7 @@ openNav.addEventListener('click', () => {
 	// Focus on first interactive element: <a> or <button> inside nav
 	const focusable = Array.from(nav.querySelectorAll('a, button'));
 	const firstNavItem = focusable.find(
-		el => el.offsetParent !== null && !el.disabled
+		el => el.offsetParent !== null && !el.disabled,
 	);
 	if (firstNavItem) firstNavItem.focus();
 });
@@ -116,7 +116,7 @@ function trapFocus(e) {
 
 	// Catch all visible <a> & <button> in nav
 	const focusable = Array.from(nav.querySelectorAll('a, button')).filter(
-		el => el.offsetParent !== null && !el.disabled
+		el => el.offsetParent !== null && !el.disabled,
 	);
 
 	if (focusable.length === 0) return;
@@ -148,9 +148,9 @@ nav.addEventListener('keydown', trapFocus);
 // ==================================================
 
 let lastScrollTop = 0;
+const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
-	let header = document.querySelector('header');
 	let scrollBtn = document.getElementById('scroll-to-top-btn');
 	let scrollToTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -174,7 +174,7 @@ window.addEventListener('scroll', () => {
 // =====================================
 
 const animatedElems = document.querySelectorAll(
-	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant) > *, .right-child:not(.right-child.footer-descendant) > *, #arrow-down'
+	'.sub-container.sub-container-mono > *, .left-child:not(.left-child.footer-descendant) > *, .right-child:not(.right-child.footer-descendant) > *, #arrow-down',
 );
 
 const observer = new IntersectionObserver(
@@ -189,7 +189,7 @@ const observer = new IntersectionObserver(
 	},
 	{
 		rootMargin: '0px 0px 20px 0px',
-	}
+	},
 );
 
 animatedElems.forEach(elem => observer.observe(elem));
