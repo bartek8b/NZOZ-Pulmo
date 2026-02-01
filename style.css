@@ -846,8 +846,11 @@ svg.info-icon {
 	#scroll-to-top-btn:hover {
 		color: var(--primary-light);
 	}
-	nav > a:hover::after {
+	nav > a:not(.active):hover::after {
 		width: 100%;
+	}
+	nav > a.active:hover {
+		cursor: default;
 	}
 	nav > button:hover {
 		background-color: var(--bg-light);
