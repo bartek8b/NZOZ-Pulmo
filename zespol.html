@@ -4,6 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ustaw tytuł dla każdej podstrony -->
+    <title>NZOZ Pulmo</title>
+    <!-- Ustaw meta description dla każdej podstrony -->
+    <meta name="description" content="Pulmo - zespół">
+
+    <link rel="canonical" href="https://pulmo.com.pl" />
+
+    <!-- Ustaw Open Graph Protocol (OGP) -->
+    <meta property="og:title" content="Pulmo" />
+    <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
+    <meta property="og:url" content="https://pulmo.com.pl" />
+
     <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
     <script>
         (function () {
@@ -25,24 +39,17 @@
             }
         })();
     </script>
-    <!-- Ustaw meta description dla każdej podstrony -->
-    <meta name="description" content="Pulmo - zespół">
+
     <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
     <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
-    <!-- Ustaw Open Graph Protocol (OGP) -->
-    <meta property="og:title" content="Pulmo" />
-    <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
-    <meta property="og:url" content="https://pulmo.com.pl" />
+
     <link rel="stylesheet" href="modern-normalize.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
     <script src="facilities-filter.js" defer></script>
-    <!-- Ustaw tytuł dla każdej podstrony -->
-    <title>NZOZ Pulmo</title>
+
 </head>
 
 <body>

@@ -1,325 +1,619 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
-    <script>
-        (function () {
-            try {
-                // Jeśli data-theme już istnieje (np. z SSR), nie nadpisuj go
-                if (document.documentElement.hasAttribute('data-theme')) return;
-
-                const saved = localStorage.getItem('theme');
-                if (saved === 'dark' || saved === 'light') {
-                    document.documentElement.setAttribute('data-theme', saved);
-                    return;
-                }
-
-                // preferencja systemowa jako fallback (bezpieczny optional chaining)
-                const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
-                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-            } catch (e) {
-                // localStorage może rzucać (np. w trybie prywatnym) — bezpieczny fallback
-            }
-        })();
-    </script>
+    <!-- Ustaw tytuł dla każdej podstrony -->
+    <title>NZOZ Pulmo</title>
     <!-- Ustaw meta description dla każdej podstrony -->
-    <meta name="description"
-        content="Niepubliczny Zakład Opieki Zdrowotnej Pulmo - Wołomin, Warszawa Białołęka Derby - rehabilitacja, stacjonarna opieka medyczna">
-    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
-    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
-    <link rel="preload" as="image" href="assets/logo/logo_big.webp">
-    <link rel="preload" as="image" href="assets/background/background.webp">
+    <meta
+      name="description"
+      content="Niepubliczny Zakład Opieki Zdrowotnej Pulmo - Wołomin, Warszawa Białołęka Derby - rehabilitacja, stacjonarna opieka medyczna"
+    />
+    <link rel="canonical" href="https://pulmo.com.pl" />
     <!-- Ustaw Open Graph Protocol (OGP) -->
     <meta property="og:title" content="Pulmo" />
-    <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
+    <meta
+      property="og:description"
+      content="Przychodnia | Rehabilitacja | Hipoterapia"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg"
+    />
     <meta property="og:url" content="https://pulmo.com.pl" />
-    <link rel="stylesheet" href="modern-normalize.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
+
+    <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
+    <script>
+      (function () {
+        try {
+          // Jeśli data-theme już istnieje (np. z SSR), nie nadpisuj go
+          if (document.documentElement.hasAttribute('data-theme')) return;
+
+          const saved = localStorage.getItem('theme');
+          if (saved === 'dark' || saved === 'light') {
+            document.documentElement.setAttribute('data-theme', saved);
+            return;
+          }
+
+          // preferencja systemowa jako fallback (bezpieczny optional chaining)
+          const prefersDark = window.matchMedia?.(
+            '(prefers-color-scheme: dark)',
+          )?.matches;
+          document.documentElement.setAttribute(
+            'data-theme',
+            prefersDark ? 'dark' : 'light',
+          );
+        } catch (e) {
+          // localStorage może rzucać (np. w trybie prywatnym) — bezpieczny fallback
+        }
+      })();
+    </script>
+
+    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
+    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp" />
+    <link rel="preload" as="image" href="assets/logo/logo_big.webp" />
+    <link rel="preload" as="image" href="assets/background/background.webp" />
+
+    <link rel="stylesheet" href="modern-normalize.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp" />
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
     <script src="gallery.js" defer></script>
-    <!-- Ustaw tytuł dla każdej podstrony -->
-    <title>NZOZ Pulmo</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <a href="index.html"><img src="assets/logo/logo_prostokat.webp" alt="logo firmy"></a>
-        <!-- Ustaw class active dla właściwej podstrony -->
-        <nav id="main-nav" role="navigation" aria-label="Główna nawigacja">
-            <a class="active" tabindex="0" aria-current="page">Home</a>
-            <a href="placowki.html">Placówki</a>
-            <a href="oferta.html">Oferta</a>
-            <a href="zespol.html">Zespół</a>
-            <a href="aktualnosci.html">Aktualności</a>
+      <a href="index.html"
+        ><img src="assets/logo/logo_prostokat.webp" alt="logo firmy"
+      /></a>
+      <!-- Ustaw class active dla właściwej podstrony -->
+      <nav id="main-nav" role="navigation" aria-label="Główna nawigacja">
+        <a class="active" tabindex="0" aria-current="page">Home</a>
+        <a href="placowki.html">Placówki</a>
+        <a href="oferta.html">Oferta</a>
+        <a href="zespol.html">Zespół</a>
+        <a href="aktualnosci.html">Aktualności</a>
 
-            <button class="color-scheme-btn" aria-label="Change color scheme" type="button">
-                <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
-            </button>
-        </nav>
-
-        <button class="hamburger-btn open-nav" aria-label="Otwórz nawigację" aria-controls="main-nav"
-            aria-expanded="false" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-menu">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+        <button
+          class="color-scheme-btn"
+          aria-label="Change color scheme"
+          type="button"
+        >
+          <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
         </button>
+      </nav>
 
-        <button class="hamburger-btn close-nav" aria-label="Zamknij nawigację" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
+      <button
+        class="hamburger-btn open-nav"
+        aria-label="Otwórz nawigację"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-menu"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <button
+        class="hamburger-btn close-nav"
+        aria-label="Zamknij nawigację"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-x"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </header>
 
     <main>
-        <section class="sub-container" id="introduction-container">
-            <div class="left-child">
-                <img src="assets/logo/logo_big.webp" alt="logo firmy" class="logo-big">
+      <section class="sub-container" id="introduction-container">
+        <div class="left-child">
+          <img
+            src="assets/logo/logo_big.webp"
+            alt="logo firmy"
+            class="logo-big"
+          />
+        </div>
+        <div class="right-child">
+          <p class="introduction-description">
+            Jesteśmy siecią placówek opieki zdrowotnej. Zapewniamy wyjątkową
+            opiekę fizjoterapeutyczną lokalnym społecznościom. Wyróżniamy się
+            ogromną empatią, miłą i rodzinną atmosferą oraz indywidualnym
+            podejściem do pacjenta w każdym wieku.
+          </p>
+          <a
+            href="placowki.html"
+            class="call-to-action-btn call-to-action-intro"
+            role="button"
+            >Sprawdź lokalizajce</a
+          >
+        </div>
+        <a href="#next" id="arrow-down" aria-label="Przejdź w dół strony"
+          ><svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-arrow-down-circle"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="8 12 12 16 16 12"></polyline>
+            <line x1="12" y1="8" x2="12" y2="16"></line></svg
+        ></a>
+      </section>
+
+      <section class="sub-container sub-container-mono" id="next">
+        <h1>Oferujemy ceny specjalne</h1>
+
+        <div class="special-offers">
+          <div>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3.69 9.12C3.5 8.93 3.29 8.84 3.04 8.84C2.63 8.84 2.32 9.03 2.12 9.42S1.97 10.18 2.29 10.53C3.47 11.59 4.22 12.34 4.54 12.78C4.95 13.34 5.15 14.16 5.15 15.22C5.15 16.53 5.65 17.5 6.65 18.17C7.21 18.61 7.82 18.94 8.5 19.16L8.5 15.27C8.5 14.33 8.17 13.55 7.54 12.92M16.46 12.97C15.84 13.59 15.5 14.36 15.5 15.27L15.5 19.2C16.46 18.86 17.26 18.33 17.92 17.63C18.57 16.93 18.9 16.16 18.9 15.22C18.9 14.09 19.09 13.28 19.47 12.78C19.56 12.62 19.73 12.42 20 12.17C20.23 11.92 20.47 11.68 20.71 11.46C20.94 11.25 21.17 11.03 21.39 10.81L21.72 10.53C21.91 10.34 22 10.12 22 9.87C22 9.59 21.91 9.34 21.72 9.14C21.53 8.94 21.3 8.84 21 8.84S20.5 8.93 20.31 9.12M12 20C12.69 20 13.36 19.91 14 19.72L14 16.15C14 15.56 13.82 15.1 13.41 14.66C13 14.22 12.53 14 12 14C11.47 14 11 14.2 10.62 14.61C10.22 15 10 15.46 10 16.06L10 19.72C10.64 19.91 11.31 20 12 20M9 8.5C9 9.33 8.33 10 7.5 10S6 9.33 6 8.5 6.67 7 7.5 7 9 7.67 9 8.5M18 8.5C18 9.33 17.33 10 16.5 10C15.67 10 15 9.33 15 8.5S15.67 7 16.5 7C17.33 7 18 7.67 18 8.5M13.5 5.5C13.5 6.33 12.83 7 12 7S10.5 6.33 10.5 5.5 11.17 4 12 4 13.5 4.67 13.5 5.5M13.5 11C13.5 11.83 12.83 12.5 12 12.5S10.5 11.83 10.5 11 11.17 9.5 12 9.5 13.5 10.17 13.5 11Z"
+              />
+            </svg>
+
+            <p>Karta Dużej Rodziny</p>
+          </div>
+
+          <div>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10,2V4.26L12,5.59V4H22V19H17V21H24V2H10M7.5,5L0,10V21H15V10L7.5,5M14,6V6.93L15.61,8H16V6H14M18,6V8H20V6H18M7.5,7.5L13,11V19H10V13H5V19H2V11L7.5,7.5M18,10V12H20V10H18M18,14V16H20V14H18Z"
+              />
+            </svg>
+
+            <p>Karta Wołomin Blisko</p>
+          </div>
+
+          <div>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.83 10.43A6.93 6.93 0 0 1 18.39 14.86A6.64 6.64 0 0 1 17.5 19.5L15.78 18.5A5 5 0 0 0 16.44 16A5.22 5.22 0 0 0 15.46 13.06L9.18 23.93L7.44 22.95L10.44 17.75L8.71 16.76L7.21 19.34L5.5 18.36L10.63 9.45A7 7 0 0 1 8.8 5.46A6.91 6.91 0 0 1 9.69 1.1L11.43 2.13A4.84 4.84 0 0 0 10.91 5.9A4.74 4.74 0 0 0 13.21 8.93M16 5A2 2 0 1 0 18 7A2 2 0 0 0 16 5M13.5 1A1.5 1.5 0 1 0 15 2.5A1.5 1.5 0 0 0 13.5 1Z"
+              />
+            </svg>
+
+            <p>Zniżki dla sportowców</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sub-container sub-container-mono">
+        <h1>Z nimi współpracujemy</h1>
+        <div class="partners">
+          <img
+            src="assets/partners/nfz.webp"
+            alt="Narodowy Fundusz Zdrowia"
+            class="partner-logo nfz"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/GLinfo.webp"
+            alt="GL info"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/rozliczenia_nfz.webp"
+            alt="rozliczenia NFZ"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/pemedic.webp"
+            alt="peMedic"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/PZU.webp"
+            alt="Powszechny Zakład Ubezpieczeń"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/fundacja.webp"
+            alt="Fundacja Trzeba Żyć"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/premko.webp"
+            alt="Premko"
+            class="partner-logo"
+            loading="lazy"
+          />
+          <img
+            src="assets/partners/diagnostyka.webp"
+            alt="Diagnostyka"
+            class="partner-logo"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section
+        class="sub-container sub-container-mono images-carousel-container"
+      >
+        <h1 class="gallery-title">Realizujemy projekty unijne</h1>
+        <div class="carousel-wrapper">
+          <div class="frame-container">
+            <button
+              class="previous-btn"
+              aria-label="Poprzedni obraz"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-rewind"
+              >
+                <polygon points="11 19 2 12 11 5 11 19"></polygon>
+                <polygon points="22 19 13 12 22 5 22 19"></polygon>
+              </svg>
+            </button>
+
+            <!-- Check subclass for certain gallery when using this code snippet -> it matters for specific aspect ratio in CSS -->
+            <div class="frame ue-projects-frame">
+              <div class="tape">
+                <!-- To be hardcoded -->
+                <!-- Check class for each img tag -> it matters for specific aspect ratio in CSS -->
+                <img
+                  src="assets/ue_projects/sprawni-i-zdrowi-802x1024-1.webp"
+                  alt="Sprawni i zdrowi do życia gotowi"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/Ruch-i-zabawa-to-dobra-postawa-PLAKAT-fixed.docx-1-724x1024-1.webp"
+                  alt="Ruch i zabawa to dobra postawa"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/plakat-pzp-page-001-724x1024-1.webp"
+                  alt="Zintegrowana terapia"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/laserMLS1.webp"
+                  alt="Zastosowanie laseroterapii MLS"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/autyzm.webp"
+                  alt="Kompleksowe wsparcie środowiska dziecka ze spektrum autyzmu"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/plakat-DDOM-802x1024-1.webp"
+                  alt="Dzienny dom opieki medycznej w Wołominie"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/plakat-Zdrowi-i-Sprawni.-1-802x1024-1.webp"
+                  alt="Zdrowi i sprawni"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <img
+                  src="assets/ue_projects/plakat-Dobra-Postawa-802x1024-1.webp"
+                  alt="Dobra postawa"
+                  loading="eager"
+                  class="ue-projects-img"
+                />
+                <!-- End of To be hardcoded -->
+              </div>
             </div>
-            <div class="right-child">
-                <p class="introduction-description">
-                    Jesteśmy siecią placówek opieki zdrowotnej. Zapewniamy wyjątkową opiekę fizjoterapeutyczną lokalnym
-                    społecznościom. Wyróżniamy się ogromną empatią, miłą i rodzinną atmosferą oraz indywidualnym
-                    podejściem
-                    do pacjenta w każdym wieku.
-                </p>
-                <a href="placowki.html" class="call-to-action-btn call-to-action-intro" role="button">Sprawdź
-                    lokalizajce</a>
-            </div>
-            <a href="#next" id="arrow-down" aria-label="Przejdź w dół strony"><svg aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-arrow-down-circle">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="8 12 12 16 16 12"></polyline>
-                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                </svg></a>
-        </section>
+            <button class="next-btn" aria-label="Następny obraz" type="button">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-fast-forward"
+              >
+                <polygon points="13 19 22 12 13 5 13 19"></polygon>
+                <polygon points="2 19 11 12 2 5 2 19"></polygon>
+              </svg>
+            </button>
+          </div>
 
-        <section class="sub-container sub-container-mono" id="next">
-            <h1>Oferujemy ceny specjalne</h1>
+          <div class="dots-box">
+            <!-- Generated dynamically in gallery.js -->
+          </div>
 
-            <div class="special-offers">
-                <div>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M3.69 9.12C3.5 8.93 3.29 8.84 3.04 8.84C2.63 8.84 2.32 9.03 2.12 9.42S1.97 10.18 2.29 10.53C3.47 11.59 4.22 12.34 4.54 12.78C4.95 13.34 5.15 14.16 5.15 15.22C5.15 16.53 5.65 17.5 6.65 18.17C7.21 18.61 7.82 18.94 8.5 19.16L8.5 15.27C8.5 14.33 8.17 13.55 7.54 12.92M16.46 12.97C15.84 13.59 15.5 14.36 15.5 15.27L15.5 19.2C16.46 18.86 17.26 18.33 17.92 17.63C18.57 16.93 18.9 16.16 18.9 15.22C18.9 14.09 19.09 13.28 19.47 12.78C19.56 12.62 19.73 12.42 20 12.17C20.23 11.92 20.47 11.68 20.71 11.46C20.94 11.25 21.17 11.03 21.39 10.81L21.72 10.53C21.91 10.34 22 10.12 22 9.87C22 9.59 21.91 9.34 21.72 9.14C21.53 8.94 21.3 8.84 21 8.84S20.5 8.93 20.31 9.12M12 20C12.69 20 13.36 19.91 14 19.72L14 16.15C14 15.56 13.82 15.1 13.41 14.66C13 14.22 12.53 14 12 14C11.47 14 11 14.2 10.62 14.61C10.22 15 10 15.46 10 16.06L10 19.72C10.64 19.91 11.31 20 12 20M9 8.5C9 9.33 8.33 10 7.5 10S6 9.33 6 8.5 6.67 7 7.5 7 9 7.67 9 8.5M18 8.5C18 9.33 17.33 10 16.5 10C15.67 10 15 9.33 15 8.5S15.67 7 16.5 7C17.33 7 18 7.67 18 8.5M13.5 5.5C13.5 6.33 12.83 7 12 7S10.5 6.33 10.5 5.5 11.17 4 12 4 13.5 4.67 13.5 5.5M13.5 11C13.5 11.83 12.83 12.5 12 12.5S10.5 11.83 10.5 11 11.17 9.5 12 9.5 13.5 10.17 13.5 11Z" />
-                    </svg>
-
-                    <p>Karta Dużej Rodziny</p>
-                </div>
-
-                <div>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M10,2V4.26L12,5.59V4H22V19H17V21H24V2H10M7.5,5L0,10V21H15V10L7.5,5M14,6V6.93L15.61,8H16V6H14M18,6V8H20V6H18M7.5,7.5L13,11V19H10V13H5V19H2V11L7.5,7.5M18,10V12H20V10H18M18,14V16H20V14H18Z" />
-                    </svg>
-
-                    <p>Karta Wołomin Blisko</p>
-                </div>
-
-                <div>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M15.83 10.43A6.93 6.93 0 0 1 18.39 14.86A6.64 6.64 0 0 1 17.5 19.5L15.78 18.5A5 5 0 0 0 16.44 16A5.22 5.22 0 0 0 15.46 13.06L9.18 23.93L7.44 22.95L10.44 17.75L8.71 16.76L7.21 19.34L5.5 18.36L10.63 9.45A7 7 0 0 1 8.8 5.46A6.91 6.91 0 0 1 9.69 1.1L11.43 2.13A4.84 4.84 0 0 0 10.91 5.9A4.74 4.74 0 0 0 13.21 8.93M16 5A2 2 0 1 0 18 7A2 2 0 0 0 16 5M13.5 1A1.5 1.5 0 1 0 15 2.5A1.5 1.5 0 0 0 13.5 1Z" />
-                    </svg>
-
-                    <p>Zniżki dla sportowców</p>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="sub-container sub-container-mono">
-            <h1>Z nimi współpracujemy</h1>
-            <div class="partners">
-                <img src="assets/partners/nfz.webp" alt="Narodowy Fundusz Zdrowia" class="partner-logo nfz"
-                    loading="lazy">
-                <img src="assets/partners/GLinfo.webp" alt="GL info" class="partner-logo" loading="lazy">
-                <img src="assets/partners/rozliczenia_nfz.webp" alt="rozliczenia NFZ" class="partner-logo"
-                    loading="lazy">
-                <img src="assets/partners/pemedic.webp" alt="peMedic" class="partner-logo" loading="lazy">
-                <img src="assets/partners/PZU.webp" alt="Powszechny Zakład Ubezpieczeń" class="partner-logo"
-                    loading="lazy">
-                <img src="assets/partners/fundacja.webp" alt="Fundacja Trzeba Żyć" class="partner-logo" loading="lazy">
-                <img src="assets/partners/premko.webp" alt="Premko" class="partner-logo" loading="lazy">
-                <img src="assets/partners/diagnostyka.webp" alt="Diagnostyka" class="partner-logo" loading="lazy">
-            </div>
-        </section>
-
-        <section class="sub-container sub-container-mono images-carousel-container">
-            <h1 class="gallery-title">Realizujemy projekty unijne</h1>
-            <div class="carousel-wrapper">
-                <div class="frame-container">
-                    <button class="previous-btn" aria-label="Poprzedni obraz" type="button"><svg aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-rewind">
-                            <polygon points="11 19 2 12 11 5 11 19"></polygon>
-                            <polygon points="22 19 13 12 22 5 22 19"></polygon>
-                        </svg></button>
-
-                    <!-- Check subclass for certain gallery when using this code snippet -> it matters for specific aspect ratio in CSS -->
-                    <div class="frame ue-projects-frame">
-                        <div class="tape">
-                            <!-- To be hardcoded -->
-                            <!-- Check class for each img tag -> it matters for specific aspect ratio in CSS -->
-                            <img src="assets/ue_projects/sprawni-i-zdrowi-802x1024-1.webp"
-                                alt="Sprawni i zdrowi do życia gotowi" loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/Ruch-i-zabawa-to-dobra-postawa-PLAKAT-fixed.docx-1-724x1024-1.webp"
-                                alt="Ruch i zabawa to dobra postawa" loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/plakat-pzp-page-001-724x1024-1.webp" alt="Zintegrowana terapia"
-                                loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/laserMLS1.webp" alt="Zastosowanie laseroterapii MLS"
-                                loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/autyzm.webp"
-                                alt="Kompleksowe wsparcie środowiska dziecka ze spektrum autyzmu" loading="eager"
-                                class="ue-projects-img">
-                            <img src="assets/ue_projects/plakat-DDOM-802x1024-1.webp"
-                                alt="Dzienny dom opieki medycznej w Wołominie" loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/plakat-Zdrowi-i-Sprawni.-1-802x1024-1.webp"
-                                alt="Zdrowi i sprawni" loading="eager" class="ue-projects-img">
-                            <img src="assets/ue_projects/plakat-Dobra-Postawa-802x1024-1.webp" alt="Dobra postawa"
-                                loading="eager" class="ue-projects-img">
-                            <!-- End of To be hardcoded -->
-                        </div>
-                    </div>
-                    <button class="next-btn" aria-label="Następny obraz" type="button"><svg aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-fast-forward">
-                            <polygon points="13 19 22 12 13 5 13 19"></polygon>
-                            <polygon points="2 19 11 12 2 5 2 19"></polygon>
-                        </svg></button>
-                </div>
-
-                <div class="dots-box">
-                    <!-- Generated dynamically in gallery.js -->
-                </div>
-
-                <button class="play-btn" aria-label="Play or pause slideshow" type="button">
-                    <!-- Zawartość buttona generowana dynamicznie w gallery.js -->
-                </button>
-            </div>
-        </section>
-
+          <button
+            class="play-btn"
+            aria-label="Play or pause slideshow"
+            type="button"
+          >
+            <!-- Zawartość buttona generowana dynamicznie w gallery.js -->
+          </button>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <section class="sub-container footer-descendant">
-            <div class="left-child footer-descendant">
-                <p style="text-align: center;">
-                    &copy; 2025
-                    <br>
-                    <br>
-                    Pulmo sp. z o.o.
-                    <br>
-                    <br>
-                    ul. Skarbka z Gór 120/10
-                    <br>
-                    03-278 Warszawa
-                    <br>
-                    NIP 5242770885
-                </p>
+      <section class="sub-container footer-descendant">
+        <div class="left-child footer-descendant">
+          <p style="text-align: center">
+            &copy; 2025
+            <br />
+            <br />
+            Pulmo sp. z o.o.
+            <br />
+            <br />
+            ul. Skarbka z Gór 120/10
+            <br />
+            03-278 Warszawa
+            <br />
+            NIP 5242770885
+          </p>
+        </div>
+        <div class="right-child footer-descendant">
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/p/O%C5%9Brodek-Stacjonarnej-Opieki-Medycznej-Pulmo-100063655119522"
+                class="social-media-link"
+                aria-label="Facebook OSOM Wołomin"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/pulmo_rehabilitacja_wolomin/"
+                class="social-media-link"
+                aria-label="Instagram OSOM Wołomin"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
             </div>
-            <div class="right-child footer-descendant">
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/p/O%C5%9Brodek-Stacjonarnej-Opieki-Medycznej-Pulmo-100063655119522"
-                            class="social-media-link" aria-label="Facebook OSOM Wołomin" target="_blank"
-                            rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/pulmo_rehabilitacja_wolomin/" class="social-media-link"
-                            aria-label="Instagram OSOM Wołomin" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>OSOM Wołomin</p>
-                </div>
+            <p>OSOM Wołomin</p>
+          </div>
 
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/p/Pulmo-Hipoterapia-100057362232825/"
-                            class="social-media-link" aria-label="Facebook hipoterapia" target="_blank"
-                            rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link"
-                            aria-label="Instagram hipoterapia" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>Hipoterapia</p>
-                </div>
-
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/pulmoprzychodniaPOZ/" class="social-media-link"
-                            aria-label="Facebook NZOZ Derby" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>NZOZ Derby</p>
-                </div>
-
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/p/Pulmo-Hipoterapia-100057362232825/"
+                class="social-media-link"
+                aria-label="Facebook hipoterapia"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/_pulmo_hipoterapia_/"
+                class="social-media-link"
+                aria-label="Instagram hipoterapia"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
             </div>
-        </section>
-        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-code">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-            8b.com.pl</a>
+            <p>Hipoterapia</p>
+          </div>
+
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/pulmoprzychodniaPOZ/"
+                class="social-media-link"
+                aria-label="Facebook NZOZ Derby"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <p>NZOZ Derby</p>
+          </div>
+        </div>
+      </section>
+      <a
+        href="https://8b.com.pl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-signature"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-code"
+        >
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        8b.com.pl</a
+      >
     </footer>
 
-    <a href="#" id="scroll-to-top-btn" aria-label="Wróć na górę strony"><svg xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-circle">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="16 12 12 8 8 12"></polyline>
-            <line x1="12" y1="16" x2="12" y2="8"></line>
-        </svg></a>
-</body>
-
+    <a href="#" id="scroll-to-top-btn" aria-label="Wróć na górę strony"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-arrow-up-circle"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="16 12 12 8 8 12"></polyline>
+        <line x1="12" y1="16" x2="12" y2="8"></line></svg
+    ></a>
+  </body>
 </html>

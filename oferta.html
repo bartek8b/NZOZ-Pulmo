@@ -1,362 +1,644 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
-    <script>
-        (function () {
-            try {
-                // Jeśli data-theme już istnieje (np. z SSR), nie nadpisuj go
-                if (document.documentElement.hasAttribute('data-theme')) return;
-
-                const saved = localStorage.getItem('theme');
-                if (saved === 'dark' || saved === 'light') {
-                    document.documentElement.setAttribute('data-theme', saved);
-                    return;
-                }
-
-                // preferencja systemowa jako fallback (bezpieczny optional chaining)
-                const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
-                document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-            } catch (e) {
-                // localStorage może rzucać (np. w trybie prywatnym) — bezpieczny fallback
-            }
-        })();
-    </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ustaw tytuł dla każdej podstrony -->
+    <title>NZOZ Pulmo</title>
     <!-- Ustaw meta description dla każdej podstrony -->
-    <meta name="description" content="Pulmo - oferta">
-    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
-    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp">
+    <meta name="description" content="Pulmo - oferta" />
+    <link rel="canonical" href="https://pulmo.com.pl" />
     <!-- Ustaw Open Graph Protocol (OGP) -->
     <meta property="og:title" content="Pulmo" />
-    <meta property="og:description" content="Przychodnia | Rehabilitacja | Hipoterapia" />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg" />
+    <meta
+      property="og:description"
+      content="Przychodnia | Rehabilitacja | Hipoterapia"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/bartek8b/NZOZ-Pulmo/main/assets/background/ogp_image.jpg"
+    />
     <meta property="og:url" content="https://pulmo.com.pl" />
-    <link rel="stylesheet" href="modern-normalize.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp">
+
+    <!-- Critical: ustaw theme jak najwcześniej (przed CSS), żeby uniknąć "flash" -->
+    <script>
+      (function () {
+        try {
+          // Jeśli data-theme już istnieje (np. z SSR), nie nadpisuj go
+          if (document.documentElement.hasAttribute('data-theme')) return;
+
+          const saved = localStorage.getItem('theme');
+          if (saved === 'dark' || saved === 'light') {
+            document.documentElement.setAttribute('data-theme', saved);
+            return;
+          }
+
+          // preferencja systemowa jako fallback (bezpieczny optional chaining)
+          const prefersDark = window.matchMedia?.(
+            '(prefers-color-scheme: dark)',
+          )?.matches;
+          document.documentElement.setAttribute(
+            'data-theme',
+            prefersDark ? 'dark' : 'light',
+          );
+        } catch (e) {
+          // localStorage może rzucać (np. w trybie prywatnym) — bezpieczny fallback
+        }
+      })();
+    </script>
+
+    <!-- Preload logo from header + tylko dla index.html obrazu tła i big_logo (przeglądarka zaczyna pobierać obrazy wcześniej) -->
+    <link rel="preload" as="image" href="assets/logo/logo_prostokat.webp" />
+
+    <link rel="stylesheet" href="modern-normalize.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/webp" href="assets/logo/logo_kwadrat.webp" />
     <!-- Ustaw odpowiednie skrypty dla podstron -->
     <script src="index.js" defer></script>
     <script src="facilities-filter.js" defer></script>
-    <!-- Ustaw tytuł dla każdej podstrony -->
-    <title>NZOZ Pulmo</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <a href="index.html"><img src="assets/logo/logo_prostokat.webp" alt="logo firmy"></a>
-        <!-- Ustaw class active dla właściwej podstrony -->
-        <nav id="main-nav" role="navigation" aria-label="Główna nawigacja">
-            <a href="index.html">Home</a>
-            <a href="placowki.html">Placówki</a>
-            <a class="active" tabindex="0" aria-current="page">Oferta</a>
-            <a href="zespol.html">Zespół</a>
-            <a href="aktualnosci.html">Aktualności</a>
+      <a href="index.html"
+        ><img src="assets/logo/logo_prostokat.webp" alt="logo firmy"
+      /></a>
+      <!-- Ustaw class active dla właściwej podstrony -->
+      <nav id="main-nav" role="navigation" aria-label="Główna nawigacja">
+        <a href="index.html">Home</a>
+        <a href="placowki.html">Placówki</a>
+        <a class="active" tabindex="0" aria-current="page">Oferta</a>
+        <a href="zespol.html">Zespół</a>
+        <a href="aktualnosci.html">Aktualności</a>
 
-            <button class="color-scheme-btn" aria-label="Change color scheme" type="button">
-                <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
-            </button>
-        </nav>
-
-        <button class="hamburger-btn open-nav" aria-label="Otwórz nawigację" aria-controls="main-nav"
-            aria-expanded="false" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-menu">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+        <button
+          class="color-scheme-btn"
+          aria-label="Change color scheme"
+          type="button"
+        >
+          <!-- Ikona generowana w JS przez funkcję applyTheme za pomocą innerHTML -->
         </button>
+      </nav>
 
-        <button class="hamburger-btn close-nav" aria-label="Zamknij nawigację" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
+      <button
+        class="hamburger-btn open-nav"
+        aria-label="Otwórz nawigację"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-menu"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <button
+        class="hamburger-btn close-nav"
+        aria-label="Zamknij nawigację"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-x"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </header>
 
     <main>
-        <section class="sub-container sub-container-mono">
-            <svg class="filter-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                    d="M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4A2,2 0 0,0 2,4V11C2,11.55 2.22,12.05 2.59,12.42L11.59,21.42C11.95,21.78 12.45,22 13,22C13.55,22 14.05,21.78 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.45 21.77,11.94 21.41,11.58M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M17.27,15.27L13,19.54L8.73,15.27C8.28,14.81 8,14.19 8,13.5A2.5,2.5 0 0,1 10.5,11C11.19,11 11.82,11.28 12.27,11.74L13,12.46L13.73,11.73C14.18,11.28 14.81,11 15.5,11A2.5,2.5 0 0,1 18,13.5C18,14.19 17.72,14.82 17.27,15.27Z" />
+      <section class="sub-container sub-container-mono">
+        <svg
+          class="filter-icon"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4A2,2 0 0,0 2,4V11C2,11.55 2.22,12.05 2.59,12.42L11.59,21.42C11.95,21.78 12.45,22 13,22C13.55,22 14.05,21.78 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.45 21.77,11.94 21.41,11.58M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M17.27,15.27L13,19.54L8.73,15.27C8.28,14.81 8,14.19 8,13.5A2.5,2.5 0 0,1 10.5,11C11.19,11 11.82,11.28 12.27,11.74L13,12.46L13.73,11.73C14.18,11.28 14.81,11 15.5,11A2.5,2.5 0 0,1 18,13.5C18,14.19 17.72,14.82 17.27,15.27Z"
+          />
+        </svg>
+        <h1>Poznaj nasze cenniki</h1>
+        <div class="filter-btns-container">
+          <button
+            class="call-to-action-btn transparent-btn"
+            data-facility="osom"
+            type="button"
+          >
+            OSOM Wołomin
+          </button>
+          <button
+            class="call-to-action-btn transparent-btn"
+            data-facility="derby"
+            type="button"
+          >
+            NZOZ Derby
+          </button>
+          <button
+            class="call-to-action-btn transparent-btn"
+            data-facility="hipo"
+            type="button"
+          >
+            Hipoterapia
+          </button>
+        </div>
+      </section>
+
+      <section class="sub-container sub-container-mono" data-facility="osom">
+        <p>TEMP NZOZ OSOM TEST CONTENT</p>
+      </section>
+
+      <section class="sub-container sub-container-mono" data-facility="osom">
+        <h1>Zapraszamy do kontaktu</h1>
+        <div class="filtered-contact">
+          <div>
+            <svg
+              aria-label="Numer telefonu"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-phone"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
             </svg>
-            <h1>Poznaj nasze cenniki</h1>
-            <div class="filter-btns-container">
-                <button class="call-to-action-btn transparent-btn" data-facility="osom" type="button">OSOM
-                    Wołomin</button>
-                <button class="call-to-action-btn transparent-btn" data-facility="derby" type="button">NZOZ
-                    Derby</button>
-                <button class="call-to-action-btn transparent-btn" data-facility="hipo"
-                    type="button">Hipoterapia</button>
-            </div>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="osom">
             <p>
-                TEMP NZOZ OSOM TEST CONTENT
+              <a href="tel:+48501783990" class="anchor-contact">501 783 990</a>
+              <br />
+              <a href="tel:+48500119159" class="anchor-contact">500 119 159</a>
             </p>
-
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="osom">
-            <h1>Zapraszamy do kontaktu</h1>
-            <div class="filtered-contact">
-                <div>
-                    <svg aria-label="Numer telefonu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-phone">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                        </path>
-                    </svg>
-                    <p>
-                        <a href="tel:+48501783990" class="anchor-contact">501 783 990</a>
-                        <br>
-                        <a href="tel:+48500119159" class="anchor-contact">500 119 159</a>
-                    </p>
-                </div>
-                <div>
-                    <svg aria-label="Adres mejlowy" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-mail">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                        </path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    <p>
-                        <a href="mailto:wolomin@pulmo.com.pl" class="anchor-contact">wolomin@pulmo.com.pl</a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Uzupełnij link i zbuduj skrypt -->
-            <div class="filtered-meet-team">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-users">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <a href="zespol.html?facility=osom" class="call-to-action-btn" role="button" type="button">Poznaj
-                    zespół</a>
-            </div>
-        </section>
-
-        <section class="sub-container sub-container-mono" data-facility="derby">
+          </div>
+          <div>
+            <svg
+              aria-label="Adres mejlowy"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-mail"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
             <p>
-                TEMP NZOZ DERBY TEST CONTENT
+              <a href="mailto:wolomin@pulmo.com.pl" class="anchor-contact"
+                >wolomin@pulmo.com.pl</a
+              >
             </p>
+          </div>
+        </div>
 
-        </section>
+        <!-- Uzupełnij link i zbuduj skrypt -->
+        <div class="filtered-meet-team">
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-users"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <a
+            href="zespol.html?facility=osom"
+            class="call-to-action-btn"
+            role="button"
+            type="button"
+            >Poznaj zespół</a
+          >
+        </div>
+      </section>
 
-        <section class="sub-container sub-container-mono" data-facility="derby">
-            <h1>Zapraszamy do kontaktu</h1>
-            <div class="filtered-contact">
-                <div>
-                    <svg aria-label="Numer telefonu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-phone">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                        </path>
-                    </svg>
-                    <p>
-                        <a href="tel:+48227418220" class="anchor-contact">22 741 82 20</a>
-                    </p>
-                </div>
-                <div>
-                    <svg aria-label="Adres mejlowy" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-mail">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                        </path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    <p>
-                        <a href="mailto:przychodnia@pulmo.com.pl" class="anchor-contact">przychodnia@pulmo.com.pl</a>
-                    </p>
-                </div>
-            </div>
-            <!-- Uzupełnij link i zbuduj skrypt -->
-            <div class="filtered-meet-team">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-users">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <a href="zespol.html?facility=derby" class="call-to-action-btn" role="button">Poznaj
-                    zespół</a>
-            </div>
-        </section>
+      <section class="sub-container sub-container-mono" data-facility="derby">
+        <p>TEMP NZOZ DERBY TEST CONTENT</p>
+      </section>
 
-        <section class="sub-container sub-container-mono" data-facility="hipo">
+      <section class="sub-container sub-container-mono" data-facility="derby">
+        <h1>Zapraszamy do kontaktu</h1>
+        <div class="filtered-contact">
+          <div>
+            <svg
+              aria-label="Numer telefonu"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-phone"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
             <p>
-                TEMP HIPOTERAPIA TEST CONTENT
+              <a href="tel:+48227418220" class="anchor-contact">22 741 82 20</a>
             </p>
+          </div>
+          <div>
+            <svg
+              aria-label="Adres mejlowy"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-mail"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <p>
+              <a href="mailto:przychodnia@pulmo.com.pl" class="anchor-contact"
+                >przychodnia@pulmo.com.pl</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- Uzupełnij link i zbuduj skrypt -->
+        <div class="filtered-meet-team">
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-users"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <a
+            href="zespol.html?facility=derby"
+            class="call-to-action-btn"
+            role="button"
+            >Poznaj zespół</a
+          >
+        </div>
+      </section>
 
-        </section>
+      <section class="sub-container sub-container-mono" data-facility="hipo">
+        <p>TEMP HIPOTERAPIA TEST CONTENT</p>
+      </section>
 
-        <section class="sub-container sub-container-mono" data-facility="hipo">
-            <h1>Zapraszamy do kontaktu</h1>
-            <div class="filtered-contact">
-                <div>
-                    <svg aria-label="Numer telefonu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-phone">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                        </path>
-                    </svg>
-                    <p>
-                        <a href="tel:+48883768961" class="anchor-contact">883 768 961</a>
-                    </p>
-                </div>
+      <section class="sub-container sub-container-mono" data-facility="hipo">
+        <h1>Zapraszamy do kontaktu</h1>
+        <div class="filtered-contact">
+          <div>
+            <svg
+              aria-label="Numer telefonu"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-phone"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
+            <p>
+              <a href="tel:+48883768961" class="anchor-contact">883 768 961</a>
+            </p>
+          </div>
 
-                <div>
-                    <svg aria-label="Adres mejlowy" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-mail">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                        </path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    <p>
-                        <a href="mailto:hipoterapia@pulmo.com.pl" class="anchor-contact">hipoterapia@pulmo.com.pl</a>
-                    </p>
-                </div>
-            </div>
-            <!-- Uzupełnij link i zbuduj skrypt -->
-            <div class="filtered-meet-team">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-users">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <a href="zespol.html?facility=hipo" class="call-to-action-btn" role="button">Poznaj
-                    zespół</a>
-            </div>
-        </section>
-
+          <div>
+            <svg
+              aria-label="Adres mejlowy"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-mail"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <p>
+              <a href="mailto:hipoterapia@pulmo.com.pl" class="anchor-contact"
+                >hipoterapia@pulmo.com.pl</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- Uzupełnij link i zbuduj skrypt -->
+        <div class="filtered-meet-team">
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-users"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <a
+            href="zespol.html?facility=hipo"
+            class="call-to-action-btn"
+            role="button"
+            >Poznaj zespół</a
+          >
+        </div>
+      </section>
     </main>
 
     <footer>
-        <section class="sub-container footer-descendant">
-            <div class="left-child footer-descendant">
-                <p style="text-align: center;">
-                    &copy; 2025
-                    <br>
-                    <br>
-                    Pulmo sp. z o.o.
-                    <br>
-                    <br>
-                    ul. Skarbka z Gór 120/10
-                    <br>
-                    03-278 Warszawa
-                    <br>
-                    NIP 5242770885
-                </p>
+      <section class="sub-container footer-descendant">
+        <div class="left-child footer-descendant">
+          <p style="text-align: center">
+            &copy; 2025
+            <br />
+            <br />
+            Pulmo sp. z o.o.
+            <br />
+            <br />
+            ul. Skarbka z Gór 120/10
+            <br />
+            03-278 Warszawa
+            <br />
+            NIP 5242770885
+          </p>
+        </div>
+        <div class="right-child footer-descendant">
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/p/O%C5%9Brodek-Stacjonarnej-Opieki-Medycznej-Pulmo-100063655119522"
+                class="social-media-link"
+                aria-label="Facebook OSOM Wołomin"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/pulmo_rehabilitacja_wolomin/"
+                class="social-media-link"
+                aria-label="Instagram OSOM Wołomin"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
             </div>
-            <div class="right-child footer-descendant">
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/p/O%C5%9Brodek-Stacjonarnej-Opieki-Medycznej-Pulmo-100063655119522"
-                            class="social-media-link" aria-label="Facebook OSOM Wołomin" target="_blank"
-                            rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/pulmo_rehabilitacja_wolomin/" class="social-media-link"
-                            aria-label="Instagram OSOM Wołomin" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>OSOM Wołomin</p>
-                </div>
+            <p>OSOM Wołomin</p>
+          </div>
 
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/p/Pulmo-Hipoterapia-100057362232825/"
-                            class="social-media-link" aria-label="Facebook hipoterapia" target="_blank"
-                            rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/_pulmo_hipoterapia_/" class="social-media-link"
-                            aria-label="Instagram hipoterapia" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>Hipoterapia</p>
-                </div>
-
-                <div class="social-media-container">
-                    <div class="social-media-group">
-                        <a href="https://www.facebook.com/pulmoprzychodniaPOZ/" class="social-media-link"
-                            aria-label="Facebook NZOZ Derby" target="_blank" rel="noopener noreferrer" role="button">
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>NZOZ Derby</p>
-                </div>
-
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/p/Pulmo-Hipoterapia-100057362232825/"
+                class="social-media-link"
+                aria-label="Facebook hipoterapia"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/_pulmo_hipoterapia_/"
+                class="social-media-link"
+                aria-label="Instagram hipoterapia"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
             </div>
-        </section>
-        <a href="https://8b.com.pl/" target="_blank" rel="noopener noreferrer" class="link-signature">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-code">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-            8b.com.pl</a>
+            <p>Hipoterapia</p>
+          </div>
+
+          <div class="social-media-container">
+            <div class="social-media-group">
+              <a
+                href="https://www.facebook.com/pulmoprzychodniaPOZ/"
+                class="social-media-link"
+                aria-label="Facebook NZOZ Derby"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-facebook"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <p>NZOZ Derby</p>
+          </div>
+        </div>
+      </section>
+      <a
+        href="https://8b.com.pl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-signature"
+      >
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-code"
+        >
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        8b.com.pl</a
+      >
     </footer>
 
-    <a href="#" id="scroll-to-top-btn" aria-label="Wróć na górę strony"><svg xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-circle">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="16 12 12 8 8 12"></polyline>
-            <line x1="12" y1="16" x2="12" y2="8"></line>
-        </svg></a>
-</body>
-
+    <a href="#" id="scroll-to-top-btn" aria-label="Wróć na górę strony"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-arrow-up-circle"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="16 12 12 8 8 12"></polyline>
+        <line x1="12" y1="16" x2="12" y2="8"></line></svg
+    ></a>
+  </body>
 </html>
