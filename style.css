@@ -36,7 +36,7 @@ nav > button:focus-visible {
   --secondary-light: hsl(37, 72%, 60%);
   --bg-dark: hsl(0, 0%, 90%);
   --bg: hsl(0, 0%, 95%);
-  --bg-light: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 98%);
   --font: hsl(0, 0%, 25%);
   --light-always: hsl(0, 0%, 90%);
 
@@ -365,6 +365,7 @@ footer {
 }
 .introduction-description {
   align-self: flex-start;
+  text-shadow: 1px 1px 1px black;
 }
 #arrow-down {
   color: inherit;
@@ -534,8 +535,7 @@ a.back-to-facilities-list:active {
 .google-map {
   width: 90%;
   aspect-ratio: 3 / 2;
-  border-radius: calc(var(--gapBase) * 2);
-  box-shadow: var(--shadow);
+  border-radius: calc(var(--gapBase) * 1);
 }
 .address-container {
   display: flex;
@@ -557,9 +557,9 @@ a.back-to-facilities-list:active {
   width: 90%;
   margin-top: calc(var(--gapBase) * 2);
   padding: calc(var(--gapBase) * 4);
+  border: 1px dotted var(--secondary);
   border-radius: calc(var(--gapBase) * 2);
-  background: transparent;
-  box-shadow: var(--shadow);
+  background: var(--bg);
 }
 .facilities-btns-container > div {
   display: flex;
@@ -706,7 +706,7 @@ svg.info-icon {
   --secondary: hsl(205, 44%, 41%);
   --secondary-light: hsl(203, 43%, 50%);
   --bg-dark: hsl(0, 0%, 20%);
-  --bg: hsl(0, 0%, 25%);
+  --bg: hsl(0, 0%, 27%);
   --bg-light: hsl(0, 0%, 30%);
   --font: hsl(0, 0%, 90%);
 
